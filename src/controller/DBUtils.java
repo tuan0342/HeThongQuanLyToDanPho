@@ -13,8 +13,8 @@ import java.sql.*;
 public class DBUtils {
 
     private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=MoneyMeals;encrypt=true;trustServerCertificate=true;";
-    private static String user = "sa";
-    private static String pass = "123";
+    private static String user = "sa"; // user trên mỗi máy là khác nhau tùy cá nhân tự đặt
+    private static String pass = "123";  // pass trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static Connection connection = null;
 
     // connect database
