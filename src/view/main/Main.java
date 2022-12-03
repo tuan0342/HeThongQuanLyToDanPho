@@ -23,7 +23,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/logged-in.fxml"));
         primaryStage.setTitle("Log in!");
         primaryStage.setScene(new Scene(root));
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(false); // cố định màn hình
         primaryStage.show();
     }
 }
