@@ -26,7 +26,7 @@ public class SelectManagementController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 // bấm và back sẽ chuyển sang màn hình đăng nhập
-                DBUtils.changeScene(event, "/view/fxml/logged-in.fxml", "Log in!", null);
+                DBUtils.changeScene(event, "/view/fxml/logged-in.fxml", "Log in!");
             }
         });
     }
