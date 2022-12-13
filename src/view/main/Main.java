@@ -14,6 +14,7 @@ public class Main extends Application {
     // #807d6e grey
     //--module-path "C:\Program Files\Java\javafx-sdk-18.0.1\lib" --add-modules javafx.controls,javafx.fxml
     // Quản lý tổ dân phố
+    // Thêm comment 1
 
     public static void main(String[] args) {
         launch(args);
