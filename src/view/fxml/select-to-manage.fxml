@@ -13,12 +13,12 @@
             <Image url="@../../content/image/logo3.png" />
          </image>
       </ImageView>
-      <Button layoutX="368.0" layoutY="340.0" mnemonicParsing="false" style="-fx-background-color: #FED700;" text="Quản lý hộ khẩu, nhân khẩu">
+      <Button layoutX="373.0" layoutY="391.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý nhân khẩu">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="377.0" layoutY="401.0" mnemonicParsing="false" style="-fx-background-color: #FED700;" text="Quản lý thu phí, đóng góp">
+      <Button layoutX="373.0" layoutY="457.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý thu phí">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
@@ -26,6 +26,11 @@
       <Button fx:id="button_back_login" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Back">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="373.0" layoutY="314.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý hộ khẩu">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
    </children>
