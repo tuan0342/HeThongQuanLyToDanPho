@@ -11,43 +11,46 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="322.0">
+      <AnchorPane prefHeight="400.0" prefWidth="186.0">
          <children>
-            <TextField layoutX="68.0" layoutY="155.0" prefHeight="26.0" prefWidth="129.0" />
-            <Button layoutX="237.0" layoutY="152.0" mnemonicParsing="false" text="FIND" />
-            <Label layoutX="68.0" layoutY="120.0" prefHeight="18.0" prefWidth="129.0" text="ID HỘ CẦN TÁCH">
+            <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" text="BACK" />
+            <Label layoutX="29.0" layoutY="155.0" text="ID HỘ CẦN TÁCH">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="99.0" layoutY="361.0" text="ID HỘ KHẨU MỚI">
+            <TextField layoutX="17.0" layoutY="195.0" />
+            <Label layoutX="31.0" layoutY="365.0" text="ID HỘ KHẨU MỚI">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField layoutX="85.0" layoutY="404.0" />
-            <Button layoutX="116.0" layoutY="474.0" mnemonicParsing="false" text="TÁCH HỘ" />
-            <Button layoutX="31.0" layoutY="14.0" mnemonicParsing="false" text="BACK" />
+            <TextField layoutX="19.0" layoutY="407.0" />
+            <Button layoutX="58.0" layoutY="455.0" mnemonicParsing="false" text="TÁCH HỘ" />
          </children>
       </AnchorPane>
-      <TableView prefHeight="600.0" prefWidth="697.0">
-        <columns>
-          <TableColumn prefWidth="40.0" text="IDNHANKHAU" />
-            <TableColumn prefWidth="40.0" text="IDHOKHAU" />
-            <TableColumn prefWidth="40.0" text="HOTEN" />
-            <TableColumn prefWidth="40.0" text="BIDANH" />
-            <TableColumn prefWidth="40.0" text="NGAYSINH" />
-            <TableColumn prefWidth="40.0" text="NGUYENQUAN" />
-            <TableColumn prefWidth="40.0" text="DANTOC" />
-            <TableColumn prefWidth="40.0" text="NGHENGHIEP" />
-            <TableColumn prefWidth="40.0" text="NOILAMVIEC" />
-            <TableColumn prefWidth="40.0" text="SOCCCD" />
-            <TableColumn prefWidth="40.0" text="NGAYCAP" />
-            <TableColumn prefWidth="40.0" text="NOICAP" />
-            <TableColumn prefWidth="40.0" text="TIMEDKTT" />
-            <TableColumn prefWidth="40.0" text="DIACHITT" />
-            <TableColumn prefWidth="40.0" text="QHCH" />
-        </columns>
-      </TableView>
+      <AnchorPane prefHeight="400.0" prefWidth="421.0">
+         <children>
+            <TableView prefHeight="600.0" prefWidth="782.0">
+              <columns>
+                <TableColumn prefWidth="80.5" text="IDNHANKHAU" />
+                <TableColumn prefWidth="69.5" text="IDHOKHAU" />
+                  <TableColumn prefWidth="75.0" text="HOTEN" />
+                  <TableColumn prefWidth="51.0" text="BIDANH" />
+                  <TableColumn prefWidth="78.5" text="NGAYSINH" />
+                  <TableColumn prefWidth="78.0" text="NGUYENQUAN" />
+                  <TableColumn prefWidth="72.5" text="DANTOC" />
+                  <TableColumn prefWidth="86.5" text="NGHENGHIEP" />
+                  <TableColumn prefWidth="83.5" text="NOILAMVIEC" />
+                  <TableColumn prefWidth="49.0" text="SOCCCD" />
+                  <TableColumn prefWidth="101.0" text="NGAYCAP" />
+                  <TableColumn prefWidth="75.0" text="NOICAP" />
+                  <TableColumn prefWidth="75.0" text="TGDKTT" />
+                  <TableColumn prefWidth="75.0" text="DIACHITHUONGTRU" />
+                  <TableColumn prefWidth="75.0" text="QHCH" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </children>
 </HBox>
