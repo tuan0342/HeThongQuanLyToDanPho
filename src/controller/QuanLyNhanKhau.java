@@ -29,7 +29,6 @@ public class QuanLyNhanKhau {
     public void Back (Event event) {
         DBUtils.changeScene(preScene, event);
     }
-
     //
     public Button Them;
     public void Them (Event event) throws IOException {

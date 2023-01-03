@@ -30,7 +30,6 @@ public class ThemKhoanThu {
     public DatePicker ngayNop;
 
     public void them (Event event) {
-
         back(event);
     }
 
