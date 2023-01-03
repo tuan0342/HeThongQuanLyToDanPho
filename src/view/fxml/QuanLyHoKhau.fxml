@@ -9,25 +9,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="Khung" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyHoKhau">
    <children>
-      <AnchorPane prefHeight="600.0" prefWidth="351.0">
+      <AnchorPane fx:id="CacButton" prefHeight="600.0" prefWidth="351.0">
          <children>
             <Label layoutX="94.0" layoutY="79.0" prefHeight="29.0" prefWidth="149.0" text="   NHẬP ID HỘ KHẨU">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Button layoutX="74.0" layoutY="327.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="TÁCH HỘ" />
-            <Button layoutX="74.0" layoutY="410.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="THAY ĐỔI CHỦ HỘ" />
+            <Button fx:id="TachHo" layoutX="74.0" layoutY="327.0" mnemonicParsing="false" onAction="#tachHo" prefHeight="31.0" prefWidth="204.0" text="TÁCH HỘ" />
+            <Button fx:id="ThayDoiChuHo" layoutX="74.0" layoutY="410.0" mnemonicParsing="false" onAction="#thayDoiChuHo" prefHeight="31.0" prefWidth="204.0" text="THAY ĐỔI CHỦ HỘ" />
             <TextField layoutX="94.0" layoutY="124.0" />
-            <Button layoutX="74.0" layoutY="242.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="XÓA HỘ KHẨU" />
-            <Button layoutX="39.0" layoutY="25.0" mnemonicParsing="false" text="BACK" />
+            <Button fx:id="XoaHo" layoutX="74.0" layoutY="242.0" mnemonicParsing="false" onAction="#xoaHo" prefHeight="31.0" prefWidth="204.0" text="XÓA HỘ KHẨU" />
+            <Button fx:id="Back" layoutX="39.0" layoutY="25.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
             <Button layoutX="255.0" layoutY="117.0" minWidth="27.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="46.0" text="FIND" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="600.0" prefWidth="607.0">
+      <AnchorPane fx:id="KhungThongTin" prefHeight="600.0" prefWidth="607.0">
          <children>
-            <TableView layoutX="23.0" layoutY="19.0" prefHeight="557.0" prefWidth="562.0">
+            <TableView layoutX="22.0" layoutY="21.0" prefHeight="557.0" prefWidth="562.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />
                 <TableColumn prefWidth="75.0" text="C2" />

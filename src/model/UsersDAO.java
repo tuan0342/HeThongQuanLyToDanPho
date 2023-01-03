@@ -26,16 +26,19 @@ public class UsersDAO {
     private static Vector<Users> getVectorUser(ResultSet rs) {
         Vector<Users> vec = new Vector<Users>();
         System.out.println("Thông tin tất cả các user có trong database: ");
-        try {
-            while(rs.next()) {
-                Users users = new Users(rs.getString(1).trim(), rs.getString(2).trim(),
-                        rs.getString(3).trim());
-                vec.add(users);
-                System.out.println("\t" + users + "\n");
+        if(rs != null) {
+            try {
+                while(rs.next()) {
+                    System.out.println("abc");
+                    Users users = new Users(rs.getString(1).trim(), rs.getString(2).trim(),
+                            rs.getString(3).trim());
+                    vec.add(users);
+                    System.out.println("\t" + users + "\n");
+                }
+            } catch (SQLException e) {
+                System.out.println("Đã xảy ra lỗi trong quá trình lấy dữ liệu Users dưới dạng vector từ DB: " + e);
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            System.out.println("Đã xảy ra lỗi trong quá trình lấy dữ liệu Users dưới dạng vector từ DB: " + e);
-            e.printStackTrace();
         }
         return vec;
     }

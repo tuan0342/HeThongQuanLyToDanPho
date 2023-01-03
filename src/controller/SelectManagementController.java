@@ -1,11 +1,17 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,18 +22,85 @@ import java.util.ResourceBundle;
 public class SelectManagementController implements Initializable {
 
     @FXML
-    private Button button_back_login;
+    private static Scene preScene;
+    private static Scene curScene;
 
+    public static void setPreScene(Scene preScene) {
+        SelectManagementController.preScene = preScene;
+    }
+
+    public static void setCurScene(Scene curScene) {
+        SelectManagementController.curScene = curScene;
+    }
+    public Scene QuanLyHoKhau;
+    public Scene QuanLyNhanKhau;
+    public Scene QuanLyKhoanThu;
+    public Scene QuanLyKhoanDongGop;
+
+    public Button QuanLyHoKhauButton;
+    public Button QuanLyNhanKhauButton;
+    public Button QuanLyKhoanThuButton;
+    public Button QuanLyKhoanDongGopButton;
+
+    public Button Back;
+
+    private void setMenu () {
+        FXMLLoader QLHK = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/QuanLyHoKhau.fxml"));
+        try {
+            this.QuanLyHoKhau = new Scene(QLHK.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+//        FXMLLoader QLNK = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/QuanLyNhanKhau.fxml"));
+//        try {
+//            this.QuanLyHoKhau = new Scene(QLHK.load());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+
+        FXMLLoader QLKT = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/Quan_Ly_Khoan_Thu.fxml"));
+        try {
+            this.QuanLyKhoanThu = new Scene(QLKT.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        FXMLLoader QLKDG = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/Quan_Ly_Khoan_Dong_Gop.fxml"));
+        try {
+            this.QuanLyKhoanDongGop = new Scene(QLKDG.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setMenu();
+    }
 
-        // quay về màn hình đăng nhập
-        button_back_login.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                // bấm và back sẽ chuyển sang màn hình đăng nhập
-                DBUtils.changeScene(event, "/view/fxml/logged-in.fxml", "Log in!");
-            }
-        });
+    public void chonQuanLyHoKhauButton (Event event) {
+        controller.QuanLyHoKhau.setCurScene(this.QuanLyHoKhau);
+        controller.QuanLyHoKhau.setPreScene(curScene);
+        DBUtils.changeScene(QuanLyHoKhau, event);
+    }
+
+    public void chonQuanLyNhanKhauButton (Event event) {
+
+    }
+
+    public void chonQuanLyKhoanThuButton (Event event) {
+        controller.QuanLyKhoanThu.setCurScene(this.QuanLyKhoanThu);
+        controller.QuanLyKhoanThu.setPreScene(curScene);
+        DBUtils.changeScene(QuanLyKhoanThu, event);
+    }
+
+    public void chonQuanLyKhoanDongGopButton (Event event) {
+        controller.QuanLyKhoanDongGop.setCurScene(this.QuanLyKhoanDongGop);
+        controller.QuanLyKhoanDongGop.setPreScene(curScene);
+        DBUtils.changeScene(QuanLyKhoanDongGop, event);
+    }
+
+    public void Back (Event event) {
+        DBUtils.changeScene(preScene, event);
     }
 }

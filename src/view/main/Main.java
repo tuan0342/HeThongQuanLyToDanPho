@@ -1,5 +1,6 @@
 package view.main;
 
+import controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-
 public class Main extends Application {
 
     // #FED700 yellow
@@ -22,9 +22,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/fxml/logged-in.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginController.class.getResource("/view/fxml/logged-in.fxml"));
+        Parent root = fxmlLoader.load();
         primaryStage.setTitle("Log in!"); // set title
-        primaryStage.setScene(new Scene(root));
+        Scene scene = new Scene(root, 1000, 600);
+
+        LoginController controller = fxmlLoader.getController();
+        controller.setCurScene(scene);
+
+        primaryStage.setScene(scene);
         primaryStage.setResizable(false); // cố định màn hình
         primaryStage.show();
     }

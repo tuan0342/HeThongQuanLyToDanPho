@@ -13,22 +13,27 @@
             <Image url="@../../content/image/logo3.png" />
          </image>
       </ImageView>
-      <Button layoutX="373.0" layoutY="391.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý nhân khẩu">
+      <Button fx:id="QuanLyNhanKhauButton" layoutX="373.0" layoutY="391.0" mnemonicParsing="false" onAction="#chonQuanLyNhanKhauButton" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý nhân khẩu">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button layoutX="373.0" layoutY="457.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý thu phí">
-         <font>
-            <Font name="Arial Bold" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="button_back_login" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Back">
+      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Back">
          <font>
             <Font name="Arial Rounded MT Bold" size="16.0" />
          </font>
       </Button>
-      <Button layoutX="373.0" layoutY="314.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý hộ khẩu">
+      <Button fx:id="QuanLyKhoanThuButton" layoutX="373.0" layoutY="457.0" mnemonicParsing="false" onAction="#chonQuanLyKhoanThuButton" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý khoản thu">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="QuanLyHoKhauButton" layoutX="373.0" layoutY="314.0" mnemonicParsing="false" onAction="#chonQuanLyHoKhauButton" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý hộ khẩu">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="QuanLyKhoanDongGopButton" layoutX="372.0" layoutY="518.0" mnemonicParsing="false" onAction="#chonQuanLyKhoanDongGopButton" prefHeight="33.0" prefWidth="255.0" style="-fx-background-color: #FED700;" text="Quản lý khoản đóng góp">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>

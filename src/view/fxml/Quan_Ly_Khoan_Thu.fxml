@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="Khung" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyKhoanThu">
     <children>
-        <AnchorPane prefHeight="600.0" prefWidth="351.0">
+        <AnchorPane fx:id="CacButton" prefHeight="600.0" prefWidth="351.0">
             <children>
                 <Label layoutX="91.0" layoutY="135.0" prefHeight="29.0" prefWidth="149.0" text="   NHẬP ID KHOẢN THU">
                     <font>
                         <Font size="14.0" />
                     </font></Label>
-                <Button layoutX="74.0" layoutY="327.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="THAY ĐỔI KHOẢN THU" />
+                <Button fx:id="ThayDoiKhoanThu" layoutX="74.0" layoutY="327.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="THAY ĐỔI KHOẢN THU" />
                 <TextField layoutX="91.0" layoutY="164.0" />
-                <Button layoutX="74.0" layoutY="242.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="THÊM KHOẢN THU" />
-                <Button layoutX="39.0" layoutY="25.0" mnemonicParsing="false" text="BACK" />
+                <Button fx:id="ThemKhoanThu" layoutX="74.0" layoutY="242.0" mnemonicParsing="false" onAction="#themKhoanThu" prefHeight="31.0" prefWidth="204.0" text="THÊM KHOẢN THU" />
+                <Button fx:id="Back" layoutX="39.0" layoutY="25.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
                 <Button layoutX="251.0" layoutY="157.0" minWidth="27.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="46.0" text="FIND" />
             </children>
         </AnchorPane>
-        <AnchorPane prefHeight="600.0" prefWidth="607.0">
+        <AnchorPane fx:id="KhungThongTin" prefHeight="600.0" prefWidth="607.0">
             <children>
-                <TableView layoutX="23.0" layoutY="19.0" prefHeight="557.0" prefWidth="562.0">
+                <TableView fx:id="DanhSach" layoutX="23.0" layoutY="19.0" prefHeight="557.0" prefWidth="562.0">
                     <columns>
                         <TableColumn prefWidth="196.00006484985352" text="Tên người nộp" />
                         <TableColumn minWidth="8.800048828125" prefWidth="171.19993591308594" text="Tên khoản thu" />

@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -11,10 +12,10 @@ import java.sql.*;
 
 public class DBUtils {
 
-    private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyNhanKhau;encrypt=true;trustServerCertificate=true;";
+    private static String dbURL = "jdbc:sqlserver://DESKTOP-BM4SH04:1433;databaseName=QuanLyNhanKhau;encrypt=false;trustServerCertificate=true;";
     private static String user = "sa"; // user trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static String pass = "123";  // pass trên mỗi máy là khác nhau tùy cá nhân tự đặt
-    private static Connection connection = null;
+    private static Connection connection ;
 
     // connect database
     public static void dbConnect() throws SQLException, ClassNotFoundException {
@@ -30,6 +31,8 @@ public class DBUtils {
 
         try {
             connection = DriverManager.getConnection(dbURL, user, pass);
+//            System.out.print("HONGHANH");
+//            if (connection != null) System.out.print("NGHIEM PHONG");
         } catch (SQLException e) {
             System.out.println("Kết nối thất bại! Check output console" + e);
             e.printStackTrace();
@@ -70,33 +73,24 @@ public class DBUtils {
     public static ResultSet dbExecute(String sqlQuery) throws SQLException, ClassNotFoundException {
         Statement stmt = null;
         ResultSet rs = null;
-        try {
-            dbConnect();
-            stmt = connection.createStatement();
-            rs = stmt.executeQuery(sqlQuery);
-        } catch (SQLException e) {
-            System.out.println("Có lỗi xảy ra ở hàm dbExecute (truy xuất dữ liệu)");
-            throw e;
-        } finally {
+        dbConnect();
+        if(connection != null) {
+            try {
+                stmt = connection.createStatement();
+                rs = stmt.executeQuery(sqlQuery);
+            } catch (SQLException e) {
+                System.out.println("Có lỗi xảy ra ở hàm dbExecute (truy xuất dữ liệu)");
+                throw e;
+            } finally {
 
+            }
         }
         return rs;
     }
 
     // Phương thức chuyển màn hình
-    public static void changeScene(ActionEvent event, String fxmlFile, String title) {
-        Parent root = null;
-
-        try {
-            root = FXMLLoader.load(DBUtils.class.getResource(fxmlFile));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public static void changeScene(Scene scene, Event event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle(title);
-        stage.setScene(new Scene(root, 1000, 600));
-        stage.setResizable(false);
-        stage.show();
+        stage.setScene(scene);
     }
 }

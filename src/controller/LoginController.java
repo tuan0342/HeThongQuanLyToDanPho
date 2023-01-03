@@ -1,12 +1,16 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import model.Users;
 import model.UsersDAO;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Optional;
@@ -27,12 +31,40 @@ public class LoginController implements Initializable {
 
     @FXML
     private PasswordField pwf_password;
+    private Scene nextScene;
+    private Scene curScene;
+    public void setNextScene() {
+        FXMLLoader fxmlLoader = new FXMLLoader(SelectManagementController.
+                class.getResource("/view/fxml/select-to-manage.fxml"));
+        try {
+            Parent root = fxmlLoader.load();
+            this.nextScene = new Scene(root);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setCurScene(Scene scene) {
+        this.curScene = scene;
+    }
+
+    public Scene getCurScene() {
+        return curScene;
+    }
 
     Vector<Users> vectorUsers = new Vector<Users>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setNextScene();
 
+        try {
+            DBUtils.dbConnect();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         // Lấy thông tin tất cả các user từ database
         try {
             vectorUsers = UsersDAO.getUserFromDB();
@@ -61,7 +93,9 @@ public class LoginController implements Initializable {
             System.out.println("username đã nhập trên màn hình: " + usernameTF + ", pass đã nhập trên màn hình: " + passwordPWF);
 
             if(usersCompare(usernameTF, passwordPWF, vectorUsers)) {
-                DBUtils.changeScene(event, "/view/fxml/select-to-manage.fxml", "Chọn chức năng");
+                SelectManagementController.setCurScene(this.nextScene);
+                SelectManagementController.setPreScene(getCurScene());
+                DBUtils.changeScene(nextScene, event);
                 System.out.println("-----------------------------------------------");
             } else {
                 String text = "Sai thông tin đăng nhập! Nhập lại";
