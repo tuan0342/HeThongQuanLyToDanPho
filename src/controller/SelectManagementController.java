@@ -52,12 +52,12 @@ public class SelectManagementController implements Initializable {
             throw new RuntimeException(e);
         }
 
-//        FXMLLoader QLNK = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/QuanLyNhanKhau.fxml"));
-//        try {
-//            this.QuanLyHoKhau = new Scene(QLHK.load());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        FXMLLoader QLNK = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/Quan_Ly_Nhan_Khau.fxml"));
+        try {
+            this.QuanLyNhanKhau = new Scene(QLNK.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         FXMLLoader QLKT = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/Quan_Ly_Khoan_Thu.fxml"));
         try {
@@ -85,7 +85,9 @@ public class SelectManagementController implements Initializable {
     }
 
     public void chonQuanLyNhanKhauButton (Event event) {
-
+        controller.QuanLyNhanKhau.setCurScene(this.QuanLyNhanKhau);
+        controller.QuanLyNhanKhau.setPreScene(curScene);
+        DBUtils.changeScene(QuanLyNhanKhau, event);
     }
 
     public void chonQuanLyKhoanThuButton (Event event) {

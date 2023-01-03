@@ -3,16 +3,20 @@ package controller;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import model.KhoanThu;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class QuanLyKhoanThu {
+public class QuanLyKhoanThu implements Initializable {
     //Lien quan den Scene truoc Scene sau
     private static Scene preScene;
     private static Scene curScene;
@@ -35,10 +39,10 @@ public class QuanLyKhoanThu {
 
     //Button quay lai
     public Button Back;
-
     public void Back (Event event) {
         DBUtils.changeScene(preScene, event);
     }
+
     //Cac thanh phan trong Scene nay
     @FXML
     public HBox Khung;
@@ -50,15 +54,30 @@ public class QuanLyKhoanThu {
     public Button ThayDoiKhoanThu;
     public TableView DanhSach;
 
-    public void Initialize () {
+    @FXML
+    public Button Them;
+    @FXML
+    public Button Return;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    private void setDanhSach () {
 
     }
 
     public void themKhoanThu (Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ThemKhoanThu.class.getResource("/view/fxml/Them_Khoan_Thu.fxml"));
         AnchorPane Them = fxmlLoader.load();
-        Khung.getChildren().clear();
-        Khung.getChildren().addAll(Them, KhungThongTin);
+        Them.setTranslateX(300);
+        Them.setTranslateY(0);
+        controller.ThemKhoanThu.setPreScene(this.curScene);
+        Scene scene = new Scene(Them, 1000, 600);
+        scene.setFill(Color.GRAY);
+        DBUtils.changeScene(scene, event);
     }
+
 
 }

@@ -7,8 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyNhanKhau">
    <children>
+      <Button fx:id="Back" layoutX="37.0" layoutY="44.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
       <TableView layoutX="14.0" layoutY="129.0" prefHeight="470.0" prefWidth="978.0">
         <columns>
           <TableColumn prefWidth="36.799988746643066" text="IDNHANKHAU" />
@@ -28,8 +29,7 @@
             <TableColumn prefWidth="60.7999267578125" text="QHCH" />
         </columns>
       </TableView>
-      <Button layoutX="37.0" layoutY="44.0" mnemonicParsing="false" text="BACK" />
-      <Button layoutX="136.0" layoutY="44.0" mnemonicParsing="false" text="THÊM" />
+      <Button fx:id="Them" layoutX="136.0" layoutY="44.0" mnemonicParsing="false" onAction="#Them" text="THÊM" />
       <Button layoutX="234.0" layoutY="44.0" mnemonicParsing="false" text="THAY ĐỔI" />
       <Button layoutX="362.0" layoutY="44.0" mnemonicParsing="false" text="XÓA" />
       <TextField layoutX="675.0" layoutY="44.0" />

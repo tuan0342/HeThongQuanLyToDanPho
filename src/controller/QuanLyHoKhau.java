@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -23,6 +24,7 @@ public class QuanLyHoKhau {
         QuanLyHoKhau.curScene = curScene;
     }
     //Button quay lai
+    @FXML
     public Button Back;
     public void Back (Event event) {
         DBUtils.changeScene(preScene, event);

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemNhanKhau">
    <children>
       <TextField layoutX="112.0" layoutY="58.0">
          <font>
@@ -87,6 +87,7 @@
       <DatePicker layoutX="784.0" layoutY="67.0" />
       <DatePicker layoutX="113.0" layoutY="340.0" />
       <DatePicker layoutX="784.0" layoutY="200.0" />
-      <Button layoutX="506.0" layoutY="511.0" mnemonicParsing="false" text="THÊM" />
+      <Button fx:id="Back" layoutX="460.0" layoutY="511.0" mnemonicParsing="false" onAction="#back" text="BACK" />
+      <Button layoutX="546.0" layoutY="511.0" mnemonicParsing="false" text="THÊM" />
    </children>
 </AnchorPane>
