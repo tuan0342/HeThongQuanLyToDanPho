@@ -20,7 +20,7 @@
                 <Button layoutX="74.0" layoutY="327.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="XÓA KHOẢN ĐÓNG GÓP" />
                 <Button layoutX="74.0" layoutY="410.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="THAY ĐỔI KHOẢN ĐÓNG GÓP" />
                 <TextField layoutX="91.0" layoutY="164.0" />
-                <Button layoutX="74.0" layoutY="242.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="THÊM KHOẢN ĐÓNG GÓP" />
+                <Button fx:id="ThemKhoanDongGop" layoutX="74.0" layoutY="242.0" mnemonicParsing="false" onAction="#ThemKhoanDongGop" prefHeight="31.0" prefWidth="204.0" text="THÊM KHOẢN ĐÓNG GÓP" />
                 <Button fx:id="Back" layoutX="39.0" layoutY="25.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
                 <Button layoutX="251.0" layoutY="157.0" minWidth="27.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="46.0" text="FIND" />
             </children>

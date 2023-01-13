@@ -52,21 +52,21 @@ public class SelectManagementController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        FXMLLoader QLNK = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/Quan_Ly_Nhan_Khau.fxml"));
+        FXMLLoader QLNK = new FXMLLoader(QuanLyNhanKhau.class.getResource("/view/fxml/Quan_Ly_Nhan_Khau.fxml"));
         try {
             this.QuanLyNhanKhau = new Scene(QLNK.load());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        FXMLLoader QLKT = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/Quan_Ly_Khoan_Thu.fxml"));
+        FXMLLoader QLKT = new FXMLLoader(QuanLyKhoanThu.class.getResource("/view/fxml/Quan_Ly_Khoan_Thu.fxml"));
         try {
             this.QuanLyKhoanThu = new Scene(QLKT.load());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        FXMLLoader QLKDG = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/Quan_Ly_Khoan_Dong_Gop.fxml"));
+        FXMLLoader QLKDG = new FXMLLoader(QuanLyKhoanDongGop.class.getResource("/view/fxml/Quan_Ly_Khoan_Dong_Gop.fxml"));
         try {
             this.QuanLyKhoanDongGop = new Scene(QLKDG.load());
         } catch (IOException e) {

@@ -6,14 +6,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import model.KhoanThu;
+import model.KhoanThuSatic;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class QuanLyKhoanThu implements Initializable {
@@ -52,20 +56,29 @@ public class QuanLyKhoanThu implements Initializable {
     public AnchorPane KhungThongTin;
     public Button ThemKhoanThu;
     public Button ThayDoiKhoanThu;
-    public TableView DanhSach;
 
     @FXML
     public Button Them;
     @FXML
     public Button Return;
 
+    @FXML
+    TableView dsKhoanThu;
+    @FXML
+    public TableColumn<KhoanThu, String> nguoiNop;
+    @FXML
+    public TableColumn<KhoanThu, String> tenKhoanThu;
+    @FXML
+    public TableColumn<KhoanThu, Date> ngayNop;
+    private void setDanhSach () {
+        nguoiNop.setCellValueFactory(new PropertyValueFactory<KhoanThu, String>("idKhoanThu"));
+        tenKhoanThu.setCellValueFactory(new PropertyValueFactory<KhoanThu, String>("tenKhoanThu"));
+        ngayNop.setCellValueFactory(new PropertyValueFactory<KhoanThu, Date>("ngay"));
+        dsKhoanThu.setItems(KhoanThuSatic.getDanhSach());
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
-    private void setDanhSach () {
-
+        setDanhSach();
     }
 
     public void themKhoanThu (Event event) throws IOException {

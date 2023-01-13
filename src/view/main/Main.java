@@ -1,5 +1,6 @@
 package view.main;
 
+import controller.DBUtils;
 import controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 public class Main extends Application {
 
     // #FED700 yellow

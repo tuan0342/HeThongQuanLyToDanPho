@@ -9,62 +9,62 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemNhanKhau">
    <children>
-      <TextField layoutX="112.0" layoutY="58.0">
+      <TextField fx:id="idNhanKhau" layoutX="112.0" layoutY="58.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="113.0" layoutY="124.0">
+      <TextField fx:id="idHoKhau" layoutX="113.0" layoutY="124.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="112.0" layoutY="192.0">
+      <TextField fx:id="hoTen" layoutX="112.0" layoutY="192.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="114.0" layoutY="267.0">
+      <TextField fx:id="biDanh" layoutX="114.0" layoutY="267.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="785.0" layoutY="130.0">
+      <TextField fx:id="noiCap" layoutX="784.0" layoutY="195.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="785.0" layoutY="267.0">
+      <TextField fx:id="diaChiThuongTru" layoutX="785.0" layoutY="267.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="786.0" layoutY="342.0">
+      <TextField fx:id="quanHeChuHo" layoutX="786.0" layoutY="342.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="445.0" layoutY="61.0">
+      <TextField fx:id="nguyenQuan" layoutX="445.0" layoutY="61.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="446.0" layoutY="127.0">
+      <TextField fx:id="danToc" layoutX="446.0" layoutY="127.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="445.0" layoutY="195.0">
+      <TextField fx:id="ngheNghiep" layoutX="445.0" layoutY="195.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="447.0" layoutY="267.0">
+      <TextField fx:id="noiLamViec" layoutX="447.0" layoutY="267.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField layoutX="447.0" layoutY="342.0">
+      <TextField fx:id="soCCCD" layoutX="784.0" layoutY="61.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -74,20 +74,20 @@
       <Label layoutX="17.0" layoutY="206.0" text="HỌ TÊN" />
       <Label layoutX="17.0" layoutY="273.0" text="BÍ DANH" />
       <Label layoutX="20.0" layoutY="344.0" text="NGÀY SINH" />
-      <Label layoutX="649.0" layoutY="71.0" text="NGÀY CẤP" />
-      <Label layoutX="653.0" layoutY="136.0" text="NƠI CẤP" />
-      <Label layoutX="655.0" layoutY="204.0" text="TGDKTT" />
+      <Label layoutX="647.0" layoutY="133.0" text="NGÀY CẤP" />
+      <Label layoutX="652.0" layoutY="201.0" text="NƠI CẤP" />
+      <Label layoutX="325.0" layoutY="344.0" text="TGDKTT" />
       <Label layoutX="653.0" layoutY="273.0" text="ĐỊA CHỈ THƯỜNG TRÚ" />
       <Label layoutX="655.0" layoutY="344.0" text="QUAN HỆ CHỦ HỘ" />
       <Label layoutX="325.0" layoutY="63.0" text="NGUYÊN QUÁN" />
       <Label layoutX="325.0" layoutY="129.0" text="DÂN TỘC" />
       <Label layoutX="325.0" layoutY="206.0" text="NGHỀ NGHIỆP" />
       <Label layoutX="325.0" layoutY="272.0" text="NƠI LÀM VIỆC" />
-      <Label layoutX="325.0" layoutY="344.0" text="SỐ CCCD" />
-      <DatePicker layoutX="784.0" layoutY="67.0" />
-      <DatePicker layoutX="113.0" layoutY="340.0" />
-      <DatePicker layoutX="784.0" layoutY="200.0" />
+      <Label layoutX="651.0" layoutY="63.0" text="SỐ CCCD" />
+      <DatePicker fx:id="ngayCap" layoutX="783.0" layoutY="129.0" />
+      <DatePicker fx:id="ngaySinh" layoutX="113.0" layoutY="340.0" />
+      <DatePicker fx:id="TGDKTT" layoutX="445.0" layoutY="340.0" />
       <Button fx:id="Back" layoutX="460.0" layoutY="511.0" mnemonicParsing="false" onAction="#back" text="BACK" />
-      <Button layoutX="546.0" layoutY="511.0" mnemonicParsing="false" text="THÊM" />
+      <Button fx:id="Save" layoutX="546.0" layoutY="511.0" mnemonicParsing="false" onAction="#save" text="SAVE" />
    </children>
 </AnchorPane>

@@ -56,8 +56,6 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setNextScene();
-
         try {
             DBUtils.dbConnect();
         } catch (SQLException e) {
@@ -104,6 +102,7 @@ public class LoginController implements Initializable {
                 pwf_password.clear();
             }
         });
+        setNextScene();
     }
 
     // Hàm tạo cảnh báo alert khi đăng nhập thất bại

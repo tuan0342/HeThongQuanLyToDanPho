@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThayDoiChuHo">
    <children>
       <Label layoutX="86.0" layoutY="114.0" prefHeight="25.0" prefWidth="167.0" text="NHẬP ID CHỦ HỘ MỚI">
          <font>
@@ -15,7 +14,7 @@
          </font>
       </Label>
       <TextField layoutX="307.0" layoutY="114.0" />
-      <Button layoutX="51.0" layoutY="36.0" mnemonicParsing="false" text="BACK" />
+      <Button fx:id="Back" layoutX="51.0" layoutY="36.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
       <Label layoutX="86.0" layoutY="176.0" prefHeight="25.0" prefWidth="201.0" text="QUAN HỆ VỚI CHỦ HỘ CŨ">
          <font>
             <Font size="16.0" />

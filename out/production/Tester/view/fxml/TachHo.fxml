@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TachHo">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="186.0">
          <children>
-            <Button layoutX="14.0" layoutY="28.0" mnemonicParsing="false" text="BACK" />
+            <Button fx:id="Back" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
             <Label layoutX="29.0" layoutY="155.0" text="ID HỘ CẦN TÁCH">
                <font>
                   <Font size="16.0" />

@@ -13,6 +13,7 @@
    <children>
       <AnchorPane fx:id="CacButton" prefHeight="600.0" prefWidth="351.0">
          <children>
+            <Button fx:id="Back" layoutX="39.0" layoutY="25.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
             <Label layoutX="94.0" layoutY="79.0" prefHeight="29.0" prefWidth="149.0" text="   NHẬP ID HỘ KHẨU">
                <font>
                   <Font size="14.0" />
@@ -20,17 +21,19 @@
             <Button fx:id="TachHo" layoutX="74.0" layoutY="327.0" mnemonicParsing="false" onAction="#tachHo" prefHeight="31.0" prefWidth="204.0" text="TÁCH HỘ" />
             <Button fx:id="ThayDoiChuHo" layoutX="74.0" layoutY="410.0" mnemonicParsing="false" onAction="#thayDoiChuHo" prefHeight="31.0" prefWidth="204.0" text="THAY ĐỔI CHỦ HỘ" />
             <TextField layoutX="94.0" layoutY="124.0" />
-            <Button fx:id="XoaHo" layoutX="74.0" layoutY="242.0" mnemonicParsing="false" onAction="#xoaHo" prefHeight="31.0" prefWidth="204.0" text="XÓA HỘ KHẨU" />
-            <Button fx:id="Back" layoutX="39.0" layoutY="25.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
+            <Button fx:id="XoaHo" layoutX="74.0" layoutY="250.0" mnemonicParsing="false" onAction="#xoaHo" prefHeight="31.0" prefWidth="204.0" text="XÓA HỘ KHẨU" />
             <Button layoutX="255.0" layoutY="117.0" minWidth="27.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="46.0" text="FIND" />
+            <Button fx:id="ThemHoKhauButton" layoutX="74.0" layoutY="175.0" mnemonicParsing="false" onAction="#themHoKhau" prefHeight="31.0" prefWidth="204.0" text="THÊM HỘ KHẨU" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="KhungThongTin" prefHeight="600.0" prefWidth="607.0">
          <children>
-            <TableView layoutX="22.0" layoutY="21.0" prefHeight="557.0" prefWidth="562.0">
+            <TableView fx:id="dsHoKhau" layoutX="22.0" layoutY="21.0" prefHeight="557.0" prefWidth="562.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="idHoKhau" prefWidth="68.80005264282227" text="ID" />
+                <TableColumn fx:id="tenChuHo" prefWidth="152.79998779296875" text="Tên chủ hộ" />
+                  <TableColumn fx:id="diaChi" prefWidth="197.6000213623047" text="Địa chỉ" />
+                  <TableColumn fx:id="soLuong" prefWidth="143.199951171875" text="Số lượng nhân khẩu" />
               </columns>
             </TableView>
          </children></AnchorPane>

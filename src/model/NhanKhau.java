@@ -1,27 +1,32 @@
 package model;
 
-import javafx.beans.property.SimpleStringProperty;
-
+import java.time.LocalDate;
 import java.util.Date;
 
 public class NhanKhau {
-    private SimpleStringProperty idNhanKhau;
-    private SimpleStringProperty idHoKhau;
-    private SimpleStringProperty hoTen;
-    private SimpleStringProperty biDanh;
-    private SimpleStringProperty ngaySinh;
-    private SimpleStringProperty nguyenQuan;
-    private SimpleStringProperty danToc;
-    private SimpleStringProperty ngheNghiep;
-    private SimpleStringProperty noiLamViec;
-    private SimpleStringProperty soCCCD;
-    private SimpleStringProperty ngayCap;
-    private SimpleStringProperty noiCap;
+    private String idNhanKhau;
+    private String idHoKhau;
+    private String hoTen;
+    private String biDanh;
+    private Date ngaySinh;
+    private String nguyenQuan;
+    private String danToc;
+    private String ngheNghiep;
+    private String noiLamViec;
+    private int soCCCD;
+    private Date ngayCap;
+    private String noiCap;
     private Date thoiGianDKThuongTru;
-    private SimpleStringProperty diaChiThuongTru;
-    private SimpleStringProperty quanHeChuHo;
+    private String diaChiThuongTru;
+    private String quanHeChuHo;
+
+    private int chuHo;
     // khởi tạo nhân khẩu
-    public NhanKhau(SimpleStringProperty idNhanKhau, SimpleStringProperty idHoKhau, SimpleStringProperty hoTen, SimpleStringProperty biDanh, SimpleStringProperty ngaySinh, SimpleStringProperty nguyenQuan, SimpleStringProperty danToc, SimpleStringProperty ngheNghiep, SimpleStringProperty noiLamViec, SimpleStringProperty soCCCD, SimpleStringProperty ngayCap, SimpleStringProperty noiCap, Date thoiGianDKThuongTru, SimpleStringProperty diaChiThuongTru, SimpleStringProperty quanHeChuHo) {
+    public NhanKhau () {
+        setChuHo(0);
+    }
+
+    public NhanKhau(String idNhanKhau, String idHoKhau, String hoTen, String biDanh, Date ngaySinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, int soCCCD, Date ngayCap, String noiCap, Date thoiGianDKThuongTru, String diaChiThuongTru, String quanHeChuHo, int chuHo) {
         this.idNhanKhau = idNhanKhau;
         this.idHoKhau = idHoKhau;
         this.hoTen = hoTen;
@@ -37,151 +42,103 @@ public class NhanKhau {
         this.thoiGianDKThuongTru = thoiGianDKThuongTru;
         this.diaChiThuongTru = diaChiThuongTru;
         this.quanHeChuHo = quanHeChuHo;
+        this.chuHo = chuHo;
     }
 
-    // các getter và setter tuong ung
     public String getIdNhanKhau() {
-        return idNhanKhau.get();
-    }
-
-    public SimpleStringProperty idNhanKhauProperty() {
         return idNhanKhau;
     }
 
     public void setIdNhanKhau(String idNhanKhau) {
-        this.idNhanKhau.set(idNhanKhau);
+        this.idNhanKhau = idNhanKhau;
     }
 
     public String getIdHoKhau() {
-        return idHoKhau.get();
-    }
-
-    public SimpleStringProperty idHoKhauProperty() {
         return idHoKhau;
     }
 
     public void setIdHoKhau(String idHoKhau) {
-        this.idHoKhau.set(idHoKhau);
+        this.idHoKhau = idHoKhau;
     }
 
     public String getHoTen() {
-        return hoTen.get();
-    }
-
-    public SimpleStringProperty hoTenProperty() {
         return hoTen;
     }
 
     public void setHoTen(String hoTen) {
-        this.hoTen.set(hoTen);
+        this.hoTen = hoTen;
     }
 
     public String getBiDanh() {
-        return biDanh.get();
-    }
-
-    public SimpleStringProperty biDanhProperty() {
         return biDanh;
     }
 
     public void setBiDanh(String biDanh) {
-        this.biDanh.set(biDanh);
+        this.biDanh = biDanh;
     }
 
-    public String getNgaySinh() {
-        return ngaySinh.get();
-    }
-
-    public SimpleStringProperty ngaySinhProperty() {
+    public Date getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(String ngaySinh) {
-        this.ngaySinh.set(ngaySinh);
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
     public String getNguyenQuan() {
-        return nguyenQuan.get();
-    }
-
-    public SimpleStringProperty nguyenQuanProperty() {
         return nguyenQuan;
     }
 
     public void setNguyenQuan(String nguyenQuan) {
-        this.nguyenQuan.set(nguyenQuan);
+        this.nguyenQuan = nguyenQuan;
     }
 
     public String getDanToc() {
-        return danToc.get();
-    }
-
-    public SimpleStringProperty danTocProperty() {
         return danToc;
     }
 
     public void setDanToc(String danToc) {
-        this.danToc.set(danToc);
+        this.danToc = danToc;
     }
 
     public String getNgheNghiep() {
-        return ngheNghiep.get();
-    }
-
-    public SimpleStringProperty ngheNghiepProperty() {
         return ngheNghiep;
     }
 
     public void setNgheNghiep(String ngheNghiep) {
-        this.ngheNghiep.set(ngheNghiep);
+        this.ngheNghiep = ngheNghiep;
     }
 
     public String getNoiLamViec() {
-        return noiLamViec.get();
-    }
-
-    public SimpleStringProperty noiLamViecProperty() {
         return noiLamViec;
     }
 
     public void setNoiLamViec(String noiLamViec) {
-        this.noiLamViec.set(noiLamViec);
+        this.noiLamViec = noiLamViec;
     }
 
-    public String getSoCCCD() {
-        return soCCCD.get();
-    }
-
-    public SimpleStringProperty soCCCDProperty() {
+    public int getSoCCCD() {
         return soCCCD;
     }
 
-    public void setSoCCCD(String soCCCD) {
-        this.soCCCD.set(soCCCD);
+    public void setSoCCCD(int soCCCD) {
+        this.soCCCD = soCCCD;
     }
 
-    public String getNgayCap() {
-        return ngayCap.get();
-    }
-
-    public SimpleStringProperty ngayCapProperty() {
+    public Date getNgayCap() {
         return ngayCap;
     }
 
-    public void setNgayCap(String ngayCap) {
-        this.ngayCap.set(ngayCap);
+    public void setNgayCap(Date ngayCap) {
+        this.ngayCap = ngayCap;
     }
 
     public String getNoiCap() {
-        return noiCap.get();
-    }
-
-    public SimpleStringProperty noiCapProperty() {
         return noiCap;
     }
 
     public void setNoiCap(String noiCap) {
-        this.noiCap.set(noiCap);
+        this.noiCap = noiCap;
     }
 
     public Date getThoiGianDKThuongTru() {
@@ -193,26 +150,28 @@ public class NhanKhau {
     }
 
     public String getDiaChiThuongTru() {
-        return diaChiThuongTru.get();
-    }
-
-    public SimpleStringProperty diaChiThuongTruProperty() {
         return diaChiThuongTru;
     }
 
     public void setDiaChiThuongTru(String diaChiThuongTru) {
-        this.diaChiThuongTru.set(diaChiThuongTru);
+        this.diaChiThuongTru = diaChiThuongTru;
     }
 
     public String getQuanHeChuHo() {
-        return quanHeChuHo.get();
-    }
-
-    public SimpleStringProperty quanHeChuHoProperty() {
         return quanHeChuHo;
     }
 
     public void setQuanHeChuHo(String quanHeChuHo) {
-        this.quanHeChuHo.set(quanHeChuHo);
+        this.quanHeChuHo = quanHeChuHo;
     }
+
+    public int getChuHo() {
+        return chuHo;
+    }
+
+    public void setChuHo(int chuHo) {
+        this.chuHo = chuHo;
+    }
+
+
 }

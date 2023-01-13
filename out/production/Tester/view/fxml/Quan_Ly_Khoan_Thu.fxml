@@ -26,11 +26,11 @@
         </AnchorPane>
         <AnchorPane fx:id="KhungThongTin" prefHeight="600.0" prefWidth="607.0">
             <children>
-                <TableView fx:id="DanhSach" layoutX="23.0" layoutY="19.0" prefHeight="557.0" prefWidth="562.0">
+                <TableView fx:id="dsKhoanThu" layoutX="23.0" layoutY="19.0" prefHeight="557.0" prefWidth="562.0">
                     <columns>
-                        <TableColumn prefWidth="196.00006484985352" text="Tên người nộp" />
-                        <TableColumn minWidth="8.800048828125" prefWidth="171.19993591308594" text="Tên khoản thu" />
-                  <TableColumn minWidth="0.0" prefWidth="192.0" text="Ngày nộp" />
+                        <TableColumn fx:id="nguoiNop" prefWidth="196.00006484985352" text="Tên người nộp" />
+                        <TableColumn fx:id="tenKhoanThu" minWidth="8.800048828125" prefWidth="171.19993591308594" text="Tên khoản thu" />
+                  <TableColumn fx:id="ngayNop" minWidth="0.0" prefWidth="192.0" text="Ngày nộp" />
                     </columns>
                 </TableView>
             </children></AnchorPane>

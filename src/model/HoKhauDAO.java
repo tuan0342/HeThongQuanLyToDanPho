@@ -26,7 +26,6 @@ public class HoKhauDAO {
     // Lấy thông tin tất cả dữ liệu của HoKhau trong database dưới dạng ObservableList
     public static ObservableList<HoKhau> getAllRecord() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM ....";
-
         try {
             ResultSet rs = DBUtils.dbExecute(sql);
             ObservableList<HoKhau> hoKhauList = getHoKhau(rs);
@@ -43,10 +42,10 @@ public class HoKhauDAO {
         try{
             ArrayList<HoKhau> hoKhauArrayList = new ArrayList<HoKhau>();
             while(resultSet.next()) {
-                HoKhau hoKhau = new HoKhau();
+//                HoKhau hoKhau = new HoKhau();
                 // sử dụng các phương thức set trong HoKhau để set thông tin
 
-                hoKhauArrayList.add(hoKhau);
+//                hoKhauArrayList.add(hoKhau);
             }
             ObservableList<HoKhau> hoKhauList = FXCollections.observableArrayList(hoKhauArrayList);
             return hoKhauList;
