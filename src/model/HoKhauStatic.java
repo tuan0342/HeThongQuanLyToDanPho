@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.fxml.FXMLLoader;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HoKhauStatic {
@@ -62,5 +63,22 @@ public class HoKhauStatic {
     }
 
     public static void suaNhanKhau () {
+    }
+
+    public static ObservableList<HoKhau> getAlLRecords() {
+        String sql = "select * from [dbo].[HoKhau]";
+        ObservableList<HoKhau> list = FXCollections.observableArrayList();
+        try {
+            ResultSet rs = DBUtils.dbExecute(sql);
+            while(rs.next()) {
+                HoKhau hk = new HoKhau(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getInt(4));
+                list.add(hk);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Không lấy được dữ liệu");
+        }
+        return list;
     }
 }

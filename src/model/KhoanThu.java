@@ -4,26 +4,30 @@ import java.util.Date;
 import java.util.List;
 
 public class KhoanThu {
-    public KhoanThu () {
 
-    };
-
-    public KhoanThu(String idKhoanThu, String tenKhoanThu, int soTien, Date ngay) {
-        this.idKhoanThu = idKhoanThu;
-        this.tenKhoanThu = tenKhoanThu;
-        this.soTien = soTien;
-        this.ngay = ngay;
-    }
-    private String idKhoanThu;
+    private int idKhoanThu;
     private String tenKhoanThu;
     private int soTien;
-    private Date ngay;
+    private String ngayBD;
+    private String ngayKT;
 
-    public String getIdKhoanThu() {
+    public KhoanThu () {
+    };
+
+    public KhoanThu(int idKhoanThu, String tenKhoanThu, String ngayBD, String ngayKT, int soTien) {
+        this.idKhoanThu = idKhoanThu;
+        this.tenKhoanThu = tenKhoanThu;
+        this.ngayBD = ngayBD;
+        this.ngayKT = ngayKT;
+        this.soTien = soTien;
+    }
+
+
+    public int getIdKhoanThu() {
         return idKhoanThu;
     }
 
-    public void setIdKhoanThu(String idKhoanThu) {
+    public void setIdKhoanThu(int idKhoanThu) {
         this.idKhoanThu = idKhoanThu;
     }
 
@@ -43,11 +47,19 @@ public class KhoanThu {
         this.soTien = soTien;
     }
 
-    public Date getNgay() {
-        return ngay;
+    public String getNgayBD() {
+        return ngayBD;
     }
 
-    public void setNgay(Date ngay) {
-        this.ngay = ngay;
+    public void setNgayBD(String ngayBD) {
+        this.ngayBD = ngayBD;
+    }
+
+    public String getNgayKT() {
+        return ngayKT;
+    }
+
+    public void setNgayKT(String ngayKT) {
+        this.ngayKT = ngayKT;
     }
 }

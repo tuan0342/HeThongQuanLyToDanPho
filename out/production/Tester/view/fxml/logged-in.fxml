@@ -48,7 +48,7 @@
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Label>
-            <TextField fx:id="tf_username" layoutX="272.0" layoutY="149.0" prefHeight="35.0" prefWidth="297.0">
+            <TextField fx:id="tf_username" layoutX="272.0" layoutY="149.0" prefHeight="35.0" prefWidth="297.0" text="admin">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
@@ -58,7 +58,7 @@
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>
             </Button>
-            <PasswordField fx:id="pwf_password" layoutX="271.0" layoutY="207.0" prefHeight="35.0" prefWidth="298.0">
+            <PasswordField fx:id="pwf_password" layoutX="271.0" layoutY="207.0" prefHeight="35.0" prefWidth="298.0" text="123456">
                <font>
                   <Font name="Arial Rounded MT Bold" size="18.0" />
                </font>

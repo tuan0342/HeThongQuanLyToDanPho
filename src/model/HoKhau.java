@@ -56,4 +56,11 @@ public class HoKhau {
         this.soLuongNhanKhau = soLuongNhanKhau;
         ChuHo = chuHo;
     }
+
+    public HoKhau(String idHoKhau, String tenChuHo, String diaChi, int soLuongNhanKhau) {
+        this.idHoKhau = idHoKhau;
+        this.tenChuHo = tenChuHo;
+        this.diaChi = diaChi;
+        this.soLuongNhanKhau = soLuongNhanKhau;
+    }
 }

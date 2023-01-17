@@ -18,7 +18,7 @@ public class Main extends Application {
     //--module-path "C:\Program Files\Java\javafx-sdk-18.0.1\lib" --add-modules javafx.controls,javafx.fxml
     // Quản lý tổ dân phố
     // Hạnh vippro
-
+ 
     public static void main(String[] args) {
         launch(args);
     }

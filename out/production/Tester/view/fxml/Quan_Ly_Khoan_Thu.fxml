@@ -7,32 +7,84 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <HBox fx:id="Khung" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyKhoanThu">
     <children>
         <AnchorPane fx:id="CacButton" prefHeight="600.0" prefWidth="351.0">
             <children>
-                <Label layoutX="91.0" layoutY="135.0" prefHeight="29.0" prefWidth="149.0" text="   NHẬP ID KHOẢN THU">
-                    <font>
-                        <Font size="14.0" />
-                    </font></Label>
-                <Button fx:id="ThayDoiKhoanThu" layoutX="74.0" layoutY="327.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="204.0" text="THAY ĐỔI KHOẢN THU" />
-                <TextField layoutX="91.0" layoutY="164.0" />
-                <Button fx:id="ThemKhoanThu" layoutX="74.0" layoutY="242.0" mnemonicParsing="false" onAction="#themKhoanThu" prefHeight="31.0" prefWidth="204.0" text="THÊM KHOẢN THU" />
-                <Button fx:id="Back" layoutX="39.0" layoutY="25.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
-                <Button layoutX="251.0" layoutY="157.0" minWidth="27.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="46.0" text="FIND" />
+                <Button fx:id="btnUpdate" disable="true" layoutX="47.0" layoutY="514.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="31.0" prefWidth="242.0" text="CẬP NHẬT KHOẢN THU" />
+                <Button fx:id="ThemKhoanThu" layoutX="47.0" layoutY="64.0" mnemonicParsing="false" onAction="#themKhoanThu" prefHeight="31.0" prefWidth="242.0" text="THÊM KHOẢN THU" />
+                <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
+            <Button layoutX="47.0" layoutY="112.0" mnemonicParsing="false" onAction="#themChiTietKhoanThu" prefHeight="31.0" prefWidth="242.0" text="THÊM DANH SÁCH CÁC HỘ CẦN ĐÓNG" />
+            <Button layoutX="47.0" layoutY="163.0" mnemonicParsing="false" onAction="#thongKeKhoanThu" prefHeight="31.0" prefWidth="242.0" text="THỐNG KÊ" />
+            <Line endX="-100.0" endY="600.5999755859375" layoutX="451.0" layoutY="4.0" startX="-100.0" startY="-7.399986267089844" />
+            <Line endX="241.49996948242188" layoutX="109.0" layoutY="225.0" startX="-109.00001525878906" />
+            <Label layoutX="14.0" layoutY="255.0" text="ID khoản thu:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfIdKT" disable="true" layoutX="177.0" layoutY="250.0" prefHeight="30.0" prefWidth="160.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="14.0" layoutY="301.0" text="Tên khoản thu:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfTenKT" disable="true" layoutX="177.0" layoutY="296.0" prefHeight="30.0" prefWidth="160.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="14.0" layoutY="347.0" text="Ngày bắt đầu thu:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfNgayBD" disable="true" layoutX="177.0" layoutY="342.0" prefHeight="30.0" prefWidth="160.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="14.0" layoutY="393.0" text="Ngày kết thúc:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfNgayKT" disable="true" layoutX="177.0" layoutY="388.0" prefHeight="30.0" prefWidth="160.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="14.0" layoutY="437.0" text="Số tiền/một nhân khẩu:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfSoTien" disable="true" layoutX="177.0" layoutY="432.0" prefHeight="30.0" prefWidth="160.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
             </children>
         </AnchorPane>
         <AnchorPane fx:id="KhungThongTin" prefHeight="600.0" prefWidth="607.0">
             <children>
-                <TableView fx:id="dsKhoanThu" layoutX="23.0" layoutY="19.0" prefHeight="557.0" prefWidth="562.0">
+                <TableView fx:id="dsKhoanThu" layoutX="23.0" layoutY="19.0" prefHeight="496.0" prefWidth="562.0">
                     <columns>
-                        <TableColumn fx:id="nguoiNop" prefWidth="196.00006484985352" text="Tên người nộp" />
-                        <TableColumn fx:id="tenKhoanThu" minWidth="8.800048828125" prefWidth="171.19993591308594" text="Tên khoản thu" />
-                  <TableColumn fx:id="ngayNop" minWidth="0.0" prefWidth="192.0" text="Ngày nộp" />
+                        <TableColumn fx:id="colIdKhoanThu" prefWidth="93.59997940063477" text="Id Khoản Thu" />
+                        <TableColumn fx:id="colTenKhoanThu" minWidth="8.800048828125" prefWidth="105.5999755859375" text="Tên khoản thu" />
+                  <TableColumn fx:id="colNgayBD" minWidth="0.0" prefWidth="115.99998474121094" text="Ngày bắt đầu thu" />
+                  <TableColumn fx:id="colNgayKT" prefWidth="100.7999267578125" text="Ngày kết thúc" />
+                  <TableColumn fx:id="colSoTien" prefWidth="145.59995117187498" text="Số tiền một nhân khẩu" />
                     </columns>
                 </TableView>
+                <Button fx:id="btnLoad" layoutX="265.0" layoutY="531.0" minWidth="27.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="70.0" text="Load" />
             </children></AnchorPane>
     </children>
 </HBox>

@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemKhoanThu">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemKhoanThu">
    <children>
-      <Label alignment="CENTER" layoutX="122.0" layoutY="42.0" prefHeight="51.0" prefWidth="157.0" text="Thêm khoản thu" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="256.0" layoutY="14.0" prefHeight="51.0" prefWidth="157.0" text="Thêm khoản thu" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="idKhoanThu" layoutX="129.0" layoutY="103.0" />
-      <TextField fx:id="tenKhoanThu" layoutX="129.0" layoutY="155.0" />
-      <TextField fx:id="soTien" layoutX="129.0" layoutY="209.0" />
-      <Label layoutX="27.0" layoutY="107.0" text="ID KHOẢN THU" />
-      <Label layoutX="22.0" layoutY="159.0" text="TÊN KHOẢN THU" />
-      <Label layoutX="46.0" layoutY="213.0" text="SỐ TIỀN" />
-      <Button fx:id="Them" layoutX="178.0" layoutY="346.0" mnemonicParsing="false" onAction="#them" text="Thêm" />
-      <Label layoutX="38.0" layoutY="273.0" text="NGÀY NỘP" />
-      <Button fx:id="Back" layoutX="129.0" layoutY="346.0" mnemonicParsing="false" onAction="#back" text="Back" />
-      <DatePicker fx:id="ngayNop" layoutX="129.0" layoutY="269.0" />
+      <TextField fx:id="tftenKhoanThu" layoutX="349.0" layoutY="71.0" />
+      <TextField fx:id="tfngayBD" layoutX="349.0" layoutY="112.0" promptText="dd/mm/yyyy" />
+      <TextField fx:id="tfngayKT" layoutX="349.0" layoutY="150.0" promptText="dd/mm/yyyy" />
+      <Label layoutX="192.0" layoutY="75.0" text="TÊN KHOẢN THU" />
+      <Label layoutX="192.0" layoutY="116.0" text="NGÀY BẮT ĐẦU" />
+      <Label layoutX="190.0" layoutY="154.0" text="NGÀY KẾT THÚC" />
+      <Button fx:id="Add" layoutX="400.0" layoutY="242.0" mnemonicParsing="false" onAction="#add" text="Thêm" />
+      <Label layoutX="192.0" layoutY="196.0" text="SỐ TIỀN MỘT NHÂN KHẨU" />
+      <Button fx:id="Back" layoutX="244.0" layoutY="242.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <TextField fx:id="tfsoTien" layoutX="349.0" layoutY="192.0" />
+      <Line endX="-424.0" endY="214.30001831054688" layoutX="424.0" layoutY="80.0" startX="270.99993896484375" startY="214.30001831054688" />
+      <TableView fx:id="dsKhoanThu" layoutX="33.0" layoutY="309.0" prefHeight="278.0" prefWidth="632.0">
+         <columns>
+            <TableColumn fx:id="colIdKhoanThu" prefWidth="83.19998550415039" text="Id Khoản Thu" />
+            <TableColumn fx:id="colTenKhoanThu" minWidth="8.800048828125" prefWidth="199.2000274658203" text="Tên khoản thu" />
+            <TableColumn fx:id="colNgayBD" minWidth="0.0" prefWidth="111.99993896484375" text="Ngày bắt đầu thu" />
+            <TableColumn fx:id="colNgayKT" prefWidth="94.39996337890625" text="Ngày kết thúc" />
+            <TableColumn fx:id="colSoTien" prefWidth="138.4000244140625" text="Số tiền một nhân khẩu" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

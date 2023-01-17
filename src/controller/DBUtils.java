@@ -18,8 +18,8 @@ import java.sql.*;
 import java.time.LocalDate;
 
 public class DBUtils {
-
-    private static String dbURL = "jdbc:sqlserver://DESKTOP-BM4SH04:1433;databaseName=QuanLyToDanPho;encrypt=false;trustServerCertificate=true;";
+    private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
+    //private static String dbURL = "jdbc:sqlserver://DESKTOP-BM4SH04:1433;databaseName=QuanLyToDanPho;encrypt=false;trustServerCertificate=true;";
     private static String user = "sa"; // user trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static String pass = "123";  // pass trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static Connection connection ;
@@ -64,7 +64,7 @@ public class DBUtils {
         try {
             dbConnect();
             stmt = connection.createStatement();
-            stmt.executeQuery(sqlStmt);
+            stmt.executeUpdate(sqlStmt);
         } catch (SQLException e) {
             System.out.println("Xảy ra vấn đề ở hàm dbExecuteQuery");
             throw e;
@@ -78,19 +78,19 @@ public class DBUtils {
 
     // this is for retriving the record from the database
     public static ResultSet dbExecute(String sqlQuery) throws SQLException, ClassNotFoundException {
-        Statement stmt = null;
+        PreparedStatement ps = null;
         ResultSet rs = null;
-        dbConnect();
-        if(connection != null) {
-            try {
-                stmt = connection.createStatement();
-                rs = stmt.executeQuery(sqlQuery);
-            } catch (SQLException e) {
-                System.out.println("Có lỗi xảy ra ở hàm dbExecute (truy xuất dữ liệu)");
-                throw e;
-            } finally {
+        try {
+            dbConnect();
+            //stmt = connection.createStatement();
+            //rs = stmt.executeQuery(sqlQuery);
+            ps = connection.prepareStatement(sqlQuery);
+            rs = ps.executeQuery();
+        } catch (SQLException e) {
+            System.out.println("Có lỗi xảy ra ở hàm dbExecute (truy xuất dữ liệu)");
+            throw e;
+        } finally {
 
-            }
         }
         return rs;
     }
