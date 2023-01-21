@@ -16,6 +16,7 @@ import model.NhanKhauStatic;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -72,20 +73,6 @@ public class ThemHoKhau implements Initializable {
         setTableView();
     }
 
-    private void showAlertErrorLogin(String text) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Cánh báo");
-        alert.setHeaderText("Nhập thông tin thất bại");
-        alert.setContentText(text);
-
-        ButtonType close = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(close);
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == close) {
-            alert.close();
-        }
-    }
-
     public void setTableView () {
         idNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhau, String> ("idNhanKhau"));
         hoTen.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("hoTen"));
@@ -126,7 +113,7 @@ public class ThemHoKhau implements Initializable {
             taoChuHo.setDisable(true);
             dienSoLuong.setText(soLuong + "");
             dienSoLuong.setDisable(true);
-            hoKhau.setChuHo(nhanKhau); //Sau khi nhap xong chu ho nay la khong duoc set chu ho khac nua
+            hoKhau.setTenChuHo(nhanKhau.getHoTen()); //Sau khi nhap xong chu ho nay la khong duoc set chu ho khac nua
             Luu.setVisible(true);
         }
         else if (i == 2) {
@@ -135,9 +122,9 @@ public class ThemHoKhau implements Initializable {
         }
         dsNhanKhau.setItems(getDsNhanKhauCuaSceneNay());
     }
-    public void setTaoChuHo (Event event) throws IOException {
-        if (idHoKhau.getText() == "" || diaChi.getText() == ""){
-            showAlertErrorLogin("Nhập đầy đủ thông tin");
+    public void setTaoChuHo (Event event) throws IOException, SQLException {
+        if (idHoKhau.getText() == "" || diaChi.getText() == "" || DBUtils.timChuHoTheoID(idHoKhau.getText()) != null){
+            ShowAlert.showAlertError("Lôi nhập thông tin", "Nhập lại đê");
             return;
         }
         HoKhauStatic.setMenu(1);
@@ -150,7 +137,7 @@ public class ThemHoKhau implements Initializable {
         controller.idHoKhau.setDisable(true);
         controller.diaChiThuongTru.setText(diaChiText);
         controller.diaChiThuongTru.setDisable(true);
-        controller.quanHeChuHo.setText("Chu ho");
+        controller.quanHeChuHo.setText("Chủ hộ");
         controller.quanHeChuHo.setDisable(true);
         DBUtils.changeScene(scene, event);
         ThemNhanKhau.setPreScene(getCurScene());
@@ -172,17 +159,17 @@ public class ThemHoKhau implements Initializable {
     }
 
     public void Luu (Event event) {
-        hoKhau.setIdHoKhau(idHoKhau.getText());
-        hoKhau.setDiaChi(diaChi.getText());
-        hoKhau.setSoLuongNhanKhau(soLuong);
-        if (DBUtils.themHoKhau(hoKhau) != 0) {
+        if (ShowAlert.showAlertYN("Lưu thông tin", "Đồng ý lưu")) {
+            hoKhau.setIdHoKhau(idHoKhau.getText());
+            hoKhau.setDiaChi(diaChi.getText());
+            hoKhau.setSoLuongNhanKhau(soLuong);
             HoKhauStatic.themHoKhau(hoKhau);
-        }
-        for (NhanKhau e: dsNhanKhauCuaSceneNay) {
-            if (DBUtils.themNhanKhau(e)!= 0){
+            DBUtils.themHoKhau(hoKhau);
+            for (NhanKhau e: dsNhanKhauCuaSceneNay) {
                 NhanKhauStatic.themNhanKhau(e);
+                DBUtils.themNhanKhau(e);
             }
+            back(event);
         }
-        back(event);
     }
 }

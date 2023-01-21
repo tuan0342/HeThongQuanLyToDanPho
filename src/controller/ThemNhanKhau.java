@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import model.HoKhauStatic;
@@ -29,7 +30,9 @@ public class ThemNhanKhau {
     }
 
     public Button Save;
+    @FXML
     public TextField idNhanKhau;
+    @FXML
     public TextField idHoKhau;
     public TextField hoTen;
     public TextField biDanh;
@@ -44,112 +47,98 @@ public class ThemNhanKhau {
     public TextField diaChiThuongTru;
     public TextField quanHeChuHo;
     public DatePicker TGDKTT;
-    private void showAlertErrorLogin(String text) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Cánh báo");
-        alert.setHeaderText("Nhập thông tin thất bại");
-        alert.setContentText(text);
-
-        ButtonType close = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(close);
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == close) {
-            alert.close();
-        }
-    }
     public void save (Event event) throws SQLException {
         NhanKhau nhanKhau = new NhanKhau();
-        if (idNhanKhau.getText() == null || DBUtils.timNhanKhauTheoID(idNhanKhau.getText()) != null) {
-            showAlertErrorLogin("Nhap sai");
+        if (idNhanKhau.getText() == "" || DBUtils.timNhanKhauTheoID(idNhanKhau.getText()) != null) {
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setIdNhanKhau(idNhanKhau.getText());
         }
 
         if (idHoKhau.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setIdHoKhau(idHoKhau.getText());
         }
 
         if (biDanh.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setBiDanh(biDanh.getText());
         }
 
         if (hoTen.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setHoTen(hoTen.getText());
         }
 
         if (ngaySinh.getValue() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setNgaySinh(valueOf(ngaySinh.getValue()));
         }
 
         if (nguyenQuan.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setNguyenQuan(nguyenQuan.getText());
         }
         if (danToc.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setDanToc(danToc.getText());
         }
 
         if (ngheNghiep.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setNgheNghiep(ngheNghiep.getText());
         }
 
         if (noiLamViec.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setNoiLamViec(noiLamViec.getText());
         }
 
         if (ngayCap.getValue() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setNgayCap(valueOf(ngayCap.getValue()));
         }
 
         if (noiCap.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setNoiCap(noiCap.getText());
         }
 
         if (diaChiThuongTru.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setDiaChiThuongTru(diaChiThuongTru.getText());
         }
 
         if (quanHeChuHo.getText() == null) {
-            showAlertErrorLogin("Nhap thieu thong tin");
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
         } else {
             nhanKhau.setQuanHeChuHo(quanHeChuHo.getText());
         }
         HoKhauStatic.themNhanKhau(nhanKhau, nhanKhau.getIdHoKhau());
-        NhanKhauStatic.themNhanKhau(nhanKhau);
         DBUtils.changeScene(getPreScene(), event);
     }
 }

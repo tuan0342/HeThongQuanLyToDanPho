@@ -57,7 +57,7 @@ public class HoKhauStatic {
             getThemHoKhau().xongMenu(1, nhanKhau);
 
         } else if (getMenu() == 2) {
-            //Nhan Khau goi them nhan khau khong la chu ho
+            //Ho Khau goi them nhan khau khong la chu ho
             getThemHoKhau().xongMenu(2, nhanKhau);
         }
     }

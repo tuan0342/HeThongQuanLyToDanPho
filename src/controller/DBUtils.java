@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -18,8 +19,8 @@ import java.sql.*;
 import java.time.LocalDate;
 
 public class DBUtils {
-    private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
-    //private static String dbURL = "jdbc:sqlserver://DESKTOP-BM4SH04:1433;databaseName=QuanLyToDanPho;encrypt=false;trustServerCertificate=true;";
+//    private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
+    private static String dbURL = "jdbc:sqlserver://DESKTOP-BM4SH04:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
     private static String user = "sa"; // user trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static String pass = "123";  // pass trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static Connection connection ;
@@ -146,9 +147,7 @@ public class DBUtils {
                 String tenChuHo = resultSet.getString("TenChuHo");
                 String diaChi = resultSet.getString("DiaChi");
                 int soLuong = resultSet.getInt("SoLuongNhanKhau");
-                NhanKhau chuHo = timChuHoTheoID(id);
-                String hoTenChuHo = chuHo.getHoTen();
-                HoKhau hoKhau = new HoKhau(idHoKhau, tenChuHo, diaChi, soLuong, chuHo);
+                HoKhau hoKhau = new HoKhau(idHoKhau, tenChuHo, diaChi, soLuong);
                 return hoKhau;
             }
         }
@@ -158,6 +157,7 @@ public class DBUtils {
     public static NhanKhau timChuHoTheoID (String id) throws  SQLException {
         String cauLenh = "SELECT NK.* FROM HoKhau HK, NhanKhau NK\n" +
                 "WHERE HK.IdHoKhau = NK.IdHoKhau AND NK.ChuHo = 1 AND HK.IdHoKhau = " + id;
+        System.out.println(id);
         ResultSet resultSet = ThucThiLechSelect(cauLenh);
         if (resultSet != null) {
             while (resultSet.next()) {
@@ -215,7 +215,7 @@ public class DBUtils {
         return null;
     }
 
-    public static int themHoKhau (HoKhau hoKhau) {
+    public static void themHoKhau (HoKhau hoKhau) {
         String cauLenh = "INSERT INTO HoKhau\n" +
                 "VALUES (\n" +
                 "\t'" + hoKhau.getIdHoKhau() + "',\n" +
@@ -223,10 +223,10 @@ public class DBUtils {
                 "\tN'" + hoKhau.getDiaChi() + "',\n" +
                 "\t" + hoKhau.getSoLuongNhanKhau() + "\n" +
                 ")";
-        return ThucThiCauLenhUpdate(cauLenh);
+        ThucThiCauLenhUpdate(cauLenh);
     }
 
-    public static int themNhanKhau (NhanKhau nhanKhau) {
+    public static void themNhanKhau (NhanKhau nhanKhau) {
         // Them phuong thuc update so nhan Khau trong ho khau nay
         String cauLenh = "INSERT INTO NhanKhau\n" +
                 "VALUES (\n" +
@@ -247,7 +247,7 @@ public class DBUtils {
                 "\tN'"+nhanKhau.getNoiCap()+"',\n" +
                 "\tN'"+nhanKhau.getDiaChiThuongTru()+"'\n" +
                 ")\n";
-        return ThucThiCauLenhUpdate(cauLenh);
+        ThucThiCauLenhUpdate(cauLenh);
     }
 
     public static void loadDsHoKhau () throws SQLException {
@@ -259,8 +259,7 @@ public class DBUtils {
                 String tenChuHo = resultSet.getString("TenChuHo");
                 String diaChi = resultSet.getString("DiaChi");
                 int soLuong = resultSet.getInt("SoLuongNhanKhau");
-                NhanKhau chuHo = new NhanKhau();
-                HoKhau hoKhau = new HoKhau(idHoKhau, tenChuHo, diaChi, soLuong, chuHo);
+                HoKhau hoKhau = new HoKhau(idHoKhau, tenChuHo, diaChi, soLuong);
                 HoKhauStatic.themHoKhau(hoKhau);
             }
         }
@@ -292,5 +291,58 @@ public class DBUtils {
                 NhanKhauStatic.themNhanKhau(nhanKhau);
             }
         }
+    }
+
+    public static ObservableList<NhanKhau> dsNhanKhauTheoIdHoKhau (String idHoKhau) throws SQLException {
+        ObservableList<NhanKhau> dsNhanKhau = FXCollections.observableArrayList();
+        String cauLenh = "SELECT * FROM NhanKhau NK\n" +
+                "WHERE NK.IdHoKhau = " + idHoKhau;
+        ResultSet resultSet = ThucThiLechSelect(cauLenh);
+        if (resultSet != null) {
+            while (resultSet.next()) {
+                String idNhanKhau = resultSet.getString("IdNhanKhau");
+                String idHoKhau1 = resultSet.getString("IdHoKhau");
+                String hoTen = resultSet.getString("HoTen");
+                String quanHeVoiChuHo = resultSet.getString("QuanHeVoiChuHo");
+                int chuHo = resultSet.getInt("ChuHo");
+                String biDanh = resultSet.getString("BiDanh");
+                Date ngaySinh = resultSet.getDate("NgaySinh");
+                String nguyenQuan = resultSet.getString("NguyenQuan");
+                String danToc = resultSet.getString("DanToc");
+                String ngheNghiep = resultSet.getString("NgheNghiep");
+                String noiLamViec = resultSet.getString("NoiLamViec");
+                Date TGDKTT = resultSet.getDate("TGDKTT");
+                int soCCCD = resultSet.getInt("SoCCCD");
+                Date ngayCap = resultSet.getDate("NgayCap");
+                String noiCap = resultSet.getString("NoiCap");
+                String diaChiThuongTru = resultSet.getString("DiaChiThuongTru");
+                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen, biDanh, ngaySinh, nguyenQuan,
+                        danToc, ngheNghiep, noiLamViec, soCCCD, ngayCap, noiCap, TGDKTT, diaChiThuongTru, quanHeVoiChuHo, chuHo);
+                dsNhanKhau.add(nhanKhau);
+            }
+        }
+        return dsNhanKhau;
+    }
+
+    public static void UpdateChuHoChoHoKhau (String idHoKhau, String tenChuHo, String idChuHo) {
+        String cauLenh1 = "UPDATE HoKhau\n" +
+                "SET TenChuHo = N'" + tenChuHo + "' \n" +
+                "WHERE IdHoKhau = '" + idHoKhau + "'\n";
+        ThucThiCauLenhUpdate(cauLenh1);
+        String cauLenh2 = "UPDATE NhanKhau\n" +
+                "SET QuanHeVoiChuHo = N'', ChuHo = 0 \n" +
+                "WHERE IdHoKhau = '" + idHoKhau + "'\n";
+        ThucThiCauLenhUpdate(cauLenh2);
+        String cauLenh3 = "UPDATE NhanKhau\n" +
+                "SET QuanHeVoiChuHo = N'Chủ hộ', ChuHo = 1 \n" +
+                "WHERE IdNhanKhau = '" + idChuHo + "'\n";
+        ThucThiCauLenhUpdate(cauLenh3);
+    }
+
+    public static void UpdateQuanHeVoiChuHo (String idNhanKhau, String quanHe) {
+        String cauLenh3 = "UPDATE NhanKhau\n" +
+                "SET QuanHeVoiChuHo = N'" + quanHe + "'\n" +
+                "WHERE IdNhanKhau = '" + idNhanKhau + "'\n";
+        ThucThiCauLenhUpdate(cauLenh3);
     }
 }

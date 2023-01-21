@@ -173,5 +173,8 @@ public class NhanKhau {
         this.chuHo = chuHo;
     }
 
-
+    public boolean timTheoHoKhau (String idHoKhau) {
+        if (getIdHoKhau().compareTo(idHoKhau) == 0) return true;
+        return false;
+    }
 }

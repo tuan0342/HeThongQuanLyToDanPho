@@ -97,7 +97,7 @@ public class LoginController implements Initializable {
                 System.out.println("-----------------------------------------------");
             } else {
                 String text = "Sai thông tin đăng nhập! Nhập lại";
-                showAlertErrorLogin(text);
+                ShowAlert.showAlertError("Lỗi đăng nhập", text);
                 tf_username.clear();
                 pwf_password.clear();
             }
@@ -106,19 +106,6 @@ public class LoginController implements Initializable {
     }
 
     // Hàm tạo cảnh báo alert khi đăng nhập thất bại
-    private void showAlertErrorLogin(String text) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Cánh báo");
-        alert.setHeaderText("Đăng nhập thất bại");
-        alert.setContentText(text);
-
-        ButtonType close = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(close);
-        Optional<ButtonType> result = alert.showAndWait();
-        if(result.get() == close) {
-            alert.close();
-        }
-    }
 
     // Hàm so sánh giữa thông tin đã nhập trên màn hình và thông tin trong database
     private boolean usersCompare(String usernameTF, String passPWF, Vector<Users> vectorUsers) {

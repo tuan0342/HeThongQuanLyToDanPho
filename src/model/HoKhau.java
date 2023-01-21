@@ -5,7 +5,6 @@ public class HoKhau {
     private String tenChuHo;
     private String diaChi;
     private int soLuongNhanKhau;
-    private NhanKhau ChuHo;     // khoi tao ho khau
     public String getIdHoKhau() {
         return idHoKhau;
     }
@@ -37,24 +36,7 @@ public class HoKhau {
         this.soLuongNhanKhau = soLuongNhanKhau;
     }
 
-    public NhanKhau getChuHo() {
-        return ChuHo;
-    }
-
-    public void setChuHo(NhanKhau chuHo) {
-        ChuHo = chuHo;
-        setTenChuHo(chuHo.getHoTen());
-    }
-
     public HoKhau () {
-    }
-
-    public HoKhau(String idHoKhau, String tenChuHo, String diaChi, int soLuongNhanKhau, NhanKhau chuHo) {
-        this.idHoKhau = idHoKhau;
-        this.tenChuHo = tenChuHo;
-        this.diaChi = diaChi;
-        this.soLuongNhanKhau = soLuongNhanKhau;
-        ChuHo = chuHo;
     }
 
     public HoKhau(String idHoKhau, String tenChuHo, String diaChi, int soLuongNhanKhau) {
@@ -62,5 +44,4 @@ public class HoKhau {
         this.tenChuHo = tenChuHo;
         this.diaChi = diaChi;
         this.soLuongNhanKhau = soLuongNhanKhau;
-    }
-}
+    }}

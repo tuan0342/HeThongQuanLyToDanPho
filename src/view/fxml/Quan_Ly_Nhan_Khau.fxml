@@ -10,30 +10,21 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyNhanKhau">
    <children>
       <Button fx:id="Back" layoutX="37.0" layoutY="44.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
-      <TableView layoutX="14.0" layoutY="129.0" prefHeight="470.0" prefWidth="978.0">
-        <columns>
-          <TableColumn prefWidth="36.799988746643066" text="IDNHANKHAU" />
-          <TableColumn prefWidth="36.799983978271484" text="IDHOKHAU" />
-            <TableColumn prefWidth="113.60000610351562" text="HOTEN" />
-            <TableColumn prefWidth="35.199981689453125" text="BIDANH" />
-            <TableColumn prefWidth="64.80000305175781" text="NGAYSINH" />
-            <TableColumn prefWidth="71.20001220703125" text="NGUYENQUAN" />
-            <TableColumn prefWidth="57.5999755859375" text="DANTOC" />
-            <TableColumn prefWidth="59.20001220703125" text="NGHENGHIEP" />
-            <TableColumn prefWidth="60.79998779296875" text="NOILAMVIEC" />
-            <TableColumn prefWidth="74.39996337890625" text="SOCCCD" />
-            <TableColumn prefWidth="68.0" text="NGAYCAP" />
-            <TableColumn prefWidth="60.79998779296875" text="NOICAP" />
-            <TableColumn prefWidth="83.199951171875" text="TGDKTT" />
-            <TableColumn prefWidth="89.60009765625" text="DIACHITHUONGTRU" />
-            <TableColumn prefWidth="60.7999267578125" text="QHCH" />
-        </columns>
-      </TableView>
       <Button fx:id="Them" layoutX="136.0" layoutY="44.0" mnemonicParsing="false" onAction="#Them" text="THÊM" />
       <Button layoutX="234.0" layoutY="44.0" mnemonicParsing="false" text="THAY ĐỔI" />
       <Button layoutX="362.0" layoutY="44.0" mnemonicParsing="false" text="XÓA" />
       <TextField layoutX="675.0" layoutY="44.0" />
       <Label layoutX="538.0" layoutY="48.0" text="NHẬP ID NHÂN KHẨU" />
       <Button layoutX="731.0" layoutY="86.0" mnemonicParsing="false" text="TÌM" />
+      <TableView fx:id="dsNhanKhau" layoutX="36.0" layoutY="137.0" prefHeight="419.0" prefWidth="919.0">
+        <columns>
+          <TableColumn fx:id="idHoKhau" prefWidth="75.0" text="ID Hộ khẩu" />
+          <TableColumn fx:id="idNhanKhau" prefWidth="107.20001983642578" text="ID Nhân khẩu" />
+            <TableColumn fx:id="hoTen" prefWidth="235.19998168945312" text="Họ và tên" />
+            <TableColumn fx:id="ngaySinh" minWidth="0.0" prefWidth="197.60000610351562" text="Ngày sinh" />
+            <TableColumn fx:id="soCCCD" minWidth="0.0" prefWidth="128.800048828125" text="Số CCCD" />
+            <TableColumn fx:id="ngheNghiep" minWidth="0.800048828125" prefWidth="175.199951171875" text="Nghề nghiệp" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

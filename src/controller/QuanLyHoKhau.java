@@ -1,9 +1,11 @@
 package controller;
 
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,8 +14,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.HoKhau;
 import model.HoKhauStatic;
+import model.NhanKhau;
+import model.NhanKhauStatic;
 
 import java.io.IOException;
 import java.net.URL;
@@ -85,7 +91,6 @@ public class QuanLyHoKhau implements Initializable {
         setTable();
     }
     public void xoaHo (Event event) {
-
     }
     public void themHoKhau (Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ThemHoKhau.class.getResource("/view/fxml/ThemHoKhau.fxml"));
@@ -95,6 +100,9 @@ public class QuanLyHoKhau implements Initializable {
         ThemHoKhau controller = fxmlLoader.getController();
         HoKhauStatic.setThemHoKhau(controller);
         DBUtils.changeScene(scene, event);
+        for (NhanKhau e: NhanKhauStatic.getDsNhanKhau()) {
+            System.out.println(e.getHoTen() + " " + e.getQuanHeChuHo());
+        }
     }
 
     public void tachHo (Event event) throws IOException {
@@ -106,11 +114,18 @@ public class QuanLyHoKhau implements Initializable {
     }
 
     public void thayDoiChuHo (Event event) throws IOException {
-        FXMLLoader fxmlLoader  = new FXMLLoader(TachHo.class.getResource("/view/fxml/ThayDoiChuHo.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1000, 600);
-        controller.ThayDoiChuHo.setPreScene(getCurScene());
-        DBUtils.changeScene(scene, event);
+        if (dsHoKhau.getSelectionModel().getSelectedItem() != null &&
+                dsHoKhau.getSelectionModel().getSelectedItem().getSoLuongNhanKhau() > 1) {
+            FXMLLoader fxmlLoader  = new FXMLLoader(TachHo.class.getResource("/view/fxml/ThayDoiChuHo.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root, 1000, 600);
+            controller.ThayDoiChuHo.setPreScene(getCurScene());
+            ThayDoiChuHo thayDoiChuHo = fxmlLoader.getController();
+            thayDoiChuHo.setHoKhauCanThayDoi(dsHoKhau.getSelectionModel().getSelectedItem());
+            thayDoiChuHo.setDsHoKhau(dsHoKhau);
+            DBUtils.changeScene(scene, event);
+        } else {
+            ShowAlert.showAlertError("Thất bại", "Chọn hộ khẩu cần thay đổi chủ hộ hoặc chọn hộ khẩu có nhiều hơn 1 nhân khẩu");
+        }
     }
-
 }
