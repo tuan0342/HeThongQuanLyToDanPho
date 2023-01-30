@@ -89,13 +89,13 @@
       </Label>
       <ChoiceBox fx:id="choiceBoxTrangThai" layoutX="380.0" layoutY="168.0" prefHeight="26.0" prefWidth="120.0" />
       <TableView fx:id="dsChiTietKhoanThu" layoutX="237.0" layoutY="300.0" prefHeight="282.0" prefWidth="682.0">
-        <columns>
-          <TableColumn fx:id="colIdKhoanThu" prefWidth="106.4000244140625" text="Id khoản thu" />
-          <TableColumn fx:id="colIdHK" prefWidth="120.0" text="Id hộ khẩu" />
+         <columns>
+            <TableColumn fx:id="colIdKhoanThu" prefWidth="106.4000244140625" text="Id khoản thu" />
+            <TableColumn fx:id="colIdHK" prefWidth="120.0" text="Id hộ khẩu" />
             <TableColumn fx:id="colTen" prefWidth="117.60003662109375" text="Tên chủ hộ" />
             <TableColumn fx:id="colSoTien" prefWidth="117.60003662109375" text="Số tiền phải nộp" />
             <TableColumn fx:id="colTT" prefWidth="225.60001220703123" text="Trạng thái (1: đóng, 0: chưa đóng)" />
-        </columns>
+         </columns>
       </TableView>
       <Label layoutX="78.0" layoutY="41.0" text="khoản thu">
          <font>

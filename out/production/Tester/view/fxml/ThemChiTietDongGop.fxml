@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemChiTietDongGopController">
+   <children>
+      <AnchorPane prefHeight="610.0" prefWidth="948.0">
+         <children>
+            <Button layoutX="66.0" layoutY="228.0" mnemonicParsing="false" onAction="#back" text="Back" />
+            <Label layoutX="27.0" layoutY="22.0" text="Thêm danh sách các hộ vào">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="27.0" layoutY="92.0" text="Id đóng góp">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfIdDGAdd" layoutX="116.0" layoutY="87.0" prefHeight="30.0" prefWidth="106.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="27.0" layoutY="134.0" text="Id hộ khẩu">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfIdHoKhauAdd" layoutX="116.0" layoutY="129.0" prefHeight="30.0" prefWidth="106.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="269.0" layoutY="134.0" text="Id hộ khẩu">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfIdHoKhauUpdate" disable="true" layoutX="380.0" layoutY="129.0" prefHeight="30.0" prefWidth="120.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Line endX="-100.0" endY="264.6000061035156" layoutX="348.0" layoutY="7.0" startX="-100.0" startY="-7.999997138977051" />
+            <Line endX="-100.0" endY="269.6000061035156" layoutX="624.0" layoutY="4.0" startX="-100.0" startY="-7.999997138977051" />
+            <Label layoutX="268.0" layoutY="22.0" text="Cập nhật trạng thái đóng tiền">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="271.0" layoutY="92.0" text="Id đóng góp">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfIdDGUpdate" disable="true" layoutX="380.0" layoutY="87.0" prefHeight="30.0" prefWidth="120.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TableView fx:id="dsHoKhau" layoutX="542.0" layoutY="54.0" prefHeight="200.0" prefWidth="380.0">
+               <columns>
+                  <TableColumn fx:id="colIdHoKhau" prefWidth="75.0" text="ID hộ khẩu" />
+                  <TableColumn fx:id="colTenChuHo" prefWidth="96.800048828125" text="Tên chủ hộ" />
+                  <TableColumn fx:id="colDiaChi" prefWidth="77.60009765625" text="Địa chỉ" />
+                  <TableColumn fx:id="colSLNK" prefWidth="124.7999267578125" text="Số lượng nhân khẩu" />
+               </columns>
+            </TableView>
+            <Label layoutX="633.0" layoutY="22.0" text="Bảng danh sách hộ khẩu">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Line endX="-339.0" endY="59.100006103515625" layoutX="301.0" layoutY="214.0" startX="634.9000244140625" startY="59.100006103515625" />
+            <Button layoutX="139.0" layoutY="228.0" mnemonicParsing="false" onAction="#add" text="Add" />
+            <Button fx:id="btnUpdate" disable="true" layoutX="412.0" layoutY="228.0" mnemonicParsing="false" onAction="#update" text="Update" />
+            <Button fx:id="btnCancel" disable="true" layoutX="297.0" layoutY="228.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+            <TableView fx:id="dsChiTietDG" layoutX="237.0" layoutY="300.0" prefHeight="282.0" prefWidth="682.0">
+               <columns>
+                  <TableColumn fx:id="colIdDG" prefWidth="106.4000244140625" text="Id đóng góp" />
+                  <TableColumn fx:id="colIdHK" prefWidth="145.60003662109375" text="Id hộ khẩu" />
+                  <TableColumn fx:id="colTen" prefWidth="214.39993286132812" text="Tên chủ hộ" />
+                  <TableColumn fx:id="colSoTien" prefWidth="215.199951171875" text="Số tiền ủng hộ" />
+               </columns>
+            </TableView>
+            <Label layoutX="68.0" layoutY="41.0" text="khoản đóng góp">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="367.0" text="Nhập Id đóng góp">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfSearch" layoutX="33.0" layoutY="397.0" prefHeight="26.0" prefWidth="157.0" promptText="* (tất cả)" />
+            <Button fx:id="btnSearch" layoutX="73.0" layoutY="441.0" mnemonicParsing="false" onAction="#search" text="Tìm kiếm">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label layoutX="27.0" layoutY="178.0" text="Số tiền">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfSoTienAdd" layoutX="116.0" layoutY="173.0" prefHeight="30.0" prefWidth="106.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="tfSoTienUpdate" disable="true" layoutX="380.0" layoutY="173.0" prefHeight="30.0" prefWidth="120.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="268.0" layoutY="178.0" text="Số tiền">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

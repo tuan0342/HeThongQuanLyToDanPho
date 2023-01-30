@@ -23,6 +23,8 @@ import java.util.Vector;
 
 public class LoginController implements Initializable {
 
+    public static String chucVuDangNhap;
+
     @FXML
     private Button button_login;
 
@@ -113,6 +115,7 @@ public class LoginController implements Initializable {
         for (int i = 0; i < lenVector; i++) {
             if (stringCompare(usernameTF, vectorUsers.get(i).getUsername()) ==  true &&
                 stringCompare(passPWF, vectorUsers.get(i).getPassword()) == true) {
+                chucVuDangNhap = vectorUsers.get(i).getChucVu();
                 System.out.println("Đăng nhập với tư cách là: " + vectorUsers.get(i).getChucVu());
                 return true;
             }

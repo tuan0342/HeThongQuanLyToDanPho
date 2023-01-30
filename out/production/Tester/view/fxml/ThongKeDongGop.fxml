@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeDongGopController">
+   <children>
+      <Label layoutX="226.0" layoutY="24.0" text="THỐNG KÊ TOÀN BỘ CÁC KHOẢNG ĐÓNG GÓP">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="dsThongKeKhoanDG" layoutX="59.0" layoutY="78.0" prefHeight="478.0" prefWidth="782.0">
+        <columns>
+          <TableColumn fx:id="colTenKhoanDG" prefWidth="252.7999496459961" text="Tên khoản đóng góp" />
+          <TableColumn fx:id="colSoHo" minWidth="0.0" prefWidth="212.80007934570312" text="Số hộ đóng góp" />
+            <TableColumn fx:id="colSoTien" prefWidth="316.79998779296875" text="Tổng số tiền đã tiếp nhận" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backT" text="Back" />
+   </children>
+</AnchorPane>

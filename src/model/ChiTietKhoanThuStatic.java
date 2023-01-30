@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class ChiTietKhoanThuStatic {
 
-    // Thêm dữ liệu mới vào bảng chi tiết khoản thu
+    // Update dữ liệu bảng chi tiết khoản thu
     public static void updateChiTietKhoanThu(int idKhoanThu, String idHoKhau, int tt) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE ChiTietKhoanThu\n" +
                 "SET TrangThai = " + tt + "\n" +
@@ -62,7 +62,7 @@ public class ChiTietKhoanThuStatic {
         return list;
     }
 
-    // lất tất cả bản ghi trong bảng ChiTietKhoanThu
+    // lấy một phần bản ghi trong bảng ChiTietKhoanThu (phục vụ cho hàm tìm kiếm)
     public static ObservableList<ChiTietKhoanThu> getPartRecords(int idKhoanThu) {
         String sql = "select ct.IdKhoanThu, ct.IdHoKhau, hk.TenChuHo, ct.SoTien, ct.TrangThai \n" +
                 "from [dbo].[ChiTietKhoanThu] ct \n" +

@@ -25,6 +25,8 @@ public class SelectManagementController implements Initializable {
     private static Scene preScene;
     private static Scene curScene;
 
+    public String chucVuDangNhap;
+
     public static void setPreScene(Scene preScene) {
         SelectManagementController.preScene = preScene;
     }
@@ -75,6 +77,7 @@ public class SelectManagementController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         setMenu();
     }
 
