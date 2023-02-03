@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeKhoanThuController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeKhoanThuController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="BACK">
+      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="BACK">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

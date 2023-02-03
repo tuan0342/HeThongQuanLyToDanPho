@@ -44,7 +44,7 @@ public class QuanLyKhoanDongGop implements Initializable {
     @FXML
     public Button Back;
     @FXML
-    public Button btnUpdate;
+    public Button CapNhatDGQLKT;
     @FXML
     public Button btnLoad;
     @FXML
@@ -85,7 +85,7 @@ public class QuanLyKhoanDongGop implements Initializable {
                 if (! row.isEmpty() && event.getButton()== MouseButton.PRIMARY
                         && event.getClickCount() == 2) {
 
-                    btnUpdate.setDisable(false);
+                    CapNhatDGQLKT.setDisable(false);
                     tenDG.setDisable(false);
                     ngayBDDG.setDisable(false);
                     ngayKTDG.setDisable(false);
@@ -136,7 +136,7 @@ public class QuanLyKhoanDongGop implements Initializable {
         tenDG.setDisable(true);
         ngayBDDG.setDisable(true);
         ngayKTDG.setDisable(true);
-        btnUpdate.setDisable(true);
+        CapNhatDGQLKT.setDisable(true);
     }
 
     // chuyển sang màn hình thêm chi tiết đóng góp

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemNhanKhau">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemNhanKhau">
    <children>
       <TextField fx:id="idNhanKhau" layoutX="112.0" layoutY="58.0">
          <font>
@@ -87,7 +87,13 @@
       <DatePicker fx:id="ngayCap" layoutX="783.0" layoutY="129.0" />
       <DatePicker fx:id="ngaySinh" layoutX="113.0" layoutY="340.0" />
       <DatePicker fx:id="TGDKTT" layoutX="445.0" layoutY="340.0" />
-      <Button fx:id="Back" layoutX="460.0" layoutY="511.0" mnemonicParsing="false" onAction="#back" text="BACK" />
-      <Button fx:id="Save" layoutX="546.0" layoutY="511.0" mnemonicParsing="false" onAction="#save" text="SAVE" />
+      <Button fx:id="Back" layoutX="411.0" layoutY="511.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="68.0" text="BACK">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Button>
+      <Button fx:id="Save" layoutX="532.0" layoutY="511.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="68.0" text="SAVE">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

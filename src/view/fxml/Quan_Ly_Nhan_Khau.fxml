@@ -7,15 +7,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyNhanKhau">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyNhanKhau">
    <children>
       <Button fx:id="Back" layoutX="37.0" layoutY="44.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
       <Button fx:id="Them" layoutX="136.0" layoutY="44.0" mnemonicParsing="false" onAction="#Them" text="THÊM" />
-      <Button layoutX="234.0" layoutY="44.0" mnemonicParsing="false" text="THAY ĐỔI" />
-      <Button layoutX="362.0" layoutY="44.0" mnemonicParsing="false" text="XÓA" />
+      <Button fx:id="ThayDoiNhanKhau" layoutX="234.0" layoutY="44.0" mnemonicParsing="false" text="THAY ĐỔI" />
+      <Button fx:id="XoaNhanKhau" layoutX="362.0" layoutY="44.0" mnemonicParsing="false" text="XÓA" />
       <TextField layoutX="675.0" layoutY="44.0" />
       <Label layoutX="538.0" layoutY="48.0" text="NHẬP ID NHÂN KHẨU" />
-      <Button layoutX="731.0" layoutY="86.0" mnemonicParsing="false" text="TÌM" />
+      <Button fx:id="TimNhanKhau" layoutX="714.0" layoutY="86.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="TÌM" />
       <TableView fx:id="dsNhanKhau" layoutX="36.0" layoutY="137.0" prefHeight="419.0" prefWidth="919.0">
         <columns>
           <TableColumn fx:id="idHoKhau" prefWidth="75.0" text="ID Hộ khẩu" />

@@ -14,9 +14,8 @@ import model.HoKhauStatic;
 import model.NhanKhau;
 import model.NhanKhauStatic;
 
-import javax.swing.plaf.TableHeaderUI;
 import java.sql.*;
-import java.time.LocalDate;
+
 
 public class DBUtils {
     //private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";

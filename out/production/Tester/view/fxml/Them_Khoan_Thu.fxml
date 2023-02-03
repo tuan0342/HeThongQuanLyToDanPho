@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemKhoanThu">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="695.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemKhoanThu">
    <children>
       <Label alignment="CENTER" layoutX="256.0" layoutY="14.0" prefHeight="51.0" prefWidth="157.0" text="Thêm khoản thu" textAlignment="CENTER">
          <font>
@@ -22,9 +22,15 @@
       <Label layoutX="192.0" layoutY="75.0" text="TÊN KHOẢN THU" />
       <Label layoutX="192.0" layoutY="116.0" text="NGÀY BẮT ĐẦU" />
       <Label layoutX="190.0" layoutY="154.0" text="NGÀY KẾT THÚC" />
-      <Button fx:id="Add" layoutX="400.0" layoutY="242.0" mnemonicParsing="false" onAction="#add" text="Thêm" />
+      <Button fx:id="Add" layoutX="400.0" layoutY="242.0" mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="48.0" text="Add">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Button>
       <Label layoutX="192.0" layoutY="196.0" text="SỐ TIỀN MỘT NHÂN KHẨU" />
-      <Button fx:id="Back" layoutX="244.0" layoutY="242.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button fx:id="Back" layoutX="244.0" layoutY="242.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="50.0" text="Back">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Button>
       <TextField fx:id="tfsoTien" layoutX="349.0" layoutY="192.0" />
       <Line endX="-424.0" endY="214.30001831054688" layoutX="424.0" layoutY="80.0" startX="270.99993896484375" startY="214.30001831054688" />
       <TableView fx:id="dsKhoanThu" layoutX="33.0" layoutY="309.0" prefHeight="278.0" prefWidth="632.0">

@@ -7,6 +7,15 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class UsersDAO {
+    private static int check = 1;
+
+    public static int getCheck() {
+        return check;
+    }
+
+    public static void setCheck(int check) {
+        UsersDAO.check = check;
+    }
 
     // Lấy thông tin user trong database dưới dạng Vector
     public static Vector<Users> getUserFromDB() throws SQLException, ClassNotFoundException {
@@ -29,7 +38,6 @@ public class UsersDAO {
         if(rs != null) {
             try {
                 while(rs.next()) {
-                    System.out.println("abc");
                     Users users = new Users(rs.getString(1).trim(), rs.getString(2).trim(),
                             rs.getString(3).trim());
                     vec.add(users);

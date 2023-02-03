@@ -9,21 +9,39 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="Khung" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyHoKhau">
+<HBox fx:id="Khung" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyHoKhau">
    <children>
       <AnchorPane fx:id="CacButton" prefHeight="600.0" prefWidth="351.0">
          <children>
-            <Button fx:id="Back" layoutX="39.0" layoutY="25.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
-            <Label layoutX="94.0" layoutY="79.0" prefHeight="29.0" prefWidth="149.0" text="   NHẬP ID HỘ KHẨU">
+            <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="58.0" text="BACK">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Arial Bold" size="12.0" />
+               </font></Button>
+            <Label layoutX="49.0" layoutY="68.0" prefHeight="29.0" prefWidth="149.0" text="   NHẬP ID HỘ KHẨU">
+               <font>
+                  <Font name="Arial" size="14.0" />
                </font></Label>
-            <Button fx:id="TachHo" layoutX="74.0" layoutY="327.0" mnemonicParsing="false" onAction="#tachHo" prefHeight="31.0" prefWidth="204.0" text="TÁCH HỘ" />
-            <Button fx:id="ThayDoiChuHo" layoutX="74.0" layoutY="410.0" mnemonicParsing="false" onAction="#thayDoiChuHo" prefHeight="31.0" prefWidth="204.0" text="THAY ĐỔI CHỦ HỘ" />
-            <TextField layoutX="94.0" layoutY="124.0" />
-            <Button fx:id="XoaHo" layoutX="74.0" layoutY="250.0" mnemonicParsing="false" onAction="#xoaHo" prefHeight="31.0" prefWidth="204.0" text="XÓA HỘ KHẨU" />
-            <Button layoutX="255.0" layoutY="117.0" minWidth="27.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="46.0" text="FIND" />
-            <Button fx:id="ThemHoKhauButton" layoutX="74.0" layoutY="175.0" mnemonicParsing="false" onAction="#themHoKhau" prefHeight="31.0" prefWidth="204.0" text="THÊM HỘ KHẨU" />
+            <Button fx:id="TachHo" layoutX="74.0" layoutY="327.0" mnemonicParsing="false" onAction="#tachHo" prefHeight="31.0" prefWidth="204.0" text="Tách hộ">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
+            <Button fx:id="ThayDoiChuHo" layoutX="74.0" layoutY="410.0" mnemonicParsing="false" onAction="#thayDoiChuHo" prefHeight="31.0" prefWidth="204.0" text="Thay đổi chủ hộ">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
+            <TextField layoutX="43.0" layoutY="106.0" prefHeight="30.0" prefWidth="156.0" />
+            <Button fx:id="XoaHo" layoutX="74.0" layoutY="250.0" mnemonicParsing="false" onAction="#xoaHo" prefHeight="31.0" prefWidth="204.0" text="Xóa hộ khẩu">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
+            <Button fx:id="findBtn" layoutX="224.0" layoutY="106.0" minWidth="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="94.0" text="Tìm kiếm">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
+            <Button fx:id="ThemHoKhauButton" layoutX="74.0" layoutY="175.0" mnemonicParsing="false" onAction="#themHoKhau" prefHeight="31.0" prefWidth="204.0" text="Thêm hộ khẩu">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="KhungThongTin" prefHeight="600.0" prefWidth="607.0">

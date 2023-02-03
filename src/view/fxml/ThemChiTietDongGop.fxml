@@ -9,11 +9,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemChiTietDongGopController">
+<AnchorPane prefHeight="600.0" prefWidth="937.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemChiTietDongGopController">
    <children>
       <AnchorPane prefHeight="610.0" prefWidth="948.0">
          <children>
-            <Button layoutX="66.0" layoutY="228.0" mnemonicParsing="false" onAction="#back" text="Back" />
+            <Button fx:id="Back" layoutX="66.0" layoutY="228.0" mnemonicParsing="false" onAction="#back" text="Back" />
             <Label layoutX="27.0" layoutY="22.0" text="Thêm danh sách các hộ vào">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -80,7 +80,7 @@
                </font>
             </Label>
             <Line endX="-339.0" endY="59.100006103515625" layoutX="301.0" layoutY="214.0" startX="634.9000244140625" startY="59.100006103515625" />
-            <Button layoutX="139.0" layoutY="228.0" mnemonicParsing="false" onAction="#add" text="Add" />
+            <Button fx:id="Add" layoutX="139.0" layoutY="228.0" mnemonicParsing="false" onAction="#add" text="Add" />
             <Button fx:id="btnUpdate" disable="true" layoutX="412.0" layoutY="228.0" mnemonicParsing="false" onAction="#update" text="Update" />
             <Button fx:id="btnCancel" disable="true" layoutX="297.0" layoutY="228.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
             <TableView fx:id="dsChiTietDG" layoutX="237.0" layoutY="300.0" prefHeight="282.0" prefWidth="682.0">
@@ -102,7 +102,7 @@
                </font>
             </Label>
             <TextField fx:id="tfSearch" layoutX="33.0" layoutY="397.0" prefHeight="26.0" prefWidth="157.0" promptText="* (tất cả)" />
-            <Button fx:id="btnSearch" layoutX="73.0" layoutY="441.0" mnemonicParsing="false" onAction="#search" text="Tìm kiếm">
+            <Button fx:id="btnSearch" layoutX="73.0" layoutY="441.0" mnemonicParsing="false" onAction="#search" prefHeight="30.0" prefWidth="78.0" text="Search">
                <font>
                   <Font size="16.0" />
                </font>
