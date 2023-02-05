@@ -14,12 +14,11 @@ import model.HoKhauStatic;
 import model.NhanKhau;
 import model.NhanKhauStatic;
 
-import javax.swing.plaf.TableHeaderUI;
 import java.sql.*;
-import java.time.LocalDate;
+
 
 public class DBUtils {
-//    private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
+    //private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
     private static String dbURL = "jdbc:sqlserver://DESKTOP-BM4SH04:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
     private static String user = "sa"; // user trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static String pass = "123";  // pass trên mỗi máy là khác nhau tùy cá nhân tự đặt

@@ -13,7 +13,6 @@ import model.UsersDAO;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -93,18 +92,22 @@ public class LoginController implements Initializable {
             System.out.println("username đã nhập trên màn hình: " + usernameTF + ", pass đã nhập trên màn hình: " + passwordPWF);
 
             if(usersCompare(usernameTF, passwordPWF, vectorUsers)) {
+                setNextScene();
                 SelectManagementController.setCurScene(this.nextScene);
                 SelectManagementController.setPreScene(getCurScene());
                 DBUtils.changeScene(nextScene, event);
                 System.out.println("-----------------------------------------------");
+
+
             } else {
                 String text = "Sai thông tin đăng nhập! Nhập lại";
                 ShowAlert.showAlertError("Lỗi đăng nhập", text);
                 tf_username.clear();
                 pwf_password.clear();
             }
+
         });
-        setNextScene();
+//        setNextScene();
     }
 
     // Hàm tạo cảnh báo alert khi đăng nhập thất bại
@@ -115,6 +118,13 @@ public class LoginController implements Initializable {
         for (int i = 0; i < lenVector; i++) {
             if (stringCompare(usernameTF, vectorUsers.get(i).getUsername()) ==  true &&
                 stringCompare(passPWF, vectorUsers.get(i).getPassword()) == true) {
+
+
+                if (vectorUsers.get(i).getChucVu().equals("Kế toán")) {
+                    UsersDAO.setCheck(0);
+                } else {
+                    UsersDAO.setCheck(1);
+                }
                 System.out.println("Đăng nhập với tư cách là: " + vectorUsers.get(i).getChucVu());
                 return true;
             }

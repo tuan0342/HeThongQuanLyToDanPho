@@ -1,15 +1,12 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.control.Label;
 import model.UsersDAO;
 
 import java.io.IOException;
@@ -46,6 +43,7 @@ public class SelectManagementController implements Initializable {
     public Button Back;
 
     private void setMenu () {
+
         FXMLLoader QLHK = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/QuanLyHoKhau.fxml"));
         try {
             this.QuanLyHoKhau = new Scene(QLHK.load());
@@ -73,11 +71,23 @@ public class SelectManagementController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        if (UsersDAO.getCheck() == 1) {
+            QuanLyHoKhauButton.setDisable(false);
+            QuanLyNhanKhauButton.setDisable(false);
+            QuanLyKhoanThuButton.setDisable(false);
+            QuanLyKhoanDongGopButton.setDisable(false);
+        } else {
+            QuanLyHoKhauButton.setDisable(true);
+            QuanLyNhanKhauButton.setDisable(true);
+        }
+
         setMenu();
-        System.out.print(UsersDAO.getCheck());
     }
 
     public void chonQuanLyHoKhauButton (Event event) {

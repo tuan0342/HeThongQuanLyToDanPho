@@ -1,0 +1,160 @@
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color:  #F2DEBA;
+}
+.table-view .column-header .label{
+   -fx-text-fill: #4E6C50;
+   -fx-font-weight: bold;
+   -fx-alignment: CENTER;
+}
+.table-view .cell{
+   -fx-cell-size: 35;
+  -fx-alignment: center-left;
+  -fx-border-color: #FAECD6;
+  -fx-background-color: #FAECD6;
+  -fx-alignment: CENTER;
+
+}
+.table-row-cell:selected {
+   -fx-background-color: whitesmoke;
+   -fx-text-background-color:  #5F8D4E;
+
+
+}
+
+/* scroll bar starts here */
+
+/* The increment and decrement button CSS class of scrollbar */
+.table-view .increment-button ,.table-view .decrement-button {
+    -fx-background-color:transparent;
+	-fx-background-radius: 2em;
+
+}
+
+/* The main scrollbar **track** CSS class  */
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track{
+	-fx-background-color: transparent;
+	-fx-border-color:derive( #735F32,80%);
+	-fx-background-radius: 2em;
+	-fx-border-radius:2em;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color:derive( #735F32,90%);
+	-fx-background-insets: 2, 0, 0;
+	-fx-background-radius: 2em;
+
+}
+
+/* Màn hình lựa chọn chức năng */
+#QuanLyHoKhauButton, #QuanLyNhanKhauButton, #QuanLyKhoanThuButton, #QuanLyKhoanDongGopButton{
+        -fx-padding: 8 15 15 15;
+        -fx-background-insets: 0,0 0 3 0, 0 0 4 0, 0 0 5 0;
+        -fx-background-radius: 8;
+        -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #665700 0%, #332b00 100%),
+            #4d4100,
+            #4d4d00,
+            radial-gradient(center 50% 50%, radius 100%, #e6c300, #b38f00);
+        -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+        -fx-font-weight: bold;
+        -fx-font-size: 1.2em;
+}
+#QuanLyHoKhauButton:hover, #QuanLyNhanKhauButton:hover, #QuanLyKhoanThuButton:hover, #QuanLyKhoanDongGopButton:hover{
+    -fx-background-color:
+        linear-gradient(from 0% 93% to 0% 100%, #998200 0%, #665700 100%),
+        #806c00,
+        #808000,
+        radial-gradient(center 50% 50%, radius 100%, #e6c300, #cca300);
+    -fx-text-fill: white;
+}
+#QuanLyHoKhauButton:pressed, #QuanLyNhanKhauButton:pressed, #QuanLyKhoanThuButton:pressed, #QuanLyKhoanDongGopButton:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+#Back, #btnLoad, #ThemKTQLKT, #ThemDSQLKT, #ThongKeQLKT, #CapNhatKTQLKT, #Add {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#Back:hover, #btnLoad:hover, #ThemKTQLKT:hover, #ThemDSQLKT:hover, #ThongKeQLKT:hover, #CapNhatKTQLKT:hover, #Add:hover{
+    -fx-text-fill: #630606;
+}
+
+/* Quản lý khoản thu */
+#btnCancel, #btnUpdate, #btnSearch {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#btnCancel:hover, #btnUpdate:hover, #btnSearch:hover{
+    -fx-text-fill: #630606;
+}
+
+/* Quản lý khoản đóng góp */
+#ThemDGQLKT, #ThemDSDGQLKT, #ThongKeDGQLKT, #CapNhatDGQLKT {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+#ThemDGQLKT:hover, #ThemDSDGQLKT:hover, #ThongKeDGQLKT:hover, #CapNhatDGQLKT:hover {
+    -fx-text-fill: #630606;
+}
+
+/* Quản lý hộ khẩu và nhân khẩu */
+#findBtn, #ThemHoKhauButton, #XoaHo, #TachHo, #ThayDoiChuHo, #taoChuHo, #themNhanKhau, #Luu, #Save {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#findBtn:hover, #ThemHoKhauButton:hover, #XoaHo:hover, #TachHo:hover, #ThayDoiChuHo:hover, #taoChuHo:hover,
+#themNhanKhau:hover, #Luu:hover, #Save:hover {
+    -fx-text-fill: #630606;
+}
+
+#luuChuHoMoi, #luuThayDoi, #hoanTatSuaDoi, #tachHo, #Them, #ThayDoiNhanKhau, #XoaNhanKhau, #TimNhanKhau {
+    -fx-background-color:
+            linear-gradient(#f2f2f2, #d6d6d6),
+            linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),
+            linear-gradient(#dddddd 0%, #f6f6f6 50%);
+    -fx-background-radius: 8,7,6;
+    -fx-background-insets: 0,1,2;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#luuChuHoMoi:hover, #luuThayDoi:hover, #hoanTatSuaDoi:hover, #tachHo:hover, #Them:hover, #ThayDoiNhanKhau:hover,
+#XoaNhanKhau:hover, #TimNhanKhau:hover {
+    -fx-text-fill: #630606;
+}
+
+
+
+
+
+
+

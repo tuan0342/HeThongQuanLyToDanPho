@@ -10,9 +10,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemChiTietKhoanThuController">
+<AnchorPane prefHeight="600.0" prefWidth="937.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemChiTietKhoanThuController">
    <children>
-      <Button layoutX="66.0" layoutY="215.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button fx:id="Back" layoutX="58.0" layoutY="215.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="43.0" text="Back">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font></Button>
       <Label layoutX="27.0" layoutY="22.0" text="Thêm danh sách các hộ vào">
          <font>
             <Font name="System Bold" size="16.0" />
@@ -79,9 +82,9 @@
          </font>
       </Label>
       <Line endX="-339.0" endY="59.100006103515625" layoutX="301.0" layoutY="214.0" startX="634.9000244140625" startY="59.100006103515625" />
-      <Button layoutX="139.0" layoutY="215.0" mnemonicParsing="false" onAction="#add" text="Add" />
+      <Button fx:id="Add" layoutX="139.0" layoutY="215.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="41.0" text="Add" />
       <Button fx:id="btnUpdate" disable="true" layoutX="412.0" layoutY="228.0" mnemonicParsing="false" onAction="#update" text="Update" />
-      <Button fx:id="btnCancel" disable="true" layoutX="297.0" layoutY="228.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+      <Button fx:id="btnCancel" disable="true" layoutX="297.0" layoutY="228.0" mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="55.0" text="Cancel" />
       <Label layoutX="271.0" layoutY="171.0" text="Trạng thái">
          <font>
             <Font size="14.0" />
@@ -89,13 +92,13 @@
       </Label>
       <ChoiceBox fx:id="choiceBoxTrangThai" layoutX="380.0" layoutY="168.0" prefHeight="26.0" prefWidth="120.0" />
       <TableView fx:id="dsChiTietKhoanThu" layoutX="237.0" layoutY="300.0" prefHeight="282.0" prefWidth="682.0">
-        <columns>
-          <TableColumn fx:id="colIdKhoanThu" prefWidth="106.4000244140625" text="Id khoản thu" />
-          <TableColumn fx:id="colIdHK" prefWidth="120.0" text="Id hộ khẩu" />
+         <columns>
+            <TableColumn fx:id="colIdKhoanThu" prefWidth="106.4000244140625" text="Id khoản thu" />
+            <TableColumn fx:id="colIdHK" prefWidth="120.0" text="Id hộ khẩu" />
             <TableColumn fx:id="colTen" prefWidth="117.60003662109375" text="Tên chủ hộ" />
             <TableColumn fx:id="colSoTien" prefWidth="117.60003662109375" text="Số tiền phải nộp" />
             <TableColumn fx:id="colTT" prefWidth="225.60001220703123" text="Trạng thái (1: đóng, 0: chưa đóng)" />
-        </columns>
+         </columns>
       </TableView>
       <Label layoutX="78.0" layoutY="41.0" text="khoản thu">
          <font>
@@ -108,7 +111,7 @@
          </font>
       </Label>
       <TextField fx:id="tfSearch" layoutX="33.0" layoutY="397.0" prefHeight="26.0" prefWidth="157.0" promptText="* (tất cả)" />
-      <Button fx:id="btnSearch" layoutX="73.0" layoutY="441.0" mnemonicParsing="false" onAction="#search" text="Tìm kiếm">
+      <Button fx:id="btnSearch" layoutX="73.0" layoutY="441.0" mnemonicParsing="false" onAction="#search" text="Search">
          <font>
             <Font size="16.0" />
          </font>

@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemKhoanDongGop">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="695.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemKhoanDongGop">
     <children>
-        <Label alignment="CENTER" layoutX="196.0" layoutY="44.0" prefHeight="51.0" prefWidth="206.0" text="Thêm khoản đóng góp" textAlignment="CENTER">
+        <Label alignment="CENTER" layoutX="243.0" layoutY="14.0" prefHeight="51.0" prefWidth="206.0" text="Thêm khoản đóng góp" textAlignment="CENTER">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <TextField layoutX="227.0" layoutY="103.0" />
-        <TextField layoutX="227.0" layoutY="155.0" />
-        <TextField layoutX="227.0" layoutY="209.0" />
-        <Label layoutX="91.0" layoutY="107.0" text="ID KHOẢN ĐÓNG GÓP" />
-        <Label layoutX="78.0" layoutY="159.0" text="TÊN KHOẢN ĐÓNG GÓP" />
-        <Label layoutX="144.0" layoutY="213.0" text="SỐ TIỀN" />
-        <Button layoutX="276.0" layoutY="346.0" mnemonicParsing="false" text="Thêm" />
-        <Label layoutX="136.0" layoutY="273.0" text="NGÀY NỘP" />
-        <DatePicker layoutX="227.0" layoutY="269.0" />
-      <Button fx:id="Back" layoutX="204.0" layoutY="346.0" mnemonicParsing="false" onAction="#back" text="Back" />
+        <TextField fx:id="tftenDG" layoutX="331.0" layoutY="81.0" prefHeight="26.0" prefWidth="184.0" />
+        <TextField fx:id="tfngayBDDG" layoutX="331.0" layoutY="124.0" prefHeight="26.0" prefWidth="184.0" promptText="dd/MM/yyyy" />
+        <TextField fx:id="tfngayKTDG" layoutX="331.0" layoutY="171.0" prefHeight="26.0" prefWidth="184.0" promptText="dd/MM/yyyy" />
+        <Label layoutX="183.0" layoutY="85.0" text="TÊN KHOẢN ĐÓNG GÓP" />
+        <Label layoutX="185.0" layoutY="128.0" text="NGÀY BẮT ĐẦU" />
+        <Label layoutX="183.0" layoutY="175.0" text="NGÀY KẾT THÚC" />
+        <Button fx:id="Add" layoutX="376.0" layoutY="253.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="51.0" text="Add" />
+      <Button fx:id="Back" layoutX="268.0" layoutY="253.0" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="51.0" text="Back" />
+      <Line endX="-424.0" endY="214.30001831054688" layoutX="423.0" layoutY="96.0" startX="270.99993896484375" startY="214.30001831054688" />
+      <TableView fx:id="dsDongGop" layoutX="30.0" layoutY="321.0" prefHeight="265.0" prefWidth="632.0">
+         <columns>
+            <TableColumn fx:id="colIdDG" prefWidth="130.39996719360352" text="Id khoản đóng góp" />
+            <TableColumn fx:id="colTenDG" minWidth="8.800048828125" prefWidth="226.3999481201172" text="Tên khoản đóng góp" />
+            <TableColumn fx:id="colNgayBDDG" minWidth="0.0" prefWidth="117.60003662109375" text="Ngày bắt đầu thu" />
+            <TableColumn fx:id="colNgayKTDG" prefWidth="157.60003662109375" text="Ngày kết thúc" />
+         </columns>
+      </TableView>
     </children>
 </AnchorPane>

@@ -56,7 +56,7 @@ public class QuanLyKhoanThu implements Initializable {
     public AnchorPane CacButton;
     @FXML
     public AnchorPane KhungThongTin;
-    public Button ThemKhoanThu;
+    public Button ThemKTQLKT;
     public Button ThayDoiKhoanThu;
 
     @FXML
@@ -78,7 +78,7 @@ public class QuanLyKhoanThu implements Initializable {
     @FXML
     private TextField tfSoTien;
     @FXML
-    private Button btnUpdate;
+    private Button CapNhatKTQLKT;
 
     @FXML
     TableView<KhoanThu> dsKhoanThu;
@@ -112,7 +112,7 @@ public class QuanLyKhoanThu implements Initializable {
                 if (! row.isEmpty() && event.getButton()== MouseButton.PRIMARY
                         && event.getClickCount() == 2) {
 
-                    btnUpdate.setDisable(false);
+                    CapNhatKTQLKT.setDisable(false);
                     tfTenKT.setDisable(false);
                     tfNgayBD.setDisable(false);
                     tfNgayKT.setDisable(false);
@@ -191,6 +191,6 @@ public class QuanLyKhoanThu implements Initializable {
         tfNgayBD.setDisable(true);
         tfNgayKT.setDisable(true);
         tfSoTien.setDisable(true);
-        btnUpdate.setDisable(true);
+        CapNhatKTQLKT.setDisable(true);
     }
 }
