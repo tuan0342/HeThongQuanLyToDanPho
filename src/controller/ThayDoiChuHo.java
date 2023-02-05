@@ -108,8 +108,12 @@ public class ThayDoiChuHo {
     private String idChuHoMoi;
     private String hoTenChuHoMoi;
     public void luuChuHoMoi (Event event) {
+        NhanKhau duocChon = (NhanKhau) dsNhanKhau.getSelectionModel().getSelectedItem();
+        if (duocChon.getChuHo() == 1) {
+            ShowAlert.showAlertError("Thất bại", "Chọn chủ hộ mới");
+            return;
+        }
         if (ShowAlert.showAlertYN("Lưu", "Chắc chưa?")){
-            NhanKhau duocChon = (NhanKhau) dsNhanKhau.getSelectionModel().getSelectedItem();
             idChuHoMoi = duocChon.getIdNhanKhau();
             hoTenChuHoMoi = duocChon.getHoTen();
             quanHeMoi.put(idChuHoMoi, "Chủ hộ");
@@ -152,7 +156,7 @@ public class ThayDoiChuHo {
     public Button luuThayDoi;
     private HashMap<String, String> quanHeMoi = new HashMap<String, String>();
     public void luuThayDoi (Event event) {
-        if (quanHeChuHoMoi.getText().compareTo("Chủ hộ") == 0) {
+        if (quanHeChuHoMoi.getText().compareTo("Chủ hộ") == 0 || quanHeChuHoMoi.getText().compareTo("") == 0) {
             ShowAlert.showAlertError("Nhập lại", "Nhập lại quan hệ mới");
             return;
         }
@@ -162,8 +166,7 @@ public class ThayDoiChuHo {
         } else {
             quanHeMoi.put(duocChon.getIdNhanKhau(), quanHeChuHoMoi.getText());
         }
-        soLuong -= 1;
-        if (soLuong == 0) {
+        if (quanHeMoi.size() == soLuong) {
             hoanTatSuaDoi.setDisable(false);
         };
     }

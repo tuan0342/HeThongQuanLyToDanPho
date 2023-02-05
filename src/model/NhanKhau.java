@@ -7,6 +7,7 @@ public class NhanKhau {
     private String idNhanKhau;
     private String idHoKhau;
     private String hoTen;
+    private boolean gioiTinh;
     private String biDanh;
     private Date ngaySinh;
     private String nguyenQuan;
@@ -26,10 +27,11 @@ public class NhanKhau {
         setChuHo(0);
     }
 
-    public NhanKhau(String idNhanKhau, String idHoKhau, String hoTen, String biDanh, Date ngaySinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, int soCCCD, Date ngayCap, String noiCap, Date thoiGianDKThuongTru, String diaChiThuongTru, String quanHeChuHo, int chuHo) {
+    public NhanKhau(String idNhanKhau, String idHoKhau, String hoTen, boolean gioiTinh, String biDanh, Date ngaySinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, int soCCCD, Date ngayCap, String noiCap, Date thoiGianDKThuongTru, String diaChiThuongTru, String quanHeChuHo, int chuHo) {
         this.idNhanKhau = idNhanKhau;
         this.idHoKhau = idHoKhau;
         this.hoTen = hoTen;
+        this.gioiTinh = gioiTinh;
         this.biDanh = biDanh;
         this.ngaySinh = ngaySinh;
         this.nguyenQuan = nguyenQuan;
@@ -176,5 +178,14 @@ public class NhanKhau {
     public boolean timTheoHoKhau (String idHoKhau) {
         if (getIdHoKhau().compareTo(idHoKhau) == 0) return true;
         return false;
+    }
+
+    public String getGioiTinh () {
+        if (gioiTinh) return "Nam";
+        else return "Nữ";
+    }
+
+    public void setGioiTinh (boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
     }
 }

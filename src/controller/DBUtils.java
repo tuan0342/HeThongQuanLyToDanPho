@@ -164,6 +164,7 @@ public class DBUtils {
                 String idNhanKhau = resultSet.getString("IdNhanKhau");
                 String idHoKhau = id;
                 String hoTen = resultSet.getString("HoTen");
+                boolean gioiTinh = resultSet.getBoolean("GioiTinh");
                 String quanHeVoiChuHo = resultSet.getString("QuanHeVoiChuHo");
                 int chuHo = resultSet.getInt("ChuHo");
                 String biDanh = resultSet.getString("BiDanh");
@@ -177,7 +178,7 @@ public class DBUtils {
                 Date ngayCap = resultSet.getDate("NgayCap");
                 String noiCap = resultSet.getString("NoiCap");
                 String diaChiThuongTru = resultSet.getString("DiaChiThuongTru");
-                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen, biDanh, ngaySinh, nguyenQuan,
+                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen,gioiTinh, biDanh, ngaySinh, nguyenQuan,
                         danToc, ngheNghiep, noiLamViec, soCCCD, ngayCap, noiCap, TGDKTT, diaChiThuongTru, quanHeVoiChuHo, chuHo);
                 return nhanKhau;
             }
@@ -194,6 +195,7 @@ public class DBUtils {
                 String idNhanKhau = resultSet.getString("IdNhanKhau");
                 String idHoKhau = resultSet.getString("IdHoKhau");
                 String hoTen = resultSet.getString("HoTen");
+                boolean gioiTinh =resultSet.getBoolean("GioiTinh");
                 String quanHeVoiChuHo = resultSet.getString("QuanHeVoiChuHo");
                 int chuHo = resultSet.getInt("ChuHo");
                 String biDanh = resultSet.getString("BiDanh");
@@ -207,7 +209,7 @@ public class DBUtils {
                 Date ngayCap = resultSet.getDate("NgayCap");
                 String noiCap = resultSet.getString("NoiCap");
                 String diaChiThuongTru = resultSet.getString("DiaChiThuongTru");
-                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen, biDanh, ngaySinh, nguyenQuan,
+                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen, gioiTinh, biDanh, ngaySinh, nguyenQuan,
                         danToc, ngheNghiep, noiLamViec, soCCCD, ngayCap, noiCap, TGDKTT, diaChiThuongTru, quanHeVoiChuHo, chuHo);
                 return nhanKhau;
             }
@@ -273,6 +275,7 @@ public class DBUtils {
                 String idNhanKhau = resultSet.getString("IdNhanKhau");
                 String idHoKhau = resultSet.getString("IdHoKhau");
                 String hoTen = resultSet.getString("HoTen");
+                boolean gioiTinh = resultSet.getBoolean("GioiTinh");
                 String quanHeVoiChuHo = resultSet.getString("QuanHeVoiChuHo");
                 int chuHo = resultSet.getInt("ChuHo");
                 String biDanh = resultSet.getString("BiDanh");
@@ -286,43 +289,43 @@ public class DBUtils {
                 Date ngayCap = resultSet.getDate("NgayCap");
                 String noiCap = resultSet.getString("NoiCap");
                 String diaChiThuongTru = resultSet.getString("DiaChiThuongTru");
-                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen, biDanh, ngaySinh, nguyenQuan,
+                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen, gioiTinh, biDanh, ngaySinh, nguyenQuan,
                         danToc, ngheNghiep, noiLamViec, soCCCD, ngayCap, noiCap, TGDKTT, diaChiThuongTru, quanHeVoiChuHo, chuHo);
                 NhanKhauStatic.themNhanKhau(nhanKhau);
             }
         }
     }
 
-    public static ObservableList<NhanKhau> dsNhanKhauTheoIdHoKhau (String idHoKhau) throws SQLException {
-        ObservableList<NhanKhau> dsNhanKhau = FXCollections.observableArrayList();
-        String cauLenh = "SELECT * FROM NhanKhau NK\n" +
-                "WHERE NK.IdHoKhau = " + idHoKhau;
-        ResultSet resultSet = ThucThiLechSelect(cauLenh);
-        if (resultSet != null) {
-            while (resultSet.next()) {
-                String idNhanKhau = resultSet.getString("IdNhanKhau");
-                String idHoKhau1 = resultSet.getString("IdHoKhau");
-                String hoTen = resultSet.getString("HoTen");
-                String quanHeVoiChuHo = resultSet.getString("QuanHeVoiChuHo");
-                int chuHo = resultSet.getInt("ChuHo");
-                String biDanh = resultSet.getString("BiDanh");
-                Date ngaySinh = resultSet.getDate("NgaySinh");
-                String nguyenQuan = resultSet.getString("NguyenQuan");
-                String danToc = resultSet.getString("DanToc");
-                String ngheNghiep = resultSet.getString("NgheNghiep");
-                String noiLamViec = resultSet.getString("NoiLamViec");
-                Date TGDKTT = resultSet.getDate("TGDKTT");
-                int soCCCD = resultSet.getInt("SoCCCD");
-                Date ngayCap = resultSet.getDate("NgayCap");
-                String noiCap = resultSet.getString("NoiCap");
-                String diaChiThuongTru = resultSet.getString("DiaChiThuongTru");
-                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen, biDanh, ngaySinh, nguyenQuan,
-                        danToc, ngheNghiep, noiLamViec, soCCCD, ngayCap, noiCap, TGDKTT, diaChiThuongTru, quanHeVoiChuHo, chuHo);
-                dsNhanKhau.add(nhanKhau);
-            }
-        }
-        return dsNhanKhau;
-    }
+//    public static ObservableList<NhanKhau> dsNhanKhauTheoIdHoKhau (String idHoKhau) throws SQLException {
+//        ObservableList<NhanKhau> dsNhanKhau = FXCollections.observableArrayList();
+//        String cauLenh = "SELECT * FROM NhanKhau NK\n" +
+//                "WHERE NK.IdHoKhau = " + idHoKhau;
+//        ResultSet resultSet = ThucThiLechSelect(cauLenh);
+//        if (resultSet != null) {
+//            while (resultSet.next()) {
+//                String idNhanKhau = resultSet.getString("IdNhanKhau");
+//                String idHoKhau1 = resultSet.getString("IdHoKhau");
+//                String hoTen = resultSet.getString("HoTen");
+//                String quanHeVoiChuHo = resultSet.getString("QuanHeVoiChuHo");
+//                int chuHo = resultSet.getInt("ChuHo");
+//                String biDanh = resultSet.getString("BiDanh");
+//                Date ngaySinh = resultSet.getDate("NgaySinh");
+//                String nguyenQuan = resultSet.getString("NguyenQuan");
+//                String danToc = resultSet.getString("DanToc");
+//                String ngheNghiep = resultSet.getString("NgheNghiep");
+//                String noiLamViec = resultSet.getString("NoiLamViec");
+//                Date TGDKTT = resultSet.getDate("TGDKTT");
+//                int soCCCD = resultSet.getInt("SoCCCD");
+//                Date ngayCap = resultSet.getDate("NgayCap");
+//                String noiCap = resultSet.getString("NoiCap");
+//                String diaChiThuongTru = resultSet.getString("DiaChiThuongTru");
+//                NhanKhau nhanKhau = new NhanKhau(idNhanKhau, idHoKhau, hoTen, biDanh, ngaySinh, nguyenQuan,
+//                        danToc, ngheNghiep, noiLamViec, soCCCD, ngayCap, noiCap, TGDKTT, diaChiThuongTru, quanHeVoiChuHo, chuHo);
+//                dsNhanKhau.add(nhanKhau);
+//            }
+//        }
+//        return dsNhanKhau;
+//    }
 
     public static void UpdateChuHoChoHoKhau (String idHoKhau, String tenChuHo, String idChuHo) {
         String cauLenh1 = "UPDATE HoKhau\n" +

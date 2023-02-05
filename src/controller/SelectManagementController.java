@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import model.UsersDAO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -76,6 +77,7 @@ public class SelectManagementController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setMenu();
+        System.out.print(UsersDAO.getCheck());
     }
 
     public void chonQuanLyHoKhauButton (Event event) {

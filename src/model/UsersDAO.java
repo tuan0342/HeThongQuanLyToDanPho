@@ -9,6 +9,16 @@ import java.util.Vector;
 public class UsersDAO {
 
     // Lấy thông tin user trong database dưới dạng Vector
+    private static int check  = 1;
+
+    public static int getCheck() {
+        return check;
+    }
+
+    public static void setCheck(int check) {
+        UsersDAO.check = check;
+    }
+
     public static Vector<Users> getUserFromDB() throws SQLException, ClassNotFoundException {
         String sql = "select * from [dbo].[Users]";
 

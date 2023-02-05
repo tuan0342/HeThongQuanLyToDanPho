@@ -63,10 +63,13 @@ public class QuanLyNhanKhau implements Initializable {
     TableColumn <NhanKhau, Integer> soCCCD;
     @FXML
     TableColumn <NhanKhau, String> ngheNghiep;
+    @FXML
+    TableColumn <NhanKhau, String> gioiTinh;
     public void setdsNhanKhau () {
         idHoKhau.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("idHoKhau"));
         idNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("idNhanKhau"));
         hoTen.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>( "hoTen"));
+        gioiTinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("gioiTinh"));
         ngaySinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, Date>("ngaySinh"));
         soCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhau, Integer>("soCCCD"));
         ngheNghiep.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("ngheNghiep"));

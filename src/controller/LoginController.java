@@ -56,6 +56,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        UsersDAO.setCheck(0);
         try {
             DBUtils.dbConnect();
         } catch (SQLException e) {
@@ -86,6 +87,7 @@ public class LoginController implements Initializable {
 
         // Sự kiện khi bấm "Login"
         button_login.setOnAction(event -> {
+
             String usernameTF = tf_username.getText();
             String passwordPWF = pwf_password.getText();
             System.out.println("username đã nhập trên màn hình: " + usernameTF + ", pass đã nhập trên màn hình: " + passwordPWF);

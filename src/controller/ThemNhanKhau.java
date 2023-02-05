@@ -1,7 +1,10 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import model.HoKhauStatic;
@@ -9,14 +12,16 @@ import model.NhanKhau;
 import model.NhanKhauStatic;
 import org.w3c.dom.Text;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
 import static java.sql.Date.valueOf;
 
-public class ThemNhanKhau {
+public class ThemNhanKhau implements Initializable {
     private static Scene preScene;
     public static Scene getPreScene() {
         return preScene;
@@ -47,7 +52,13 @@ public class ThemNhanKhau {
     public TextField diaChiThuongTru;
     public TextField quanHeChuHo;
     public DatePicker TGDKTT;
+
+    @FXML
+    public ComboBox<String> gioiTinh;
+    private ObservableList<String> list = FXCollections.observableArrayList("Nam", "Nữ");
+
     public void save (Event event) throws SQLException {
+        //Chưa thêm phần nhập căn cước công dân
         NhanKhau nhanKhau = new NhanKhau();
         if (idNhanKhau.getText() == "" || DBUtils.timNhanKhauTheoID(idNhanKhau.getText()) != null) {
             ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
@@ -138,7 +149,25 @@ public class ThemNhanKhau {
         } else {
             nhanKhau.setQuanHeChuHo(quanHeChuHo.getText());
         }
+
+        if (gioiTinh.getValue() == null) {
+            ShowAlert.showAlertError("Nhập sai", "Chọn giới tính");
+            return;
+        } else {
+            if (gioiTinh.getValue().compareTo("Nam") == 0) {
+                nhanKhau.setGioiTinh(true);
+            } else {
+                if (gioiTinh.getValue().compareTo("Nữ") == 0) {
+                    nhanKhau.setGioiTinh(false);
+                }
+            }
+        }
         HoKhauStatic.themNhanKhau(nhanKhau, nhanKhau.getIdHoKhau());
         DBUtils.changeScene(getPreScene(), event);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        gioiTinh.setItems(list);
     }
 }

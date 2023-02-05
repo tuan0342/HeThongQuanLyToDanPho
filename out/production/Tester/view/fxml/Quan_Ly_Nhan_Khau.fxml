@@ -16,14 +16,15 @@
       <TextField layoutX="675.0" layoutY="44.0" />
       <Label layoutX="538.0" layoutY="48.0" text="NHẬP ID NHÂN KHẨU" />
       <Button layoutX="731.0" layoutY="86.0" mnemonicParsing="false" text="TÌM" />
-      <TableView fx:id="dsNhanKhau" layoutX="36.0" layoutY="137.0" prefHeight="419.0" prefWidth="919.0">
+      <TableView fx:id="dsNhanKhau" layoutX="40.0" layoutY="128.0" prefHeight="419.0" prefWidth="919.0">
         <columns>
           <TableColumn fx:id="idHoKhau" prefWidth="75.0" text="ID Hộ khẩu" />
           <TableColumn fx:id="idNhanKhau" prefWidth="107.20001983642578" text="ID Nhân khẩu" />
             <TableColumn fx:id="hoTen" prefWidth="235.19998168945312" text="Họ và tên" />
-            <TableColumn fx:id="ngaySinh" minWidth="0.0" prefWidth="197.60000610351562" text="Ngày sinh" />
-            <TableColumn fx:id="soCCCD" minWidth="0.0" prefWidth="128.800048828125" text="Số CCCD" />
-            <TableColumn fx:id="ngheNghiep" minWidth="0.800048828125" prefWidth="175.199951171875" text="Nghề nghiệp" />
+            <TableColumn fx:id="gioiTinh" prefWidth="55.20001220703125" text="Giới tính" />
+            <TableColumn fx:id="ngaySinh" minWidth="0.0" prefWidth="174.4000244140625" text="Ngày sinh" />
+            <TableColumn fx:id="soCCCD" minWidth="0.0" prefWidth="150.40008544921875" text="Số CCCD" />
+            <TableColumn fx:id="ngheNghiep" minWidth="0.800048828125" prefWidth="118.39996337890625" text="Nghề nghiệp" />
         </columns>
       </TableView>
    </children>
