@@ -11,7 +11,7 @@ import javafx.fxml.FXMLLoader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class HoKhauStatic {
+public class HoKhauStatic  {
 //    private
     private static ObservableList<HoKhau> dsHoKhau = FXCollections.observableArrayList();
     private static ThemHoKhau themHoKhau;

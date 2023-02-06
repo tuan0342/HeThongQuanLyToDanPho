@@ -34,11 +34,15 @@ public class SelectManagementController implements Initializable {
     public Scene QuanLyNhanKhau;
     public Scene QuanLyKhoanThu;
     public Scene QuanLyKhoanDongGop;
+    public Scene QuanLyTamTruTamVang;
 
     public Button QuanLyHoKhauButton;
     public Button QuanLyNhanKhauButton;
     public Button QuanLyKhoanThuButton;
     public Button QuanLyKhoanDongGopButton;
+    @FXML
+    public Button QuanLyTamTruTamVangButton;
+
 
     public Button Back;
 
@@ -71,6 +75,12 @@ public class SelectManagementController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        FXMLLoader QLTTTV = new FXMLLoader(QuanLyTamTruTamVang.class.getResource("/view/fxml/QuanLyTamTruTamVang.fxml"));
+        try {
+            this.QuanLyTamTruTamVang = new Scene(QLTTTV.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
@@ -81,6 +91,7 @@ public class SelectManagementController implements Initializable {
             QuanLyHoKhauButton.setDisable(false);
             QuanLyNhanKhauButton.setDisable(false);
             QuanLyKhoanThuButton.setDisable(false);
+            QuanLyKhoanDongGopButton.setDisable(false);
             QuanLyKhoanDongGopButton.setDisable(false);
         } else {
             QuanLyHoKhauButton.setDisable(true);
@@ -112,6 +123,12 @@ public class SelectManagementController implements Initializable {
         controller.QuanLyKhoanDongGop.setCurScene(this.QuanLyKhoanDongGop);
         controller.QuanLyKhoanDongGop.setPreScene(curScene);
         DBUtils.changeScene(QuanLyKhoanDongGop, event);
+    }
+    public void chonQuanLyTamTruTamVangButton (Event event) {
+        controller.QuanLyTamTruTamVang.setCurScene(this.QuanLyTamTruTamVang);
+        controller.QuanLyTamTruTamVang.setPreScene(curScene);
+        DBUtils.changeScene(QuanLyTamTruTamVang, event);
+
     }
 
     public void Back (Event event) {

@@ -9,17 +9,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.HoKhau;
-import model.HoKhauStatic;
-import model.NhanKhau;
-import model.NhanKhauStatic;
+import model.*;
 
 import java.sql.*;
 
 
 public class DBUtils {
-    //private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
-    private static String dbURL = "jdbc:sqlserver://DESKTOP-BM4SH04:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
+    private static String dbURL = "jdbc:sqlserver://localhost:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
+   // private static String dbURL = "jdbc:sqlserver://DESKTOP-BM4SH04:1433;databaseName=QuanLyToDanPho;encrypt=true;trustServerCertificate=true;";
     private static String user = "sa"; // user trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static String pass = "123";  // pass trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static Connection connection ;
@@ -344,4 +341,50 @@ public class DBUtils {
                 "WHERE IdNhanKhau = '" + idNhanKhau + "'\n";
         ThucThiCauLenhUpdate(cauLenh3);
     }
+    //Load ds khai bao tam tru tam vang
+    public static void loadDsTamTruTamVang() throws SQLException {
+        String cauLenh = "SELECT * FROM QuanLyTamTruTamVang";
+        ResultSet resultSet =  ThucThiLechSelect(cauLenh);
+        if (resultSet != null){
+            while (resultSet.next()) {
+                Integer IdKhaiBao = resultSet.getInt("IdKhaiBao");
+                String Loai = resultSet.getString("Loai");
+                String HoTen = resultSet.getString("HoTen");
+                Date NgaySinh = resultSet.getDate("NgaySinh");
+                String GioiTinh = resultSet.getString("GioiTinh");
+                String QuocTich =resultSet.getString("QuocTich");
+                String SoCCCD = resultSet.getString("SoCCCD");
+
+                Date NgayDangKy = resultSet.getDate("NgayDangKy");
+                Date NgayKetThuc = resultSet.getDate("NgayKetThuc");
+                String DiaChiThuongTru = resultSet.getString("DiaChiThuongTru");
+                String DiaChiTamTruTamVang = resultSet.getString("DiaChiTamTruTamVang");
+                String LyDo = resultSet.getString("LyDo");
+                KhaiBaoTamTruTamVang khaiBaoTamTruTamVang = new KhaiBaoTamTruTamVang(IdKhaiBao, Loai, HoTen, NgaySinh, GioiTinh, QuocTich, SoCCCD, NgayDangKy,NgayKetThuc,DiaChiThuongTru, DiaChiTamTruTamVang,LyDo);
+                KhaiBaoTamTruTamVangStatic.themKhaiBaoTamTruTamVang(khaiBaoTamTruTamVang);
+            }
+        }
+    }
+
+    // them khai bao tam tru tam vang
+    public static void themKhaiBaoTamTruTamVang(KhaiBaoTamTruTamVang khaiBaoTamTruTamVang) {
+        // Them phuong thuc update so nhan Khau trong ho khau nay
+        String cauLenh = "INSERT INTO QuanLyTamTruTamVang\n" +
+                "VALUES (\n" +
+//                "\t'"+khaiBaoTamTruTamVang.getIdKhaiBao()+"',\n" +
+                "\tN'"+khaiBaoTamTruTamVang.getLoai()+"',\n" +
+                "\tN'"+khaiBaoTamTruTamVang.getHoTen()+"',\n" +
+                "\t'"+khaiBaoTamTruTamVang.getNgaySinh()+"',\n" +
+                "\tN'"+khaiBaoTamTruTamVang.getGioiTinh()+"',\n" +
+                "\tN'"+khaiBaoTamTruTamVang.getQuocTich()+"',\n" +
+                "\tN'"+khaiBaoTamTruTamVang.getSoCCCD()+"',\n" +
+                "\t'"+khaiBaoTamTruTamVang.getNgayDangKy()+"',\n" +
+                "\t'"+khaiBaoTamTruTamVang.getNgayKetThuc()+"',\n" +
+                "\tN'"+khaiBaoTamTruTamVang.getDiaChiThuongTru()+"',\n" +
+                "\tN'"+khaiBaoTamTruTamVang.getDiaChiTamTruTamVang()+"',\n" +
+                "\tN'"+khaiBaoTamTruTamVang.getLyDo()+"');";
+        ThucThiCauLenhUpdate(cauLenh);
+    }
+
+
 }

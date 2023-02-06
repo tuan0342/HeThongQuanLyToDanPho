@@ -33,10 +33,15 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="QuanLyKhoanDongGopButton" layoutX="373.0" layoutY="520.0" mnemonicParsing="false" onAction="#chonQuanLyKhoanDongGopButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý khoản đóng góp">
+      <Button fx:id="QuanLyKhoanDongGopButton" layoutX="373.0" layoutY="516.0" mnemonicParsing="false" onAction="#chonQuanLyKhoanDongGopButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý đóng góp">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
-      </Button>
+      </Button >
+      <Button fx:id="QuanLyTamTruTamVangButton" layoutX="720.0" layoutY="310.0" mnemonicParsing="false" onAction="#chonQuanLyTamTruTamVangButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý tạm trú tạm vắng" >
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Button >
    </children>
 </AnchorPane>
