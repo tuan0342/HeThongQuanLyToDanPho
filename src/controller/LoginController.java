@@ -55,7 +55,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        UsersDAO.setCheck(0);
+//        UsersDAO.setCheck(0);
         try {
             DBUtils.dbConnect();
         } catch (SQLException e) {
@@ -121,9 +121,9 @@ public class LoginController implements Initializable {
 
 
                 if (vectorUsers.get(i).getChucVu().equals("Kế toán")) {
-                    UsersDAO.setCheck(0);
+//                    UsersDAO.setCheck(0);
                 } else {
-                    UsersDAO.setCheck(1);
+//                    UsersDAO.setCheck(1);
                 }
                 System.out.println("Đăng nhập với tư cách là: " + vectorUsers.get(i).getChucVu());
                 return true;

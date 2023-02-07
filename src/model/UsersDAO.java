@@ -7,15 +7,15 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class UsersDAO {
-    private static int check = 1;
+//    private static int check = 1;
 
-    public static int getCheck() {
-        return check;
-    }
-
-    public static void setCheck(int check) {
-        UsersDAO.check = check;
-    }
+//    public static int getCheck() {
+//        return check;
+//    }
+//
+//    public static void setCheck(int check) {
+//        UsersDAO.check = check;
+//    }
 
     // Lấy thông tin user trong database dưới dạng Vector
     private static int check  = 1;

@@ -347,4 +347,19 @@ public class DBUtils {
                 "WHERE IdNhanKhau = '" + idNhanKhau + "'\n";
         ThucThiCauLenhUpdate(cauLenh3);
     }
+
+    public static void XoaHoKhau (String idHoKhau) throws SQLException {
+        String cauLenh0 = "DELETE FROM ChiTietKhoanThu \n" +
+                "WHERE IDHOKHAU = '"+ idHoKhau +"'";
+        ThucThiCauLenhUpdate(cauLenh0);
+        String cauLenh00 = "DELETE FROM ChiTietDongGop \n" +
+                "WHERE IDHOKHAU = '"+ idHoKhau +"'";
+        ThucThiCauLenhUpdate(cauLenh00);
+        String cauLenh1 = "DELETE FROM NhanKhau\n" +
+                    "WHERE IdHoKhau = '" + idHoKhau + "';\n";
+        ThucThiCauLenhUpdate(cauLenh1);
+        String cauLenh2 = "DELETE FROM HoKhau\n" +
+                    "WHERE IdHoKhau = '" + idHoKhau + "';";
+        ThucThiCauLenhUpdate(cauLenh2);
+    }
 }

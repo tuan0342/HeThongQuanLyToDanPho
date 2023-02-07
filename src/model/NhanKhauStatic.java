@@ -40,4 +40,8 @@ public class NhanKhauStatic {
             }
         }
     }
+
+    public static void xoaNhanKhau (String idHoKhau) {
+        dsNhanKhau.removeAll(xuatDsNhanKhau(idHoKhau));
+    }
 }

@@ -1,13 +1,8 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -15,18 +10,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.HoKhau;
 import model.NhanKhau;
 import model.NhanKhauStatic;
 
-import java.net.URL;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class ThayDoiChuHo {
     private static Scene preScene;
@@ -138,6 +126,7 @@ public class ThayDoiChuHo {
             if (duocChon.getIdNhanKhau().compareTo(idChuHoMoi) == 0) {
                 quanHeChuHoMoi.setText("Chủ hộ");
                 quanHeChuHoMoi.setDisable(true);
+                luuThayDoi.setDisable(true);
             } else {
                 String quanHe = quanHeMoi.get(duocChon.getIdNhanKhau());
                 if (quanHe == null) {
@@ -146,6 +135,7 @@ public class ThayDoiChuHo {
                     quanHeChuHoMoi.setText(quanHe);
                 }
                 quanHeChuHoMoi.setDisable(false);
+                luuThayDoi.setDisable(false);
             }
         });
     }
@@ -166,7 +156,7 @@ public class ThayDoiChuHo {
         } else {
             quanHeMoi.put(duocChon.getIdNhanKhau(), quanHeChuHoMoi.getText());
         }
-        if (quanHeMoi.size() == soLuong) {
+        if (quanHeMoi.size() == soLuong+1) {
             hoanTatSuaDoi.setDisable(false);
         };
     }

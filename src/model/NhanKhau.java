@@ -1,5 +1,8 @@
 package model;
 
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
+
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -20,6 +23,9 @@ public class NhanKhau {
     private Date thoiGianDKThuongTru;
     private String diaChiThuongTru;
     private String quanHeChuHo;
+    private CheckBox chonHayKhong;
+    private TextField thuCanDien;
+
 
     private int chuHo;
     // khởi tạo nhân khẩu
@@ -180,6 +186,16 @@ public class NhanKhau {
         return false;
     }
 
+    public boolean timTheoHoKhauNhungNhanKhauKhongPhaiChuHo (String idHoKhau) {
+        if (getIdHoKhau().compareTo(idHoKhau) == 0 && getChuHo() != 1) return true;
+        return false;
+    }
+
+    public boolean timTheoNhanKhau (String idNhanKhau) {
+        if (getIdNhanKhau().compareTo(idNhanKhau) == 0) return true;
+        return false;
+    }
+
     public String getGioiTinh () {
         if (gioiTinh) return "Nam";
         else return "Nữ";
@@ -187,5 +203,26 @@ public class NhanKhau {
 
     public void setGioiTinh (boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
+    }
+
+    public CheckBox getChonHayKhong() {
+        return chonHayKhong;
+    }
+
+    public void setChonHayKhong(CheckBox chonHayKhong) {
+        this.chonHayKhong = chonHayKhong;
+    }
+
+    public TextField getThuCanDien() {
+        return thuCanDien;
+    }
+
+    public void setThuCanDien(TextField thuCanDien) {
+        this.thuCanDien = thuCanDien;
+    }
+
+    public void canThiMoiGoi () {
+        chonHayKhong = new CheckBox();
+        thuCanDien = new TextField();
     }
 }

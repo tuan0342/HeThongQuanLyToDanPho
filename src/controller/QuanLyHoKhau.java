@@ -90,8 +90,7 @@ public class QuanLyHoKhau implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setTable();
     }
-    public void xoaHo (Event event) {
-    }
+
     public void themHoKhau (Event event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ThemHoKhau.class.getResource("/view/fxml/ThemHoKhau.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -106,11 +105,23 @@ public class QuanLyHoKhau implements Initializable {
     }
 
     public void tachHo (Event event) throws IOException {
-        FXMLLoader fxmlLoader  = new FXMLLoader(TachHo.class.getResource("/view/fxml/TachHo.fxml"));
-        Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root, 1000, 600);
-        TachHo.setPreScene(getCurScene());
-        DBUtils.changeScene(scene, event);
+        if (dsHoKhau.getSelectionModel().getSelectedItem() == null) {
+            ShowAlert.showAlertError("Chọn lại đê", "Chọn sai");
+            return;
+        } else {
+            HoKhau duocChon = dsHoKhau.getSelectionModel().getSelectedItem();
+            if (duocChon.getSoLuongNhanKhau() <= 1) {
+                ShowAlert.showAlertError("Chọn lại đê", "Chọn hộ khẩu có một đứa thì tách kiểu gì");
+            } else {
+                FXMLLoader fxmlLoader  = new FXMLLoader(TachHo.class.getResource("/view/fxml/TachHo.fxml"));
+                Parent root = fxmlLoader.load();
+                Scene scene = new Scene(root, 1000, 600);
+                TachHo tachHo = fxmlLoader.getController();
+                tachHo.setDsNhanKhau(duocChon.getIdHoKhau());
+                TachHo.setPreScene(getCurScene());
+                DBUtils.changeScene(scene, event);
+            }
+        }
     }
 
     public void thayDoiChuHo (Event event) throws IOException {
@@ -126,6 +137,20 @@ public class QuanLyHoKhau implements Initializable {
             DBUtils.changeScene(scene, event);
         } else {
             ShowAlert.showAlertError("Thất bại", "Chọn hộ khẩu cần thay đổi chủ hộ hoặc chọn hộ khẩu có nhiều hơn 1 nhân khẩu");
+        }
+    }
+
+    public void xoaHo (Event event) throws SQLException {
+//        DBUtils.XoaHoKhau("123");
+////        DBUtils.XoaHoKhau("123");
+////        System.out.println(DBUtils.timTheoID("123").getTenChuHo());
+        if (ShowAlert.showAlertYN("Chắc chưa", "Xóa là mất đấy")) {
+            HoKhau duocChon = dsHoKhau.getSelectionModel().getSelectedItem();
+            String idHoKhau = duocChon.getIdHoKhau();
+            DBUtils.XoaHoKhau(idHoKhau);
+            NhanKhauStatic.xoaNhanKhau(idHoKhau);
+            HoKhauStatic.getDsHoKhau().remove(duocChon);
+            dsHoKhau.refresh();
         }
     }
 }
