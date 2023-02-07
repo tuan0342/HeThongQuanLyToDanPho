@@ -178,9 +178,19 @@ public class QuanLyTamTruTamVang implements Initializable {
     }
 
     public void reset (Event event) throws Exception {
-        clearData();
-        dsKhaiBaoTamTruTamVang.getItems().clear();
-        setTable();
+        if (count == 1) {
+            clearData();
+            dsKhaiBaoTamTruTamVang.getItems().clear();
+            count = 0;
+            setColumn();
+
+        } else {
+            clearData();
+            dsKhaiBaoTamTruTamVang.getItems().clear();
+            setTable();
+        }
+
+
     }
 
 
@@ -194,15 +204,16 @@ public class QuanLyTamTruTamVang implements Initializable {
     //tim kiem nhan khau
     public TextField SearchTextField;
     public Button SearchButton;
+    private int count = 0;
 
     public void search(Event event) throws Exception{
 
+
         if (SearchTextField.getText().length() == 0) {
             ShowAlert.showAlertError("Mời bạn nhập  id hoặc họ tên!", "Mời bạn nhập lại");
-        } else if(!SearchTextField.getText().equals("*")) {
+        } else  {
             loadSearchDataFromDBQLTTTV();
-        }else {
-            setTable();
+            count = 1;
         }
 
     }
@@ -211,7 +222,11 @@ public class QuanLyTamTruTamVang implements Initializable {
     private void loadSearchDataFromDBQLTTTV() {
         ObservableList<KhaiBaoTamTruTamVang> listKhaiBaoTamTruTamVangCoDK = FXCollections.observableArrayList();
         listKhaiBaoTamTruTamVangCoDK = KhaiBaoTamTruTamVangStatic.getPartRecords(SearchTextField.getText());
-        dsKhaiBaoTamTruTamVang.setItems(listKhaiBaoTamTruTamVangCoDK);
+        if (listKhaiBaoTamTruTamVangCoDK.size() == 0) {
+            ShowAlert.showAlertError("Không có dữ liệu trong bảng!", "Mời bạn nhập lại");
+        } else {
+            dsKhaiBaoTamTruTamVang.setItems(listKhaiBaoTamTruTamVangCoDK);
+        }
     }
 
 
@@ -247,6 +262,12 @@ public class QuanLyTamTruTamVang implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        setColumn();
+
+    }
+
+    // set column cho bang
+    public void setColumn(){
         IdKhaiBao.setCellValueFactory(new PropertyValueFactory<KhaiBaoTamTruTamVang, Integer>("IdKhaiBao"));
         Loai.setCellValueFactory(new PropertyValueFactory<KhaiBaoTamTruTamVang, String>("Loai"));
         HoTen.setCellValueFactory(new PropertyValueFactory<KhaiBaoTamTruTamVang, String>("HoTen"));
@@ -261,6 +282,7 @@ public class QuanLyTamTruTamVang implements Initializable {
         if (KhaiBaoTamTruTamVangStatic.getDsKhaiBaoTamTruTamVang().isEmpty()) {
             System.out.println("EMPTY");
         }
+
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {

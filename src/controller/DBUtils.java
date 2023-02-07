@@ -386,5 +386,7 @@ public class DBUtils {
         ThucThiCauLenhUpdate(cauLenh);
     }
 
+    // load khai bao tam tru tam vang co dk
+
 
 }
