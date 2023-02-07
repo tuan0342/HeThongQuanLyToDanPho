@@ -15,6 +15,7 @@ import model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -80,6 +81,8 @@ public class QuanLyTamTruTamVang implements Initializable {
     public void save (Event event) throws SQLException {
         KhaiBaoTamTruTamVang khaiBaoTamTruTamVang = new KhaiBaoTamTruTamVang();
         int count = 0;
+        LocalDate todayDate = LocalDate.now();
+
         if (LoaiChoiceBox.getValue() == null) {
             count++;
             ShowAlert.showAlertError("Chưa chọn Loại Khai Báo","Mời Bạn Chọn Lại");
@@ -90,7 +93,6 @@ public class QuanLyTamTruTamVang implements Initializable {
         if (HoTenTextField.getText().length() == 0) {
             count++;
             ShowAlert.showAlertError("Chưa Nhập Họ Tên!", "Mời Bạn Nhập lại");
-
         } else {
             khaiBaoTamTruTamVang.setHoTen(HoTenTextField.getText());
         }
@@ -98,11 +100,15 @@ public class QuanLyTamTruTamVang implements Initializable {
         if (NgaySinhDatePicker.getValue() == null) {
             count++;
             ShowAlert.showAlertError("Chưa chọn ngày sinh!", "Mời bạn chọn lại");
+        } else if(NgaySinhDatePicker.getValue().compareTo(todayDate) > 0 ) {
+            count++;
+            ShowAlert.showAlertError("Chọn ngày sinh sai!", "Mời bạn chọn lại");
+            NgaySinhDatePicker.getEditor().clear();
         } else {
             khaiBaoTamTruTamVang.setNgaySinh(valueOf(NgaySinhDatePicker.getValue()));
         }
 
-        if (GioiTinhChoiceBox.getValue() == null) {
+        if (GioiTinhChoiceBox.getValue() == null  ) {
             count++;
             ShowAlert.showAlertError("Chưa chọn giới tính!", "Mời bạn chọn lại");
         } else {
@@ -118,9 +124,14 @@ public class QuanLyTamTruTamVang implements Initializable {
 
         khaiBaoTamTruTamVang.setSoCCCD(SoCCCDTextField.getText());
 
+//        NgayDangKyDatePicker.setValue(LocalDate.now());
        if (NgayDangKyDatePicker.getValue() == null) {
            count++;
            ShowAlert.showAlertError("Bạn chưa chọn ngày đăng ký!","Mời bạn chọn lại");
+       } else if (NgayDangKyDatePicker.getValue().compareTo(todayDate) > 0 || (NgayKetThucDatePicker.getValue() != null && NgayDangKyDatePicker.getValue().compareTo(NgayKetThucDatePicker.getValue()) > 0)) {
+           count++;
+           ShowAlert.showAlertError("Chọn ngày đăng ký sai!", "Mời bạn chọn lại");
+           NgayDangKyDatePicker.getEditor().clear();
        } else {
            khaiBaoTamTruTamVang.setNgayDangKy(valueOf(NgayDangKyDatePicker.getValue()));
        }
@@ -128,6 +139,11 @@ public class QuanLyTamTruTamVang implements Initializable {
       if (NgayKetThucDatePicker.getValue() == null) {
           count++;
           ShowAlert.showAlertError("Bạn chưa chọn ngày kết thúc!","Mời bạn chọn lại");
+
+      } else if ( NgayKetThucDatePicker.getValue().compareTo(NgayDangKyDatePicker.getValue()) < 0 || NgayKetThucDatePicker.getValue().compareTo(todayDate) < 0) {
+          count++;
+          ShowAlert.showAlertError("Chọn ngày kết thúc sai!", "Mời bạn chọn lại");
+          NgayKetThucDatePicker.getEditor().clear();
       } else {
           khaiBaoTamTruTamVang.setNgayKetThuc(valueOf(NgayKetThucDatePicker.getValue()));
       }
@@ -174,7 +190,7 @@ public class QuanLyTamTruTamVang implements Initializable {
         DiaChiThuongTruTextField.clear();
         DiaChiTamTruTamVangField.clear();
         LyDoTextField.clear();
-
+        SearchTextField.clear();
     }
 
     public void reset (Event event) throws Exception {
@@ -192,13 +208,6 @@ public class QuanLyTamTruTamVang implements Initializable {
 
 
     }
-
-
-
-
-
-
-
 
 
     //tim kiem nhan khau
@@ -282,14 +291,12 @@ public class QuanLyTamTruTamVang implements Initializable {
         if (KhaiBaoTamTruTamVangStatic.getDsKhaiBaoTamTruTamVang().isEmpty()) {
             System.out.println("EMPTY");
         }
-
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setTable();
         LoaiChoiceBox.getItems().addAll(listLoaiChoiceBox);
         GioiTinhChoiceBox.getItems().addAll(listGioiTinhChoiceBox);
-
     }
 
     //
