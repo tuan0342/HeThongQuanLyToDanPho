@@ -7,13 +7,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import model.HoKhauStatic;
-import model.NhanKhau;
-import model.NhanKhauStatic;
+import model.*;
 import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -29,14 +29,23 @@ public class ThemNhanKhau implements Initializable {
     public static void setPreScene(Scene preScene) {
         ThemNhanKhau.preScene = preScene;
     }
+
+    private int menu;
+
+    public int getMenu() {
+        return menu;
+    }
+
+    public void setMenu(int menu) {
+        this.menu = menu;
+    }
+
     public Button Back;
     public void back (Event event) {
         DBUtils.changeScene(getPreScene(), event);
     }
 
     public Button Save;
-    @FXML
-    public TextField idNhanKhau;
     @FXML
     public TextField idHoKhau;
     public TextField hoTen;
@@ -57,16 +66,75 @@ public class ThemNhanKhau implements Initializable {
     public ComboBox<String> gioiTinh;
     private ObservableList<String> list = FXCollections.observableArrayList("Nam", "Nữ");
 
+    private NhanKhau nhanKhauCanSua;
+
+    public NhanKhau getNhanKhauCanSua() {
+        return nhanKhauCanSua;
+    }
+
+    public void setNhanKhauCanSua(NhanKhau nhanKhauCanSua) {
+        this.nhanKhauCanSua = nhanKhauCanSua;
+        suaNhanKhau();
+    }
+
+    public void suaNhanKhau () {
+        idHoKhau.setText(nhanKhauCanSua.getIdHoKhau());
+        idHoKhau.setDisable(true);
+
+        hoTen.setText(nhanKhauCanSua.getHoTen());
+        hoTen.setDisable(true);
+
+        biDanh.setText(nhanKhauCanSua.getBiDanh());
+        biDanh.setDisable(true);
+
+        ;
+        ngaySinh.setValue(LocalDate.parse(nhanKhauCanSua.getNgaySinh().toString()));
+//        ngaySinh.setDisable(true);
+
+        nguyenQuan.setText(nhanKhauCanSua.getNguyenQuan());
+        nguyenQuan.setDisable(true);
+
+        danToc.setText(nhanKhauCanSua.getDanToc());
+//        danToc.setDisable(true);
+
+        ngheNghiep.setText(nhanKhauCanSua.getNgheNghiep());
+//        ngheNghiep.setDisable(true);
+
+        noiLamViec.setText(nhanKhauCanSua.getNoiLamViec());
+//        noiLamViec.setDisable(true);
+
+        soCCCD.setText(nhanKhauCanSua.getSoCCCD()+"");
+//        soCCCD.setDisable(true);
+
+        ngayCap.setValue(LocalDate.parse(nhanKhauCanSua.getNgayCap().toString()));
+//        hoTen.setDisable(true);
+
+        noiCap.setText(nhanKhauCanSua.getNoiCap());
+//        noiCap.setDisable(true);
+
+        diaChiThuongTru.setText(nhanKhauCanSua.getDiaChiThuongTru());
+        diaChiThuongTru.setDisable(true);
+
+        if (nhanKhauCanSua.getThoiGianDKThuongTru() != null) {
+            TGDKTT.setValue(LocalDate.parse(nhanKhauCanSua.getThoiGianDKThuongTru().toString()));
+        }
+//        TGDKTT.setDisable(true);
+
+        gioiTinh.setValue(nhanKhauCanSua.getGioiTinh());
+        gioiTinh.setDisable(true);
+
+        quanHeChuHo.setText(nhanKhauCanSua.getQuanHeChuHo());
+        if (nhanKhauCanSua.getChuHo() == 1) {
+            quanHeChuHo.setDisable(true);
+        } else {
+            quanHeChuHo.setDisable(false);
+        }
+    }
+
+//    public void themNhanKhau (HoKhau hoKhau)
     public void save (Event event) throws SQLException {
         //Chưa thêm phần nhập căn cước công dân
         NhanKhau nhanKhau = new NhanKhau();
-        if (idNhanKhau.getText() == "" || DBUtils.timNhanKhauTheoID(idNhanKhau.getText()) != null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
-            return;
-        } else {
-            nhanKhau.setIdNhanKhau(idNhanKhau.getText());
-        }
-
         if (idHoKhau.getText() == null) {
             ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
@@ -162,7 +230,31 @@ public class ThemNhanKhau implements Initializable {
                 }
             }
         }
-        HoKhauStatic.themNhanKhau(nhanKhau, nhanKhau.getIdHoKhau());
+        if (getMenu() == 3) {
+            nhanKhauCanSua.setNgaySinh(nhanKhau.getNgaySinh());
+            nhanKhauCanSua.setNgheNghiep(nhanKhau.getNgheNghiep());
+            nhanKhauCanSua.setNoiLamViec(nhanKhau.getNoiLamViec());
+            nhanKhauCanSua.setDanToc(nhanKhau.getDanToc());
+            nhanKhauCanSua.setSoCCCD(nhanKhau.getSoCCCD());
+            nhanKhauCanSua.setNoiCap(nhanKhau.getNoiCap());
+            nhanKhauCanSua.setNgayCap(nhanKhau.getNgayCap());
+            nhanKhauCanSua.setQuanHeChuHo(nhanKhau.getQuanHeChuHo());
+            nhanKhauCanSua.setThoiGianDKThuongTru(nhanKhau.getThoiGianDKThuongTru());
+            String noiDung = "Sửa nhân khẩu với idNhanKhau: " + nhanKhauCanSua.getIdNhanKhau();
+            LichSuStatic.taoLichSu(nhanKhauCanSua.getIdHoKhau(), "Sửa", noiDung);
+        } else {
+            nhanKhau.setIdNhanKhau(SinhNgauNhien.sinhIdNhanKhau(nhanKhau.getHoTen(), nhanKhau.getDiaChiThuongTru()));
+            if (getMenu() == 4) {
+                NhanKhauStatic.themNhanKhau(nhanKhau);
+                HoKhau hoKhau = HoKhauStatic.getDsHoKhau().filtered(node -> node.timTheoHoKhau(nhanKhau.getIdHoKhau())).get(0);
+                int soLuong = hoKhau.getSoLuongNhanKhau()+1;
+                hoKhau.setSoLuongNhanKhau(soLuong);
+                String noiDung = "Thêm nhân khẩu idNhanKhau: " + nhanKhau.getIdNhanKhau();
+                LichSuStatic.taoLichSu(nhanKhau.getIdHoKhau(), "Thêm Nhân Khẩu", noiDung);
+            }else {
+                HoKhauStatic.themNhanKhau(nhanKhau);
+            }
+        }
         DBUtils.changeScene(getPreScene(), event);
     }
 
@@ -170,4 +262,8 @@ public class ThemNhanKhau implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gioiTinh.setItems(list);
     }
+//    @Override
+//    public String  () {
+//        String str = "Thêm nhân khẩu mới "
+//    }
 }

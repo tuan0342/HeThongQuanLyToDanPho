@@ -34,7 +34,7 @@
             <Label layoutX="24.0" layoutY="102.0" prefHeight="34.0" prefWidth="180.0" text="Chọn chủ hộ mới" />
             <ChoiceBox fx:id="idChuHoMoi" layoutX="24.0" layoutY="136.0" prefWidth="150.0" />
             <Button fx:id="luu" layoutX="24.0" layoutY="174.0" mnemonicParsing="false" onAction="#luu" text="Lưu" />
-            <Button fx:id="hoanThanh" layoutX="24.0" layoutY="560.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="180.0" text="Hoàn thành" />
+            <Button fx:id="hoanThanh" layoutX="24.0" layoutY="560.0" mnemonicParsing="false" onAction="#HoanThanh" prefHeight="26.0" prefWidth="180.0" text="Hoàn thành" />
             <Label fx:id="tenChuHoMoi" layoutX="194.0" layoutY="131.0" prefHeight="34.0" prefWidth="180.0" />
          </children>
       </AnchorPane>

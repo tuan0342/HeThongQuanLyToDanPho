@@ -21,16 +21,16 @@
                <font>
                   <Font name="Arial" size="14.0" />
                </font></Label>
-            <Button fx:id="TachHo" layoutX="74.0" layoutY="327.0" mnemonicParsing="false" onAction="#tachHo" prefHeight="31.0" prefWidth="204.0" text="Tách hộ">
+            <Button fx:id="TachHo" layoutX="74.0" layoutY="403.0" mnemonicParsing="false" onAction="#tachHo" prefHeight="31.0" prefWidth="204.0" text="Tách hộ">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></Button>
-            <Button fx:id="ThayDoiChuHo" layoutX="74.0" layoutY="410.0" mnemonicParsing="false" onAction="#thayDoiChuHo" prefHeight="31.0" prefWidth="204.0" text="Thay đổi chủ hộ">
+            <Button fx:id="ThayDoiChuHo" layoutX="74.0" layoutY="480.0" mnemonicParsing="false" onAction="#thayDoiChuHo" prefHeight="31.0" prefWidth="204.0" text="Thay đổi chủ hộ">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></Button>
             <TextField layoutX="43.0" layoutY="106.0" prefHeight="30.0" prefWidth="156.0" />
-            <Button fx:id="XoaHo" layoutX="74.0" layoutY="250.0" mnemonicParsing="false" onAction="#xoaHo" prefHeight="31.0" prefWidth="204.0" text="Xóa hộ khẩu">
+            <Button fx:id="XoaHo" layoutX="74.0" layoutY="326.0" mnemonicParsing="false" onAction="#xoaHo" prefHeight="31.0" prefWidth="204.0" text="Xóa hộ khẩu">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></Button>
@@ -38,10 +38,15 @@
                <font>
                   <Font name="Arial" size="14.0" />
                </font></Button>
-            <Button fx:id="ThemHoKhauButton" layoutX="74.0" layoutY="175.0" mnemonicParsing="false" onAction="#themHoKhau" prefHeight="31.0" prefWidth="204.0" text="Thêm hộ khẩu">
+            <Button fx:id="ThemHoKhauButton" layoutX="74.0" layoutY="251.0" mnemonicParsing="false" onAction="#themHoKhau" prefHeight="31.0" prefWidth="204.0" text="Thêm hộ khẩu">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></Button>
+            <Button fx:id="XemChiTiet" layoutX="74.0" layoutY="180.0" mnemonicParsing="false" onAction="#XemChiTiet" prefHeight="31.0" prefWidth="204.0" text="Xem chi tiết">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="KhungThongTin" prefHeight="600.0" prefWidth="607.0">

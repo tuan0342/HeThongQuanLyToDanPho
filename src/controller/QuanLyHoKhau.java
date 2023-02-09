@@ -16,10 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import model.HoKhau;
-import model.HoKhauStatic;
-import model.NhanKhau;
-import model.NhanKhauStatic;
+import model.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -58,6 +55,7 @@ public class QuanLyHoKhau implements Initializable {
     public Button TachHoButton;
     public Button ThayDoiChuHo;
     public Button ThemHoKhauButton;
+    public Button XemChiTiet;
     @FXML
     public TableView<HoKhau> dsHoKhau;
     @FXML
@@ -69,11 +67,6 @@ public class QuanLyHoKhau implements Initializable {
     @FXML
     public TableColumn<HoKhau, Integer> soLuong;
     public void setTable () {
-        try {
-            DBUtils.loadDsHoKhau();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
         idHoKhau.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("idHoKhau"));
         tenChuHo.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("tenChuHo"));
         diaChi.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("diaChi"));
@@ -117,8 +110,9 @@ public class QuanLyHoKhau implements Initializable {
                 Parent root = fxmlLoader.load();
                 Scene scene = new Scene(root, 1000, 600);
                 TachHo tachHo = fxmlLoader.getController();
-                tachHo.setDsNhanKhau(duocChon.getIdHoKhau());
+                tachHo.setDsNhanKhau(duocChon.getIdHoKhau(), duocChon.getDiaChi(), duocChon);
                 TachHo.setPreScene(getCurScene());
+                tachHo.setHoKhauTableView(dsHoKhau);
                 DBUtils.changeScene(scene, event);
             }
         }
@@ -141,9 +135,6 @@ public class QuanLyHoKhau implements Initializable {
     }
 
     public void xoaHo (Event event) throws SQLException {
-//        DBUtils.XoaHoKhau("123");
-////        DBUtils.XoaHoKhau("123");
-////        System.out.println(DBUtils.timTheoID("123").getTenChuHo());
         if (ShowAlert.showAlertYN("Chắc chưa", "Xóa là mất đấy")) {
             HoKhau duocChon = dsHoKhau.getSelectionModel().getSelectedItem();
             String idHoKhau = duocChon.getIdHoKhau();
@@ -151,6 +142,21 @@ public class QuanLyHoKhau implements Initializable {
             NhanKhauStatic.xoaNhanKhau(idHoKhau);
             HoKhauStatic.getDsHoKhau().remove(duocChon);
             dsHoKhau.refresh();
+            LichSuStatic.taoLichSu(duocChon.getIdHoKhau(), "Xóa Hộ", "Xóa hộ khẩu");
+        }
+    }
+
+    public void XemChiTiet (Event event) throws IOException {
+        if (dsHoKhau.getSelectionModel().getSelectedItem() != null) {
+            HoKhau duocChon = dsHoKhau.getSelectionModel().getSelectedItem();
+            String idHoKhau = duocChon.getIdHoKhau();
+            FXMLLoader XemChiTiet = new FXMLLoader(QuanLyNhanKhau.class.getResource("/view/fxml/Quan_Ly_Nhan_Khau.fxml"));
+            Scene scene = new Scene(XemChiTiet.load());
+            QuanLyNhanKhau.setPreScene(this.curScene);
+            QuanLyNhanKhau.setCurScene(scene);
+            QuanLyNhanKhau quanLyNhanKhau = XemChiTiet.getController();
+            quanLyNhanKhau.hienThiThongTinHoKhau(duocChon);
+            DBUtils.changeScene(scene, event);
         }
     }
 }

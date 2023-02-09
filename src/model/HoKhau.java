@@ -44,4 +44,12 @@ public class HoKhau {
         this.tenChuHo = tenChuHo;
         this.diaChi = diaChi;
         this.soLuongNhanKhau = soLuongNhanKhau;
-    }}
+    }
+
+    public boolean timTheoHoKhau (String idHoKhau) {
+        if (getIdHoKhau().compareTo(idHoKhau) == 0) {
+            return true;
+        }
+        return false;
+    }
+}

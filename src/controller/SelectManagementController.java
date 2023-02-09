@@ -7,10 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import model.NhanKhauStatic;
 import model.UsersDAO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
@@ -32,6 +34,7 @@ public class SelectManagementController implements Initializable {
     }
     public Scene QuanLyHoKhau;
     public Scene QuanLyNhanKhau;
+    private QuanLyNhanKhau quanLyNhanKhau;
     public Scene QuanLyKhoanThu;
     public Scene QuanLyKhoanDongGop;
     public Scene QuanLyTamTruTamVang;
@@ -42,6 +45,11 @@ public class SelectManagementController implements Initializable {
     public Button QuanLyKhoanDongGopButton;
     @FXML
     public Button QuanLyTamTruTamVangButton;
+
+    @FXML
+    public Button XemLichSu;
+    @FXML
+    public Button XemThongKe;
 
 
     public Button Back;
@@ -58,6 +66,7 @@ public class SelectManagementController implements Initializable {
         FXMLLoader QLNK = new FXMLLoader(QuanLyNhanKhau.class.getResource("/view/fxml/Quan_Ly_Nhan_Khau.fxml"));
         try {
             this.QuanLyNhanKhau = new Scene(QLNK.load());
+            this.quanLyNhanKhau = QLNK.getController();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -86,6 +95,21 @@ public class SelectManagementController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            DBUtils.loadDsNhanKhau();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            DBUtils.loadDsHoKhau();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            DBUtils.loadDsLichSu();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         if (UsersDAO.getCheck() == 1) {
             QuanLyHoKhauButton.setDisable(false);
@@ -110,6 +134,7 @@ public class SelectManagementController implements Initializable {
     public void chonQuanLyNhanKhauButton (Event event) {
         controller.QuanLyNhanKhau.setCurScene(this.QuanLyNhanKhau);
         controller.QuanLyNhanKhau.setPreScene(curScene);
+        quanLyNhanKhau.dsNhanKhau.refresh();
         DBUtils.changeScene(QuanLyNhanKhau, event);
     }
 
@@ -133,5 +158,13 @@ public class SelectManagementController implements Initializable {
 
     public void Back (Event event) {
         DBUtils.changeScene(preScene, event);
+    }
+
+    public void chonXemLichSu (Event event) throws IOException {
+        FXMLLoader XemLichSu = new FXMLLoader(XemLichSu.class.getResource("/view/fxml/XemLichSu.fxml"));
+        Scene scene = new Scene(XemLichSu.load());
+        XemLichSu xemLichSu = XemLichSu.getController();
+        xemLichSu.setPreScene(this.curScene);
+        DBUtils.changeScene(scene, event);
     }
 }

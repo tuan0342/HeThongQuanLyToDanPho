@@ -32,6 +32,13 @@ public class HoKhauStatic  {
     public static void themHoKhau (HoKhau hoKhau) {
         HoKhauStatic.dsHoKhau.add(hoKhau);
     }
+    private static NhanKhau nhanKhauCanSua;
+    public static NhanKhau getNhanKhauCanSua() {
+        return nhanKhauCanSua;
+    }
+    public static void setNhanKhauCanSua(NhanKhau nhanKhauCanSua) {
+        HoKhauStatic.nhanKhauCanSua = nhanKhauCanSua;
+    }
 
     private static int menu;
         /*
@@ -48,7 +55,7 @@ public class HoKhauStatic  {
     public static void setMenu(int menu) {
         HoKhauStatic.menu = menu;
     }
-    public static void themNhanKhau (NhanKhau nhanKhau, String idHoKhau) {
+    public static void themNhanKhau (NhanKhau nhanKhau) {
         if (getThemHoKhau() == null) {
             return;
         }
@@ -60,6 +67,10 @@ public class HoKhauStatic  {
             //Ho Khau goi them nhan khau khong la chu ho
             getThemHoKhau().xongMenu(2, nhanKhau);
         }
+//        if (getMenu() == 3) {
+//            //Sua nhan khau
+//            nhanKhauCanSua.setNgheNghiep();
+//        }
     }
 
     public static void suaNhanKhau () {

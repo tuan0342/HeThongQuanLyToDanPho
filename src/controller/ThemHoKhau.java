@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.HoKhau;
-import model.HoKhauStatic;
-import model.NhanKhau;
-import model.NhanKhauStatic;
+import model.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,6 +68,7 @@ public class ThemHoKhau implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setButtonExtra(false);
         setTableView();
+        idHoKhau.setDisable(true);
     }
 
     public void setTableView () {
@@ -123,10 +121,11 @@ public class ThemHoKhau implements Initializable {
         dsNhanKhau.setItems(getDsNhanKhauCuaSceneNay());
     }
     public void setTaoChuHo (Event event) throws IOException, SQLException {
-        if (idHoKhau.getText() == "" || diaChi.getText() == "" || DBUtils.timChuHoTheoID(idHoKhau.getText()) != null){
+        if (diaChi.getText().compareTo("") == 0){
             ShowAlert.showAlertError("Lôi nhập thông tin", "Nhập lại đê");
             return;
         }
+        idHoKhau.setText(SinhNgauNhien.sinhIdHoKhau(diaChi.getText()));
         HoKhauStatic.setMenu(1);
         String idText = idHoKhau.getText();
         String diaChiText = diaChi.getText();
@@ -165,9 +164,13 @@ public class ThemHoKhau implements Initializable {
             hoKhau.setSoLuongNhanKhau(soLuong);
             HoKhauStatic.themHoKhau(hoKhau);
             DBUtils.themHoKhau(hoKhau);
+            String noiDung1 = "Thêm hộ khẩu ID hộ khẩu: " + hoKhau.getIdHoKhau();
+            LichSuStatic.taoLichSu(hoKhau.getIdHoKhau(), "Thêm Hộ Khẩu", noiDung1);
             for (NhanKhau e: dsNhanKhauCuaSceneNay) {
                 NhanKhauStatic.themNhanKhau(e);
                 DBUtils.themNhanKhau(e);
+                String noiDung2 = "Thêm nhân khẩu idNhanKhau: " + e.getIdNhanKhau();
+                LichSuStatic.taoLichSu(e.getIdHoKhau(), "Thêm Nhân Khẩu", noiDung2);
             }
             back(event);
         }

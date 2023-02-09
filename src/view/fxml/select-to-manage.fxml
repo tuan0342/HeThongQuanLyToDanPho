@@ -37,11 +37,13 @@
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
-      </Button >
-      <Button fx:id="QuanLyTamTruTamVangButton" layoutX="720.0" layoutY="310.0" mnemonicParsing="false" onAction="#chonQuanLyTamTruTamVangButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý tạm trú tạm vắng" >
+      </Button>
+      <Button fx:id="QuanLyTamTruTamVangButton" layoutX="720.0" layoutY="310.0" mnemonicParsing="false" onAction="#chonQuanLyTamTruTamVangButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý tạm trú tạm vắng">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
-      </Button >
+      </Button>
+      <Button fx:id="XemThongKe" layoutX="720.0" layoutY="413.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="255.0" text="Xem thống kê" />
+      <Button fx:id="XemLichSu" layoutX="720.0" layoutY="367.0" mnemonicParsing="false" onAction="#chonXemLichSu" prefHeight="26.0" prefWidth="255.0" text="Xem lịch sử" />
    </children>
 </AnchorPane>

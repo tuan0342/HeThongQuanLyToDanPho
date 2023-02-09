@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.HoKhau;
+import model.LichSuStatic;
 import model.NhanKhau;
 import model.NhanKhauStatic;
 
@@ -175,6 +176,8 @@ public class ThayDoiChuHo {
             }
             Back.setDisable(false);
             dsNhanKhau.refresh();
+            String noiDung = "Thay đổi chủ hộ của hộ khẩu có ID: " + HoKhauCanThayDoi.getIdHoKhau();
+            LichSuStatic.taoLichSu(HoKhauCanThayDoi.getIdHoKhau(), "Thay Đổi Chủ Hộ", noiDung);
         } else {
             return;
         }

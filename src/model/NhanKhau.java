@@ -201,6 +201,10 @@ public class NhanKhau {
         else return "Nữ";
     }
 
+    public boolean getGioiTinhBool () {
+        return this.gioiTinh;
+    }
+
     public void setGioiTinh (boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
