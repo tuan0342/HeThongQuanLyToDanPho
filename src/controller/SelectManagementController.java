@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import model.HoKhauStatic;
 import model.NhanKhauStatic;
 import model.UsersDAO;
 
@@ -35,6 +36,7 @@ public class SelectManagementController implements Initializable {
     public Scene QuanLyHoKhau;
     public Scene QuanLyNhanKhau;
     private QuanLyNhanKhau quanLyNhanKhau;
+    private QuanLyHoKhau quanLyHoKhau;
     public Scene QuanLyKhoanThu;
     public Scene QuanLyKhoanDongGop;
     public Scene QuanLyTamTruTamVang;
@@ -59,6 +61,7 @@ public class SelectManagementController implements Initializable {
         FXMLLoader QLHK = new FXMLLoader(QuanLyHoKhau.class.getResource("/view/fxml/QuanLyHoKhau.fxml"));
         try {
             this.QuanLyHoKhau = new Scene(QLHK.load());
+            this.quanLyHoKhau = QLHK.getController();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -128,6 +131,8 @@ public class SelectManagementController implements Initializable {
     public void chonQuanLyHoKhauButton (Event event) {
         controller.QuanLyHoKhau.setCurScene(this.QuanLyHoKhau);
         controller.QuanLyHoKhau.setPreScene(curScene);
+        quanLyHoKhau.dsHoKhau.setItems(HoKhauStatic.getDsHoKhau());
+        quanLyHoKhau.setTimKiem();
         DBUtils.changeScene(QuanLyHoKhau, event);
     }
 
@@ -135,6 +140,7 @@ public class SelectManagementController implements Initializable {
         controller.QuanLyNhanKhau.setCurScene(this.QuanLyNhanKhau);
         controller.QuanLyNhanKhau.setPreScene(curScene);
         quanLyNhanKhau.dsNhanKhau.refresh();
+        quanLyNhanKhau.setThanhTimKiem();
         DBUtils.changeScene(QuanLyNhanKhau, event);
     }
 

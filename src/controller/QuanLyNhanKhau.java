@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -48,7 +45,11 @@ public class QuanLyNhanKhau implements Initializable {
     public Button suaThongTin;
     @FXML
     public Button Xoa;
-    public Button Tim;
+    public Button TimKiem;
+    @FXML
+    public RadioButton TimTheoID;
+    public RadioButton TimTheoTenNhanKhau;
+    public RadioButton TimTheoIDHoKhau;
     public TextField DienIdNhanKhau;
     public Text hoTen1;
     public Text gioiTinh2;
@@ -109,16 +110,19 @@ public class QuanLyNhanKhau implements Initializable {
     }
 
     public void Tim (Event event) {
-        if (DienIdNhanKhau.getText() != null) {
-            String idNhanKhau = DienIdNhanKhau.getText();
-            if (!NhanKhauStatic.getDsNhanKhau().filtered(Node->Node.timTheoNhanKhau(idNhanKhau)).isEmpty()) {
-                NhanKhau nhanKhau = NhanKhauStatic.getDsNhanKhau().filtered(Node->Node.timTheoNhanKhau(idNhanKhau)).get(0);
-                hienThiThongTin(nhanKhau);
-            } else {
-                ShowAlert.showAlertError("Không tồn tại nhân khẩu", "Không tồn tại nhân khẩu này");
-            }
+        String timText = DienIdNhanKhau.getText();
+        if (timText == null) {
+            ShowAlert.showAlertError("Tìm thất bại", "Nhập từ khóa cần tìm");
         } else {
-            ShowAlert.showAlertError("Thất bại", "Nhập id nhân khẩu cần tìm");
+            if (TimTheoID.isSelected()) {
+                dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoNhanKhau(timText)));
+            }else {
+                if (TimTheoTenNhanKhau.isSelected()) {
+                    dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoTenNhanKhau(timText)));
+                } else {
+                    dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoHoKhau(timText)));
+                }
+            }
         }
     }
 
@@ -149,6 +153,8 @@ public class QuanLyNhanKhau implements Initializable {
                     NhanKhauStatic.getDsNhanKhau().remove(duocChon);
                     String thaoTac = "Xóa nhân khẩu có ID nhân khẩu: " + duocChon.getIdNhanKhau();
                     LichSuStatic.taoLichSu(duocChon.getIdHoKhau(), "Xóa", thaoTac);
+                    DBUtils.XoaNhanKhau(duocChon.getIdNhanKhau());
+                    DBUtils.thayDoiSoLuongHoKhau(duocChon.getIdHoKhau(), soLuong);
                 }
             }
         } else {
@@ -195,6 +201,10 @@ public class QuanLyNhanKhau implements Initializable {
         controller.setMenu(4);
         ThemNhanKhau.setPreScene(getCurScene());
         DBUtils.changeScene(scene, event);
+    }
+    public void setThanhTimKiem () {
+        DienIdNhanKhau.setText(null);
+        TimTheoID.setSelected(true);
     }
 
 //    public String

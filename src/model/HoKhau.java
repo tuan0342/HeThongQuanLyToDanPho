@@ -52,4 +52,18 @@ public class HoKhau {
         }
         return false;
     }
+
+    public boolean timTheoTenChuHo (String tenChuHo) {
+        if (getTenChuHo().compareTo(tenChuHo) == 0) {
+            return true;
+        }
+        return false;
+    }
+    public boolean timTheoDiaChi (String diaChi) {
+        if (getDiaChi().compareTo(diaChi) == 0) {
+            return true;
+        }
+        return false;
+    }
+
 }

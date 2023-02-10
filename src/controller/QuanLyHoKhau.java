@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,9 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -21,6 +21,7 @@ import model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class QuanLyHoKhau implements Initializable {
@@ -66,6 +67,14 @@ public class QuanLyHoKhau implements Initializable {
     public TableColumn<HoKhau, String> diaChi;
     @FXML
     public TableColumn<HoKhau, Integer> soLuong;
+    public Button TimKiem;
+    @FXML
+    public RadioButton TimTheoId;
+    public RadioButton TimTheoTenChuHo;
+    public RadioButton TimTheoDiaChi;
+//    public ToggleButton Tim;
+
+    public TextField FieldTim;
     public void setTable () {
         idHoKhau.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("idHoKhau"));
         tenChuHo.setCellValueFactory(new PropertyValueFactory<HoKhau, String>("tenChuHo"));
@@ -157,6 +166,27 @@ public class QuanLyHoKhau implements Initializable {
             QuanLyNhanKhau quanLyNhanKhau = XemChiTiet.getController();
             quanLyNhanKhau.hienThiThongTinHoKhau(duocChon);
             DBUtils.changeScene(scene, event);
+        }
+    }
+
+    public void setTimKiem () {
+        FieldTim.setText(null);
+        TimTheoId.setSelected(true);
+    }
+    public void Tim (Event event) {
+        String timText = FieldTim.getText();
+        if (timText == null) {
+            ShowAlert.showAlertError("Tìm thất bại", "Nhập từ khóa cần tìm");
+        } else {
+            if (TimTheoId.isSelected()) {
+                    dsHoKhau.setItems(HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoHoKhau(timText)));
+            }else {
+                if (TimTheoTenChuHo.isSelected()) {
+                    dsHoKhau.setItems(HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoTenChuHo(timText)));
+                } else {
+                    dsHoKhau.setItems(HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoDiaChi(timText)));
+                }
+            }
         }
     }
 }

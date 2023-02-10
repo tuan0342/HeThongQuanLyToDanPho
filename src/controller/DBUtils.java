@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import model.*;
 
 import java.sql.*;
+import java.time.format.DateTimeFormatter;
 
 
 public class DBUtils {
@@ -20,6 +21,8 @@ public class DBUtils {
     private static String user = "sa"; // user trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static String pass = "123";  // pass trên mỗi máy là khác nhau tùy cá nhân tự đặt
     private static Connection connection ;
+
+//    private static DateTimeFormatter dateTimeFormatter = new DateTimeFo
 
     // connect database
     public static void dbConnect() throws SQLException, ClassNotFoundException {
@@ -157,18 +160,25 @@ public class DBUtils {
                 "\tN'"+nhanKhau.getQuanHeChuHo()+"',\n" +
                 "\t"+nhanKhau.getChuHo()+",\n" +
                 "\tN'"+nhanKhau.getBiDanh()+"',\n" +
-                "\t"+nhanKhau.getNgaySinh()+",\n" +
+                "\t'"+nhanKhau.getNgaySinh()+"',\n" +
                 "\tN'"+nhanKhau.getNguyenQuan()+"',\n" +
                 "\tN'"+nhanKhau.getDanToc()+"',\n" +
                 "\tN'"+nhanKhau.getNgheNghiep()+"',\n" +
                 "\tN'"+nhanKhau.getNoiLamViec()+"',\n" +
-                "\t"+nhanKhau.getThoiGianDKThuongTru()+",\n" +
+                "\t'"+nhanKhau.getThoiGianDKThuongTru()+"',\n" +
                 "\t"+nhanKhau.getSoCCCD()+",\n" +
-                "\t"+nhanKhau.getNgayCap()+",\n" +
+                "\t'"+nhanKhau.getNgayCap()+"',\n" +
                 "\tN'"+nhanKhau.getNoiCap()+"',\n" +
                 "\tN'"+nhanKhau.getDiaChiThuongTru()+"'\n" +
                 ")\n";
         ThucThiCauLenhUpdate(cauLenh);
+    }
+
+    public static void thayDoiSoLuongHoKhau (String idHoKhau, int soLuong) {
+        String str1 = "UPDATE HoKhau\n" +
+                "SET SoLuongNhanKhau = "+soLuong+"\n" +
+                "WHERE IdHoKhau = '"+idHoKhau+"'";
+        ThucThiCauLenhUpdate(str1);
     }
 
     public static void loadDsHoKhau () throws SQLException {
@@ -295,8 +305,13 @@ public class DBUtils {
         ThucThiCauLenhUpdate(cauLenh3);
         ThucThiCauLenhUpdate(cauLenh4);
     }
-    // load khai bao tam tru tam vang co dk
 
+    public static void XoaNhanKhau (String idNhanKhau) {
+        String cauLenh1 = "DELETE FROM NhanKhau\n" +
+                "WHERE IdNhanKhau = '"+ idNhanKhau +"'";
+        ThucThiCauLenhUpdate(cauLenh1);
+    }
+    // load khai bao tam tru tam vang co dk
     public static void updateHoKhauChoNhanKhau (String idNhanKhau, String idHoKhau, int chuHo, String quanHeVoiChuHo) {
         String cauLenh1 = "UPDATE NhanKhau\n" +
                 "SET IdHoKhau = '"+idHoKhau+"', ChuHo = "+chuHo+", QuanHeVoiChuHo = N'"+quanHeVoiChuHo+"'\n" +

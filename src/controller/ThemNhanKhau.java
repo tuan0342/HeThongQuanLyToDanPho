@@ -190,6 +190,13 @@ public class ThemNhanKhau implements Initializable {
             nhanKhau.setNoiLamViec(noiLamViec.getText());
         }
 
+        if (TGDKTT.getValue() == null) {
+            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            return;
+        } else {
+            nhanKhau.setThoiGianDKThuongTru(valueOf(TGDKTT.getValue()));
+        }
+
         if (ngayCap.getValue() == null) {
             ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
             return;
@@ -240,6 +247,19 @@ public class ThemNhanKhau implements Initializable {
             nhanKhauCanSua.setNgayCap(nhanKhau.getNgayCap());
             nhanKhauCanSua.setQuanHeChuHo(nhanKhau.getQuanHeChuHo());
             nhanKhauCanSua.setThoiGianDKThuongTru(nhanKhau.getThoiGianDKThuongTru());
+            String cauLenh = "UPDATE NhanKhau\n" +
+                    "SET \n" +
+                    "NgaySinh = '"+nhanKhauCanSua.getNgaySinh()+"',\n" +
+                    "NgheNghiep = N'"+nhanKhauCanSua.getNgheNghiep()+"',\n" +
+                    "NoiLamViec = N'"+nhanKhauCanSua.getNoiLamViec()+"',\n" +
+                    "DanToc = N'"+nhanKhauCanSua.getDanToc()+"',\n" +
+                    "SoCCCD = "+nhanKhauCanSua.getSoCCCD()+",\n" +
+                    "NoiCap = N'"+nhanKhauCanSua.getNoiCap()+"',\n" +
+                    "NgayCap ='"+nhanKhauCanSua.getNgayCap()+"',\n" +
+                    "QuanHeVoiChuHo = N'"+nhanKhauCanSua.getQuanHeChuHo()+"',\n" +
+                    "TGDKTT = '"+nhanKhauCanSua.getThoiGianDKThuongTru()+"'\n" +
+                    "WHERE IdNhanKhau = '"+nhanKhauCanSua.getIdNhanKhau()+"'";
+            DBUtils.ThucThiCauLenhUpdate(cauLenh);
             String noiDung = "Sửa nhân khẩu với idNhanKhau: " + nhanKhauCanSua.getIdNhanKhau();
             LichSuStatic.taoLichSu(nhanKhauCanSua.getIdHoKhau(), "Sửa", noiDung);
         } else {
@@ -250,6 +270,8 @@ public class ThemNhanKhau implements Initializable {
                 int soLuong = hoKhau.getSoLuongNhanKhau()+1;
                 hoKhau.setSoLuongNhanKhau(soLuong);
                 String noiDung = "Thêm nhân khẩu idNhanKhau: " + nhanKhau.getIdNhanKhau();
+                DBUtils.themNhanKhau(nhanKhau);
+                DBUtils.thayDoiSoLuongHoKhau(hoKhau.getIdHoKhau(), soLuong);
                 LichSuStatic.taoLichSu(nhanKhau.getIdHoKhau(), "Thêm Nhân Khẩu", noiDung);
             }else {
                 HoKhauStatic.themNhanKhau(nhanKhau);

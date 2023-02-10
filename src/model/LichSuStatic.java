@@ -4,13 +4,8 @@ import controller.DBUtils;
 import controller.SinhNgauNhien;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class LichSuStatic {
     private static ObservableList<LichSu> dsLichSu = FXCollections.observableArrayList();

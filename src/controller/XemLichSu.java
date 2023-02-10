@@ -4,12 +4,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.event.Event;
+import javafx.scene.layout.TilePane;
 import model.LichSu;
 import model.LichSuStatic;
 
@@ -42,7 +40,6 @@ public class XemLichSu implements Initializable {
     public TextField dienIdHoKhau;
     @FXML
     public Button Tim;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
