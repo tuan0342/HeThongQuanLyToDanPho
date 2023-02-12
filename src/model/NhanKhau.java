@@ -201,6 +201,10 @@ public class NhanKhau {
         return false;
     }
 
+    public boolean timChuHo () {
+        if (getChuHo() != 0) return true;
+        return false;
+    }
     public String getGioiTinh () {
         if (gioiTinh) return "Nam";
         else return "Nữ";

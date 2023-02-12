@@ -175,16 +175,35 @@ public class QuanLyHoKhau implements Initializable {
     }
     public void Tim (Event event) {
         String timText = FieldTim.getText();
+        ObservableList<HoKhau> dsCon = FXCollections.observableArrayList();
         if (timText == null) {
             ShowAlert.showAlertError("Tìm thất bại", "Nhập từ khóa cần tìm");
         } else {
             if (TimTheoId.isSelected()) {
-                    dsHoKhau.setItems(HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoHoKhau(timText)));
+                dsCon = HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoHoKhau(timText));
+                if (dsCon.isEmpty()) {
+                    ShowAlert.showAlertError("Không tồn tại hộ khâu", "Nhập lại");
+                    dsHoKhau.setItems(HoKhauStatic.getDsHoKhau());
+                }else {
+                    dsHoKhau.setItems(dsCon);
+                }
             }else {
                 if (TimTheoTenChuHo.isSelected()) {
-                    dsHoKhau.setItems(HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoTenChuHo(timText)));
+                    dsCon = HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoTenChuHo(timText));
+                    if (dsCon.isEmpty()) {
+                        ShowAlert.showAlertError("Không tồn tại hộ khâu", "Nhập lại");
+                        dsHoKhau.setItems(HoKhauStatic.getDsHoKhau());
+                    }else {
+                        dsHoKhau.setItems(dsCon);
+                    }
                 } else {
-                    dsHoKhau.setItems(HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoDiaChi(timText)));
+                    dsCon = HoKhauStatic.getDsHoKhau().filtered(node->node.timTheoDiaChi(timText));
+                    if (dsCon.isEmpty()) {
+                        ShowAlert.showAlertError("Không tồn tại hộ khâu", "Nhập lại");
+                        dsHoKhau.setItems(HoKhauStatic.getDsHoKhau());
+                    }else {
+                        dsHoKhau.setItems(dsCon);
+                    }
                 }
             }
         }
