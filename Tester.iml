@@ -28,7 +28,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://$USER_HOME$/Downloads/sqljdbc_11.2/enu/mssql-jdbc-11.2.1.jre17.jar!/" />
@@ -55,7 +55,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="jar://$MODULE_DIR$/../../stuff/sqljdbc_11.2/enu/mssql-jdbc-11.2.0.jre18.jar!/" />
@@ -91,7 +91,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="openjfx-19_windows-x64_bin-sdk" level="project" />
+    <orderEntry type="library" name="openjfx-19_windows-x64_bin-sdk" level="project" />
     <orderEntry type="library" exported="" name="lib1" level="project" />
   </component>
 </module>

@@ -40,6 +40,7 @@ public class SelectManagementController implements Initializable {
     public Scene QuanLyKhoanThu;
     public Scene QuanLyKhoanDongGop;
     public Scene QuanLyTamTruTamVang;
+    public Scene XemThongKe;
 
     public Button QuanLyHoKhauButton;
     public Button QuanLyNhanKhauButton;
@@ -51,7 +52,7 @@ public class SelectManagementController implements Initializable {
     @FXML
     public Button XemLichSu;
     @FXML
-    public Button XemThongKe;
+    public Button XemThongKeButton;
 
 
     public Button Back;
@@ -94,6 +95,12 @@ public class SelectManagementController implements Initializable {
             throw new RuntimeException(e);
         }
 
+        FXMLLoader XTK = new FXMLLoader(XemThongKe.class.getResource("/view/fxml/ThongKe.fxml"));
+        try {
+            this.XemThongKe = new Scene(XTK.load());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
     @Override
@@ -173,4 +180,11 @@ public class SelectManagementController implements Initializable {
         xemLichSu.setPreScene(this.curScene);
         DBUtils.changeScene(scene, event);
     }
+    public void chonXemThongKeButton (Event event) {
+        controller.XemThongKe.setCurScene(this.XemThongKe);
+        controller.XemThongKe.setPreScene(curScene);
+        DBUtils.changeScene(XemThongKe, event);
+
+    }
+
 }
