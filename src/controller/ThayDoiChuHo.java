@@ -1,19 +1,19 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.HoKhau;
 import model.LichSuStatic;
 import model.NhanKhau;
 import model.NhanKhauStatic;
+import org.w3c.dom.Text;
 
 import java.util.*;
 
@@ -51,135 +51,84 @@ public class ThayDoiChuHo {
     @FXML
     TableColumn<NhanKhau, Date> ngaySinh;
     @FXML
-    TableColumn<NhanKhau, Integer> soCCCD;
+    TableColumn<NhanKhau, String> quanHeVoiChuHoCu;
     @FXML
-    TableColumn<NhanKhau, String> quanHeVoiChuHo;
+    TableColumn<NhanKhau, TextField> quanHeVoiChuHoMoi;
     @FXML
-    AnchorPane KhungLon;
+    ComboBox<String> dsIdNhanKhau;
+    ObservableList<String> dsId = FXCollections.observableArrayList();
     @FXML
-    AnchorPane KhungBe;
+    Button Luu;
     @FXML
-    Button luuChuHoMoi;
+    Button hoanTatSuaDoi;
+    @FXML
+    Label tenChuHoMoi;
     private HoKhau HoKhauCanThayDoi;
     private FilteredList<NhanKhau> dsNhanKhauCuaHoKhauNay;
     private int soLuong;
+    private NhanKhau chuHoCu;
+    private NhanKhau chuHoMoi = null;
     public void setHoKhauCanThayDoi(HoKhau hoKhauCanThayDoi) {
         setDsNhanKhau();
-        setButtonTruocKhiChonChuHo();
-        hoanTatSuaDoi.setDisable(true);
         HoKhauCanThayDoi = hoKhauCanThayDoi;
         String idHoKhau = hoKhauCanThayDoi.getIdHoKhau();
         dsNhanKhauCuaHoKhauNay = NhanKhauStatic.getDsNhanKhau().filtered(node -> node.timTheoHoKhau(idHoKhau));
-        soLuong = dsNhanKhauCuaHoKhauNay.size() - 1;
+        chuHoCu = dsNhanKhauCuaHoKhauNay.filtered(node->node.timChuHo()).get(0);
+        soLuong = dsNhanKhauCuaHoKhauNay.size();
         dsNhanKhau.setItems(dsNhanKhauCuaHoKhauNay);
+        for (NhanKhau e: dsNhanKhauCuaHoKhauNay) {
+            e.canThiMoiGoi();
+            if (e.getChuHo() != 1) {
+                dsId.add(e.getIdNhanKhau());
+            }
+        }
+        dsIdNhanKhau.setItems(dsId);
+        hoanTatSuaDoi.setDisable(true);
     }
-    private NhanKhau chuHoMoi;
+
     public void setDsNhanKhau () {
         idNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("idNhanKhau"));
         hoTen.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>( "hoTen"));
         ngaySinh.setCellValueFactory(new PropertyValueFactory<NhanKhau, Date>("ngaySinh"));
-        soCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhau, Integer>("soCCCD"));
-        quanHeVoiChuHo.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("quanHeChuHo"));
-        dsNhanKhau.setOnMouseClicked(mouseEvent -> {
-            NhanKhau duocChon = (NhanKhau) dsNhanKhau.getSelectionModel().getSelectedItem();
-            if (duocChon != null) {
-                luuChuHoMoi.setDisable(false);
+        quanHeVoiChuHoCu.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("quanHeChuHo"));
+        quanHeVoiChuHoMoi.setCellValueFactory(new PropertyValueFactory<NhanKhau, TextField>("thuCanDien"));
+    }
+    ;
+    public void Luu () {
+        if (dsIdNhanKhau.getValue() != null) {
+            if (chuHoMoi != null) {
+                chuHoMoi.getThuCanDien().setText(null);
+                chuHoMoi.getThuCanDien().setDisable(false);
             }
-        });
-    }
-    public void setButtonTruocKhiChonChuHo () {
-        KhungBe.setVisible(false);
-        luuChuHoMoi.setDisable(true);
-        fieldDienChuHo.setDisable(true);
-    }
-    @FXML
-    TextField fieldDienChuHo;
-    private String idChuHoMoi;
-    private String hoTenChuHoMoi;
-    public void luuChuHoMoi (Event event) {
-        NhanKhau duocChon = (NhanKhau) dsNhanKhau.getSelectionModel().getSelectedItem();
-        if (duocChon.getChuHo() == 1) {
-            ShowAlert.showAlertError("Thất bại", "Chọn chủ hộ mới");
-            return;
-        }
-        if (ShowAlert.showAlertYN("Lưu", "Chắc chưa?")){
-            idChuHoMoi = duocChon.getIdNhanKhau();
-            hoTenChuHoMoi = duocChon.getHoTen();
-            quanHeMoi.put(idChuHoMoi, "Chủ hộ");
-            fieldDienChuHo.setText(duocChon.getHoTen());
-            KhungBe.setVisible(true);
-            luuChuHoMoi.setVisible(false);
-            setButtonSauKhiChonDuocChuHo();
-            Back.setDisable(true);
-        } else return;
-    }
-    @FXML
-    TextField quanHeChuHoCu;
-    @FXML
-    TextField quanHeChuHoMoi;
-
-    private void setButtonSauKhiChonDuocChuHo () {
-        quanHeChuHoCu.setDisable(true);
-        quanHeChuHoMoi.setDisable(true);
-        dsNhanKhau.setOnMouseClicked(mouseEvent -> {
-            NhanKhau duocChon = (NhanKhau) dsNhanKhau.getSelectionModel().getSelectedItem();
-            quanHeChuHoCu.setText(duocChon.getQuanHeChuHo());
-            if (duocChon.getIdNhanKhau().compareTo(idChuHoMoi) == 0) {
-                quanHeChuHoMoi.setText("Chủ hộ");
-                quanHeChuHoMoi.setDisable(true);
-                luuThayDoi.setDisable(true);
-            } else {
-                String quanHe = quanHeMoi.get(duocChon.getIdNhanKhau());
-                if (quanHe == null) {
-                    quanHeChuHoMoi.setText("");
-                } else {
-                    quanHeChuHoMoi.setText(quanHe);
-                }
-                quanHeChuHoMoi.setDisable(false);
-                luuThayDoi.setDisable(false);
-            }
-        });
-    }
-
-    @FXML
-    public Button hoanTatSuaDoi;
-    @FXML
-    public Button luuThayDoi;
-    private HashMap<String, String> quanHeMoi = new HashMap<String, String>();
-    public void luuThayDoi (Event event) {
-        if (quanHeChuHoMoi.getText().compareTo("Chủ hộ") == 0 || quanHeChuHoMoi.getText().compareTo("") == 0) {
-            ShowAlert.showAlertError("Nhập lại", "Nhập lại quan hệ mới");
-            return;
-        }
-        NhanKhau duocChon = (NhanKhau) dsNhanKhau.getSelectionModel().getSelectedItem();
-        if (quanHeMoi.containsKey(duocChon.getIdNhanKhau())) {
-            quanHeMoi.replace(duocChon.getIdNhanKhau(), quanHeChuHoMoi.getText());
-        } else {
-            quanHeMoi.put(duocChon.getIdNhanKhau(), quanHeChuHoMoi.getText());
-        }
-        if (quanHeMoi.size() == soLuong+1) {
+            String idChuHoMoi = dsIdNhanKhau.getValue();
+            chuHoMoi = dsNhanKhauCuaHoKhauNay.filtered(node->node.timTheoNhanKhau(idChuHoMoi)).get(0);
+            chuHoMoi.getThuCanDien().setText("Chủ hộ");
+            chuHoMoi.getThuCanDien().setDisable(true);
+            tenChuHoMoi.setText(chuHoMoi.getHoTen());
             hoanTatSuaDoi.setDisable(false);
-        };
+        } else {
+            ShowAlert.showAlertError("Thất bại", "Chọn một chủ hộ mới");
+        }
     }
+
 
     public void setHoanTatSuaDoi (Event event) {
-        if (ShowAlert.showAlertYN("Hoàn tất sửa đổi?", "Đồng ý")) {
+        if (ShowAlert.showAlertYN("Hoàn tất sửa đổi", "Hãy đảm bảo điên đẩy đủ thông tin")) {
+            String hoTenChuHoMoi = chuHoMoi.getHoTen();
+            String idChuHoMoi = chuHoMoi.getIdNhanKhau();
             HoKhauCanThayDoi.setTenChuHo(hoTenChuHoMoi);
             DBUtils.UpdateChuHoChoHoKhau(HoKhauCanThayDoi.getIdHoKhau(), hoTenChuHoMoi, idChuHoMoi);
             for (NhanKhau e: dsNhanKhauCuaHoKhauNay) {
                 String id = e.getIdNhanKhau();
-                String quanHe = quanHeMoi.get(id);
+                String quanHe = e.getThuCanDien().getText();
                 e.setQuanHeChuHo(quanHe);
-                if (quanHe.compareTo("Chủ hộ") == 0) e.setChuHo(1);
-                else e.setChuHo(0);
+                e.setChuHo(0);
                 DBUtils.UpdateQuanHeVoiChuHo(id, quanHe);
             }
-            Back.setDisable(false);
+            chuHoMoi.setChuHo(1);
             dsNhanKhau.refresh();
-            String noiDung = "Thay đổi chủ hộ của hộ khẩu có ID: " + HoKhauCanThayDoi.getIdHoKhau();
+            String noiDung = "Thay đổi chủ hộ thành nhân khẩu có ID: " + chuHoMoi.getIdNhanKhau();
             LichSuStatic.taoLichSu(HoKhauCanThayDoi.getIdHoKhau(), "Thay Đổi Chủ Hộ", noiDung);
-        } else {
-            return;
         }
     }
 }

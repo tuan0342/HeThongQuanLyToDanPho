@@ -128,7 +128,7 @@ public class QuanLyTamTruTamVang implements Initializable {
        if (NgayDangKyDatePicker.getValue() == null) {
            count++;
            ShowAlert.showAlertError("Bạn chưa chọn ngày đăng ký!","Mời bạn chọn lại");
-       } else if (NgayDangKyDatePicker.getValue().compareTo(todayDate) > 0 || (NgayKetThucDatePicker.getValue() != null && NgayDangKyDatePicker.getValue().compareTo(NgayKetThucDatePicker.getValue()) > 0)) {
+       } else if (NgayDangKyDatePicker.getValue().compareTo(todayDate) > 0) {
            count++;
            ShowAlert.showAlertError("Chọn ngày đăng ký sai!", "Mời bạn chọn lại");
            NgayDangKyDatePicker.getEditor().clear();
@@ -140,7 +140,7 @@ public class QuanLyTamTruTamVang implements Initializable {
           count++;
           ShowAlert.showAlertError("Bạn chưa chọn ngày kết thúc!","Mời bạn chọn lại");
 
-      } else if ( NgayKetThucDatePicker.getValue().compareTo(NgayDangKyDatePicker.getValue()) < 0 || NgayKetThucDatePicker.getValue().compareTo(todayDate) < 0) {
+      } else if ( NgayKetThucDatePicker.getValue().compareTo(NgayDangKyDatePicker.getValue()) < 0 ) {
           count++;
           ShowAlert.showAlertError("Chọn ngày kết thúc sai!", "Mời bạn chọn lại");
           NgayKetThucDatePicker.getEditor().clear();
@@ -219,7 +219,7 @@ public class QuanLyTamTruTamVang implements Initializable {
 
 
         if (SearchTextField.getText().length() == 0) {
-            ShowAlert.showAlertError("Mời bạn nhập  id hoặc họ tên!", "Mời bạn nhập lại");
+            ShowAlert.showAlertError("Mời bạn nhập  id, họ tên hoặc loại khai báo!", "Mời bạn nhập lại");
         } else  {
             loadSearchDataFromDBQLTTTV();
             count = 1;

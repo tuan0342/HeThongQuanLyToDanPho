@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -111,16 +113,35 @@ public class QuanLyNhanKhau implements Initializable {
 
     public void Tim (Event event) {
         String timText = DienIdNhanKhau.getText();
+        ObservableList<NhanKhau> dsCon = FXCollections.observableArrayList();
         if (timText == null) {
             ShowAlert.showAlertError("Tìm thất bại", "Nhập từ khóa cần tìm");
         } else {
             if (TimTheoID.isSelected()) {
-                dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoNhanKhau(timText)));
+                dsCon = NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoNhanKhau(timText));
+                if (dsCon.isEmpty()) {
+                    ShowAlert.showAlertError("Không tồn tại nhân khâu", "Nhập lại");
+                    dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau());
+                }else {
+                    dsNhanKhau.setItems(dsCon);
+                }
             }else {
                 if (TimTheoTenNhanKhau.isSelected()) {
-                    dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoTenNhanKhau(timText)));
+                    dsCon = NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoTenNhanKhau(timText));
+                    if (dsCon.isEmpty()) {
+                        ShowAlert.showAlertError("Không tồn tại nhân khâu", "Nhập lại");
+                        dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau());
+                    }else {
+                        dsNhanKhau.setItems(dsCon);
+                    }
                 } else {
-                    dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoHoKhau(timText)));
+                    dsCon = NhanKhauStatic.getDsNhanKhau().filtered(node->node.timTheoHoKhau(timText));
+                    if (dsCon.isEmpty()) {
+                        ShowAlert.showAlertError("Không tồn tại nhân khâu", "Nhập lại");
+                        dsNhanKhau.setItems(NhanKhauStatic.getDsNhanKhau());
+                    }else {
+                        dsNhanKhau.setItems(dsCon);
+                    }
                 }
             }
         }

@@ -43,7 +43,7 @@
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="XemThongKe" layoutX="720.0" layoutY="413.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="255.0" text="Xem thống kê" />
+      <Button fx:id="XemThongKeButton" layoutX="720.0" layoutY="413.0" mnemonicParsing="false" onAction="#chonXemThongKeButton" prefHeight="26.0" prefWidth="255.0" text="Thống kê nhân khẩu" />
       <Button fx:id="XemLichSu" layoutX="720.0" layoutY="367.0" mnemonicParsing="false" onAction="#chonXemLichSu" prefHeight="26.0" prefWidth="255.0" text="Xem lịch sử" />
    </children>
 </AnchorPane>
