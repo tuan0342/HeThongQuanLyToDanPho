@@ -116,12 +116,25 @@ public class ThemChiTietKhoanThuController implements Initializable {
                     ChiTietKhoanThu clickedRow = row.getItem();
                     tfIdKhoanThuUpdate.setText(String.valueOf(clickedRow.getIdKhoanThu()));
                     tfIdHoKhauUpdate.setText(clickedRow.getIdHoKhau());
-                    printRow(clickedRow);
+//                    printRow(clickedRow);
                 }
             });
             return row ;
         });
 
+        // sự kiện khi click vào 1 hàng trong bảng danh sách hộ khẩu
+        dsHoKhau.setRowFactory(tv -> {
+            TableRow<HoKhau> row2 = new TableRow<>();
+            row2.setOnMouseClicked(event -> {
+                if (! row2.isEmpty() && event.getButton()== MouseButton.PRIMARY
+                        && event.getClickCount() == 2) {
+
+                    HoKhau clickedRow2 = row2.getItem();
+                    tfIdHoKhauAdd.setText(String.valueOf(clickedRow2.getIdHoKhau()));
+                }
+            });
+            return row2 ;
+        });
     }
 
     // hiển thị thông tin của 1 hàng khi click vào hàng đó
@@ -191,6 +204,10 @@ public class ThemChiTietKhoanThuController implements Initializable {
     // load dữ liệu có điều kiện (idKhoanThu) vào bảng Chi tiết khoản thu
     private void loadSearchDataFromDBCTKT(int idKhoanThu) {
         listChiTietKhoanThu = ChiTietKhoanThuStatic.getPartRecords(idKhoanThu);
+        if (listChiTietKhoanThu.isEmpty()) {
+            listChiTietKhoanThu = ChiTietKhoanThuStatic.getAlLRecords();
+            ShowAlert.showAlertError(null, "Không tìm thấy khoản thu phù hợp");
+        }
         dsChiTietKhoanThu.setItems(listChiTietKhoanThu);
     }
 

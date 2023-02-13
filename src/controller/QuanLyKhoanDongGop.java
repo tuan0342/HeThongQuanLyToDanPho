@@ -137,6 +137,11 @@ public class QuanLyKhoanDongGop implements Initializable {
         ngayBDDG.setDisable(true);
         ngayKTDG.setDisable(true);
         CapNhatDGQLKT.setDisable(true);
+
+        idDG.clear();
+        tenDG.clear();
+        ngayBDDG.clear();
+        ngayKTDG.clear();
     }
 
     // chuyển sang màn hình thêm chi tiết đóng góp

@@ -192,5 +192,11 @@ public class QuanLyKhoanThu implements Initializable {
         tfNgayKT.setDisable(true);
         tfSoTien.setDisable(true);
         CapNhatKTQLKT.setDisable(true);
+
+        tfSoTien.clear();
+        tfIdKT.clear();
+        tfNgayBD.clear();
+        tfNgayKT.clear();
+        tfTenKT.clear();
     }
 }

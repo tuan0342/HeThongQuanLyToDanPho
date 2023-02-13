@@ -120,6 +120,20 @@ public class ThemChiTietDongGopController implements Initializable {
             });
             return row ;
         });
+
+        // sự kiện khi click vào 1 hàng trong bảng danh sách hộ khẩu
+        dsHoKhau.setRowFactory(tv -> {
+            TableRow<HoKhau> row2 = new TableRow<>();
+            row2.setOnMouseClicked(event -> {
+                if (! row2.isEmpty() && event.getButton()== MouseButton.PRIMARY
+                        && event.getClickCount() == 2) {
+
+                    HoKhau clickedRow2 = row2.getItem();
+                    tfIdHoKhauAdd.setText(String.valueOf(clickedRow2.getIdHoKhau()));
+                }
+            });
+            return row2 ;
+        });
     }
 
     // hiển thị thông tin của 1 hàng khi click vào hàng đó
@@ -166,6 +180,7 @@ public class ThemChiTietDongGopController implements Initializable {
         btnUpdate.setDisable(true);
         tfIdDGUpdate.clear();
         tfIdHoKhauUpdate.clear();
+        tfSoTienUpdate.clear();
     }
 
     // tìm kiếm theo id khoản đóng góp
@@ -187,6 +202,10 @@ public class ThemChiTietDongGopController implements Initializable {
     // load dữ liệu có điều kiện (idDG) vào bảng Chi tiết đóng góp
     private void loadSearchDataFromDBCTKT(int idDG) {
         listChiTietDG = ChiTietDongGopStatic.getPartRecords(idDG);
+        if (listChiTietDG.isEmpty()) {
+            listChiTietDG = ChiTietDongGopStatic.getAlLRecords();
+            ShowAlert.showAlertError(null, "Không tìm thấy khoản đóng góp phù hợp");
+        }
         dsChiTietDG.setItems(listChiTietDG);
     }
 

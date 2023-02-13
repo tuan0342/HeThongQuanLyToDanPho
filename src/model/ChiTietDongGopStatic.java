@@ -12,7 +12,7 @@ public class ChiTietDongGopStatic {
     public static void updateChiTietDG(int idKhoanDG, String idHoKhau, String soTien) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE ChiTietDongGop\n" +
                     "SET SoTien = " + soTien +"\n" +
-                    "WHERE IdKhoanDongGop = " + idKhoanDG + "AND IdHoKhau =" + idHoKhau;
+                    "WHERE IdKhoanDongGop = " + idKhoanDG + "AND IdHoKhau ='" + idHoKhau + "'";
         try {
             DBUtils.dbExecuteQuery(sql);
             System.out.println("Update chi tiết khoản thu thành công");
@@ -26,7 +26,7 @@ public class ChiTietDongGopStatic {
 
     // Thêm dữ liệu mới vào bảng chi tiết khoản thu
     public static void insertChiTietDG(int idKhoanDG, String idHoKhau, String soTien) throws SQLException, ClassNotFoundException {
-        String sql = "insert into ChiTietDongGop values(" + idKhoanDG +"," +  idHoKhau + "," + soTien +")";
+        String sql = "insert into ChiTietDongGop values(" + idKhoanDG +",'" +  idHoKhau + "'," + soTien +")";
         try {
             DBUtils.dbExecuteQuery(sql);
             System.out.println("Thêm dữ liệu thành công");
