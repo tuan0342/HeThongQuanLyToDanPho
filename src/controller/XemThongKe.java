@@ -85,11 +85,11 @@ public class XemThongKe implements Initializable {
         BieuDoTheoThoiGian.setVisible(false);
         BieuDoTheoTamTruTamVang.setVisible(false);
 
-//        ThongBao.setVisible(false);
-//        TuNam.setVisible(false);
-//        NamBatDau.setVisible(false);
-//        DenNam.setVisible(false);
-//        NamKetThuc.setVisible(false);
+        ThongBao.setVisible(false);
+        TuNam.setVisible(false);
+        NamBatDau.setVisible(false);
+        DenNam.setVisible(false);
+        NamKetThuc.setVisible(false);
 
     }
 
@@ -125,6 +125,8 @@ public class XemThongKe implements Initializable {
 
                         BieuDoTheoThoiGian.setVisible(true);
                         veBieuDoTheoThoiGian();
+                        NamBatDau.clear();
+                        NamKetThuc.clear();
 
                     }
                 } else {
@@ -136,6 +138,8 @@ public class XemThongKe implements Initializable {
                     } else {
                         BieuDoTheoTamTruTamVang.setVisible(true);
                         veBieuDoTheoTamTruTamVang();
+                        NamBatDau.clear();
+                        NamKetThuc.clear();
                     }
                 }
 
@@ -169,7 +173,7 @@ public class XemThongKe implements Initializable {
         BieuDoTheoGioiTinh.setClockwise(true);
         BieuDoTheoGioiTinh.setLabelLineLength(40);
         BieuDoTheoGioiTinh.setLabelsVisible(true);
-        BieuDoTheoGioiTinh.setLegendSide(Side.RIGHT);
+//        BieuDoTheoGioiTinh.setLegendSide(Side.RIGHT);
 
         list.forEach(data ->
                 data.nameProperty().bind(
