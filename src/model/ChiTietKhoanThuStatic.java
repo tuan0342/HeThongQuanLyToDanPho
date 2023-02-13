@@ -1,6 +1,7 @@
 package model;
 
 import controller.DBUtils;
+import controller.ShowAlert;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -36,9 +37,7 @@ public class ChiTietKhoanThuStatic {
             System.out.println("Thêm dữ liệu thành công");
             System.out.println("--------------------------------------------------------------");
         } catch (SQLException e) {
-            System.out.println("Xảy ra ngoại lệ trong khi đang thêm dữ liệu vào database: " + e);
-            e.printStackTrace();
-            throw e;
+            ShowAlert.showAlertError(null, "Nhập sai ID. Nhập lại!");
         }
     }
 

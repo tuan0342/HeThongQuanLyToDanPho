@@ -1,8 +1,10 @@
 package model;
 
 import controller.DBUtils;
+import controller.ShowAlert;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,9 +34,7 @@ public class ChiTietDongGopStatic {
             System.out.println("Thêm dữ liệu thành công");
             System.out.println("--------------------------------------------------------------");
         } catch (SQLException e) {
-            System.out.println("Xảy ra ngoại lệ trong khi đang thêm dữ liệu vào database: " + e);
-            e.printStackTrace();
-            throw e;
+            ShowAlert.showAlertError(null, "Nhập sai ID. Nhập lại!");
         }
     }
 

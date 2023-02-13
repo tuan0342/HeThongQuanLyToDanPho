@@ -246,7 +246,7 @@ public class ThemChiTietDongGopController implements Initializable {
 
     // kiểm tra các dữ liệu được nhập đủ chưa
     private int checkIsEmpty() {
-        if(tfIdDGAdd.getText().isEmpty() || tfIdHoKhauAdd.getText().isEmpty()) {
+        if(tfIdDGAdd.getText().isEmpty() || tfIdHoKhauAdd.getText().isEmpty() || tfSoTienAdd.getText().isEmpty()) {
             return 0;
         }
         return 1;
