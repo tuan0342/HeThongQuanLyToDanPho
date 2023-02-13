@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.beans.binding.Bindings;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
@@ -106,14 +107,13 @@ public class XemThongKe implements Initializable {
                     BieuDoTheoTamTruTamVang.setVisible(false);
                     veBieuDoTheoGioiTinh();
 
-                } else if (LuaChonBieuDo.getValue() == "THEO ĐỘ TUỔI") {
+
+                } else if (LuaChonBieuDo.getValue() == "THEO NHÓM TUỔI") {
                     BieuDoTheoGioiTinh.setVisible(false);
                     BieuDoTheoThoiGian.setVisible(false);
                     BieuDoTheoTamTruTamVang.setVisible(false);
-
                     BieuDoTheoDoTuoi.setVisible(true);
                     veBieuDoTheoDoTuoi();
-
 
                 } else if (LuaChonBieuDo.getValue() == "THEO THỜI GIAN") {
                     BieuDoTheoGioiTinh.setVisible(false);
@@ -122,8 +122,10 @@ public class XemThongKe implements Initializable {
                     if(NamBatDau.getText() == "" || NamKetThuc.getText() == "") {
                         ShowAlert.showAlertError("Chưa nhập năm!", "Mời bạn nhập lại");
                     } else {
+
                         BieuDoTheoThoiGian.setVisible(true);
                         veBieuDoTheoThoiGian();
+
                     }
                 } else {
                     BieuDoTheoGioiTinh.setVisible(false);
@@ -154,6 +156,8 @@ public class XemThongKe implements Initializable {
 
     //ve bieu do thong ke gioi tinh
 
+
+
     public void veBieuDoTheoGioiTinh() {
         BieuDoTheoGioiTinh.getData().clear();
         Integer NuValue = ThongKeStatic.getDataTheoGioiTinh().get(0);
@@ -180,8 +184,6 @@ public class XemThongKe implements Initializable {
     //vẽ biểu đồ thống ke theo do tuoi
     public void veBieuDoTheoDoTuoi() {
         BieuDoTheoDoTuoi.getData().clear();
-
-
         BieuDoTheoDoTuoi.getXAxis().setLabel("NHÓM TUỔI");
         BieuDoTheoDoTuoi.getYAxis().setLabel("SỐ NGƯỜI");
 
@@ -196,17 +198,18 @@ public class XemThongKe implements Initializable {
         Integer NghiHuuvalue = ThongKeStatic.getDataNghiHuu().get(0);
 
         XYChart.Series dataSeries = new XYChart.Series();
-        dataSeries.getData().add(new XYChart.Data("Mầm non", MamNonvalue));
-        dataSeries.getData().add(new XYChart.Data("Mẫu giáo", MauGiaovalue));
-        dataSeries.getData().add(new XYChart.Data("Cấp một", Cap1value));
-        dataSeries.getData().add(new XYChart.Data("Cấp hai", Cap2value));
-        dataSeries.getData().add(new XYChart.Data("Cấp ba", Cap3value));
-        dataSeries.getData().add(new XYChart.Data("Lao động", LaoDongvalue));
-        dataSeries.getData().add(new XYChart.Data("Nghỉ hưu", NghiHuuvalue));
+        dataSeries.getData().add(new XYChart.Data("Mầm non", 100));
+        dataSeries.getData().add(new XYChart.Data("Mẫu giáo", 200));
+        dataSeries.getData().add(new XYChart.Data("Cấp một", 300));
+        dataSeries.getData().add(new XYChart.Data("Cấp hai", 400));
+        dataSeries.getData().add(new XYChart.Data("Cấp ba", 500));
+        dataSeries.getData().add(new XYChart.Data("Lao động", 200));
+        dataSeries.getData().add(new XYChart.Data("Nghỉ hưu", 100));
 
         BieuDoTheoDoTuoi.getData().add(dataSeries);
         BieuDoTheoDoTuoi.setTitle("THỐNG KÊ THEO ĐỘ TUỔI NHÂN KHẨU");
         BieuDoTheoDoTuoi.setLegendVisible(false);
+        BieuDoTheoDoTuoi.getXAxis().setAnimated(false);
     }
 
     // VE BIEU DO THEO THOI GIAN
@@ -215,7 +218,6 @@ public class XemThongKe implements Initializable {
 
         //lay du lieu tu database
         BieuDoTheoThoiGian.getData().clear();
-
         BieuDoTheoThoiGian.getXAxis().setLabel("NĂM");
         BieuDoTheoThoiGian.getYAxis().setLabel("SỐ NGƯỜI");
 
@@ -229,6 +231,7 @@ public class XemThongKe implements Initializable {
         BieuDoTheoThoiGian.setTitle("THỐNG KÊ NHÂN KHẨU THEO THỜI GIAN");
         BieuDoTheoThoiGian.setCreateSymbols(true);
         BieuDoTheoThoiGian.setLegendVisible(false);
+        BieuDoTheoThoiGian.getXAxis().setAnimated(false);
 
     }
 
@@ -241,6 +244,7 @@ public class XemThongKe implements Initializable {
 
         BieuDoTheoTamTruTamVang.getYAxis().setLabel("SỐ NGƯỜI");
         BieuDoTheoTamTruTamVang.getXAxis().setLabel("NĂM");
+
 
         XYChart.Series dataSeries1 = new XYChart.Series();
         dataSeries1.setName("TẠM TRÚ");
@@ -256,14 +260,38 @@ public class XemThongKe implements Initializable {
         }
         BieuDoTheoTamTruTamVang.getData().addAll(dataSeries1,dataSeries2);
         BieuDoTheoTamTruTamVang.setTitle("THỐNG KÊ NHÂN KHẨU THEO TẠM TRÚ TẠM VẮNG");
-
+        BieuDoTheoTamTruTamVang.getXAxis().setAnimated(false);
     }
 
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LuaChonBieuDo.getItems().addAll("THEO GIỚI TÍNH", "THEO ĐỘ TUỔI", "THEO THỜI GIAN", "THEO TẠM TRÚ TẠM VẮNG");
+//        ChoiceBox<String> box = new ChoiceBox<String>();
+//        box.getItems().add("1");
+//        box.getItems().add("2");
+//        box.getItems().add("3");
+
+        LuaChonBieuDo.getSelectionModel()
+                .selectedItemProperty()
+                .addListener( (ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+                    if (newValue.compareTo("THEO GIỚI TÍNH") == 0 || newValue.compareTo("THEO NHÓM TUỔI") == 0) {
+                        ThongBao.setVisible(false);
+                        TuNam.setVisible(false);
+                        DenNam.setVisible(false);
+                        NamBatDau.setVisible(false);
+                        NamKetThuc.setVisible(false);
+                    } else {
+                        ThongBao.setVisible(true);
+                        TuNam.setVisible(true);
+                        DenNam.setVisible(true);
+                        NamBatDau.setVisible(true);
+                        NamKetThuc.setVisible(true);
+
+                    }
+                });
+        LuaChonBieuDo.getItems().addAll("THEO GIỚI TÍNH", "THEO NHÓM TUỔI", "THEO THỜI GIAN", "THEO TẠM TRÚ TẠM VẮNG");
         setBieuDoBanDau();
+
 
     }
 }
