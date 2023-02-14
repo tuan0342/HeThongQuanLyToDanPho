@@ -166,7 +166,9 @@ public class XemThongKe implements Initializable {
         BieuDoTheoGioiTinh.getData().clear();
         Integer NuValue = ThongKeStatic.getDataTheoGioiTinh().get(0);
         Integer NamValue = ThongKeStatic.getDataTheoGioiTinh().get(1);
-        ObservableList<PieChart.Data> list = FXCollections.observableArrayList(new PieChart.Data ("Nam", NamValue),new PieChart.Data ("Nữ", NuValue) );
+        float TiLeNu = (float)NuValue/(NuValue + NamValue)*100;
+        float TiLeNam = 100 - TiLeNu;
+        ObservableList<PieChart.Data> list = FXCollections.observableArrayList(new PieChart.Data ("Nam", TiLeNam),new PieChart.Data ("Nữ", TiLeNu) );
         BieuDoTheoGioiTinh.getData().addAll(list);
         BieuDoTheoGioiTinh.setTitle("BIỂU ĐỒ THỐNG KÊ NHÂN KHẨU THEO GIỚI TÍNH");
         BieuDoTheoGioiTinh.setLegendVisible(true);
@@ -178,7 +180,7 @@ public class XemThongKe implements Initializable {
         list.forEach(data ->
                 data.nameProperty().bind(
                         Bindings.concat(
-                                data.getName(), " ", data.pieValueProperty(), " Người"
+                                data.getName(), " ", data.pieValueProperty(), " %"
                         )
                 )
         );
