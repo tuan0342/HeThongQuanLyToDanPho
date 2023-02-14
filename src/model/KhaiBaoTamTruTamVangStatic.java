@@ -69,5 +69,22 @@ public class KhaiBaoTamTruTamVangStatic {
         return list;
     }
 
+    //update khai bao tam tru tam vang
+
+    public static void upDateKhaiBaoTamTruTamVang(KhaiBaoTamTruTamVang khaiBaoTamTruTamVang) {
+        String sql = "Update QuanLyTamTruTamVang set Loai = N'" + khaiBaoTamTruTamVang.getLoai()+"', HoTen = N'" + khaiBaoTamTruTamVang.getHoTen() +"', NgaySinh = '"
+                + khaiBaoTamTruTamVang.getNgaySinh() + "', GioiTinh = N'" + khaiBaoTamTruTamVang.getGioiTinh()+"', QuocTich = N'" + khaiBaoTamTruTamVang.getQuocTich() +
+                "', SoCCCD = '" + khaiBaoTamTruTamVang.getSoCCCD() + "', NgayDangKy = '" + khaiBaoTamTruTamVang.getNgayDangKy() +"', NgayKetThuc = '" + khaiBaoTamTruTamVang.getNgayKetThuc() +
+                "', DiaChiThuongTru = N'" + khaiBaoTamTruTamVang.getDiaChiThuongTru()+ "', DiaChiTamTruTamVang = N'" + khaiBaoTamTruTamVang.getDiaChiTamTruTamVang() +
+                "', LyDo = N'" + khaiBaoTamTruTamVang.getLyDo() +"' where IdKhaiBao = " + khaiBaoTamTruTamVang.getIdKhaiBao();
+        System.out.println(sql);
+        try {
+             DBUtils.dbExecute(sql);
+
+        } catch (Exception e) {
+            System.out.println("Không update duoc");
+        }
+    }
+
 
 }

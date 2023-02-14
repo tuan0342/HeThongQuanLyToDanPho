@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -49,7 +50,7 @@ public class QuanLyTamTruTamVang implements Initializable {
     }
 
 
-
+    private int idTamTruTamVangUpdate;
 
     //Lay Du Lieu Tam Tru Tam Vang
     public ChoiceBox LoaiChoiceBox;
@@ -191,6 +192,8 @@ public class QuanLyTamTruTamVang implements Initializable {
         DiaChiTamTruTamVangField.clear();
         LyDoTextField.clear();
         SearchTextField.clear();
+        UpdateButton.setDisable(true);
+        SaveButton.setDisable(false);
     }
 
     public void reset (Event event) throws Exception {
@@ -284,6 +287,16 @@ public class QuanLyTamTruTamVang implements Initializable {
         NgayKetThuc.setCellValueFactory(new PropertyValueFactory<KhaiBaoTamTruTamVang, Date>("NgayKetThuc"));
         DiaChiTamTruTamVang.setCellValueFactory(new PropertyValueFactory<KhaiBaoTamTruTamVang, String>("DiaChiTamTruTamVang"));
         LyDo.setCellValueFactory(new PropertyValueFactory<KhaiBaoTamTruTamVang, String>("LyDo"));
+
+        IdKhaiBao.setResizable(false);
+        Loai.setResizable(false);
+        HoTen.setResizable(false);
+        NgayDangKy.setResizable(false);
+        NgayKetThuc.setResizable(false);
+        DiaChiTamTruTamVang.setResizable(false);
+        LyDo.setResizable(false);
+
+
         dsKhaiBaoTamTruTamVang.setItems(KhaiBaoTamTruTamVangStatic.getDsKhaiBaoTamTruTamVang());
         for (KhaiBaoTamTruTamVang e: KhaiBaoTamTruTamVangStatic.getDsKhaiBaoTamTruTamVang()) {
             System.out.println(e.toString());
@@ -293,11 +306,169 @@ public class QuanLyTamTruTamVang implements Initializable {
         }
     }
 
+
+    //sưa thong tin khai bao tam tru tam vang
+
+
+    public void hienThiThongTinKhaiBao() {
+
+        dsKhaiBaoTamTruTamVang.setOnMouseClicked(mouseEvent -> {
+            SaveButton.setDisable(true);
+            UpdateButton.setDisable(false);
+            KhaiBaoTamTruTamVang duocChon = (KhaiBaoTamTruTamVang) dsKhaiBaoTamTruTamVang.getSelectionModel().getSelectedItem();
+            if (duocChon != null) {
+                idTamTruTamVangUpdate = duocChon.getIdKhaiBao();
+//                LoaiChoiceBox
+                LoaiChoiceBox.setValue(duocChon.getLoai());
+                HoTenTextField.setText(duocChon.getHoTen());
+//                NgaySinhDatePicker
+                String ngaysinh =  String.valueOf(duocChon.getNgaySinh());
+                NgaySinhDatePicker.setValue(LocalDate.parse(ngaysinh));
+//                GioiTinhChoiceBox
+
+                GioiTinhChoiceBox.setValue(duocChon.getGioiTinh());
+                QuocTichTextField.setText(duocChon.getQuocTich());
+                SoCCCDTextField.setText(duocChon.getSoCCCD());
+//                NgaySinhDatePicker
+                String ngaydangky =  String.valueOf(duocChon.getNgayDangKy());
+                NgayDangKyDatePicker.setValue(LocalDate.parse(ngaydangky));
+//                NgayKetThucDatePicker
+                String ngayketthuc =  String.valueOf(duocChon.getNgayKetThuc());
+                NgayKetThucDatePicker.setValue(LocalDate.parse(ngayketthuc));
+
+                DiaChiThuongTruTextField.setText(duocChon.getDiaChiThuongTru());
+                DiaChiTamTruTamVangField.setText(duocChon.getDiaChiTamTruTamVang());
+                LyDoTextField.setText(duocChon.getLyDo());
+
+            }
+        });
+
+    }
+
+    //update khai bao tam tru tam vang
+
+    public Button UpdateButton;
+    public void UpdateDate (Event event) throws Exception {
+        KhaiBaoTamTruTamVang khaiBaoTamTruTamVang = new KhaiBaoTamTruTamVang();
+        int count = 0;
+        LocalDate todayDate = LocalDate.now();
+//        khaiBaoTamTruTamVang.setIdKhaiBao();
+
+        if (LoaiChoiceBox.getValue() == null) {
+            count++;
+            ShowAlert.showAlertError("Chưa chọn Loại Khai Báo","Mời Bạn Chọn Lại");
+        } else {
+            khaiBaoTamTruTamVang.setLoai((String) LoaiChoiceBox.getValue());
+        }
+
+        if (HoTenTextField.getText().length() == 0) {
+            count++;
+            ShowAlert.showAlertError("Chưa Nhập Họ Tên!", "Mời Bạn Nhập lại");
+        } else {
+            khaiBaoTamTruTamVang.setHoTen(HoTenTextField.getText());
+        }
+
+        if (NgaySinhDatePicker.getValue() == null) {
+            count++;
+            ShowAlert.showAlertError("Chưa chọn ngày sinh!", "Mời bạn chọn lại");
+        } else if(NgaySinhDatePicker.getValue().compareTo(todayDate) > 0 ) {
+            count++;
+            ShowAlert.showAlertError("Chọn ngày sinh sai!", "Mời bạn chọn lại");
+            NgaySinhDatePicker.getEditor().clear();
+        } else {
+            khaiBaoTamTruTamVang.setNgaySinh(valueOf(NgaySinhDatePicker.getValue()));
+        }
+
+        if (GioiTinhChoiceBox.getValue() == null  ) {
+            count++;
+            ShowAlert.showAlertError("Chưa chọn giới tính!", "Mời bạn chọn lại");
+        } else {
+            khaiBaoTamTruTamVang.setGioiTinh((String)GioiTinhChoiceBox.getValue() );
+        }
+
+        if (QuocTichTextField.getText().length() == 0) {
+            count++;
+            ShowAlert.showAlertError("Chưa nhập quốc tịch!","Moi bạn nhập lại");
+        } else {
+            khaiBaoTamTruTamVang.setQuocTich(QuocTichTextField.getText());
+        }
+
+        khaiBaoTamTruTamVang.setSoCCCD(SoCCCDTextField.getText());
+
+//        NgayDangKyDatePicker.setValue(LocalDate.now());
+        if (NgayDangKyDatePicker.getValue() == null) {
+            count++;
+            ShowAlert.showAlertError("Bạn chưa chọn ngày đăng ký!","Mời bạn chọn lại");
+        } else if (NgayDangKyDatePicker.getValue().compareTo(todayDate) > 0) {
+            count++;
+            ShowAlert.showAlertError("Chọn ngày đăng ký sai!", "Mời bạn chọn lại");
+            NgayDangKyDatePicker.getEditor().clear();
+        } else {
+            khaiBaoTamTruTamVang.setNgayDangKy(valueOf(NgayDangKyDatePicker.getValue()));
+        }
+
+        if (NgayKetThucDatePicker.getValue() == null) {
+            count++;
+            ShowAlert.showAlertError("Bạn chưa chọn ngày kết thúc!","Mời bạn chọn lại");
+
+        } else if ( NgayKetThucDatePicker.getValue().compareTo(NgayDangKyDatePicker.getValue()) < 0 ) {
+            count++;
+            ShowAlert.showAlertError("Chọn ngày kết thúc sai!", "Mời bạn chọn lại");
+            NgayKetThucDatePicker.getEditor().clear();
+        } else {
+            khaiBaoTamTruTamVang.setNgayKetThuc(valueOf(NgayKetThucDatePicker.getValue()));
+        }
+
+        if (DiaChiThuongTruTextField.getText().length() == 0) {
+            count++;
+            ShowAlert.showAlertError("Bạn chưa nhập địa chỉ thường trú!","Moi bạn nhập lại");
+        } else {
+            khaiBaoTamTruTamVang.setDiaChiThuongTru(DiaChiThuongTruTextField.getText());
+        }
+        if (DiaChiTamTruTamVangField.getText().length() == 0) {
+            count++;
+            ShowAlert.showAlertError("Bạn chưa nhập địa chỉ tạm trú tạm vắng!","Mời bạn nhập lại");
+        } else {
+            khaiBaoTamTruTamVang.setDiaChiTamTruTamVang(DiaChiTamTruTamVangField.getText());
+        }
+
+        khaiBaoTamTruTamVang.setLyDo(LyDoTextField.getText());
+        khaiBaoTamTruTamVang.setIdKhaiBao(idTamTruTamVangUpdate);
+
+        if(count == 0) {
+            ShowAlert.showAlertYN("Lưu lại", "Bạn đã kiểm tra kĩ mọi thông tin và muốn lưu lại?");
+            KhaiBaoTamTruTamVangStatic.upDateKhaiBaoTamTruTamVang(khaiBaoTamTruTamVang);
+            dsKhaiBaoTamTruTamVang.getItems().clear();
+            setTable();
+            clearData();
+        }
+
+
+
+
+    }
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        UpdateButton.setDisable(true);
         setTable();
         LoaiChoiceBox.getItems().addAll(listLoaiChoiceBox);
         GioiTinhChoiceBox.getItems().addAll(listGioiTinhChoiceBox);
+        hienThiThongTinKhaiBao();
+        UpdateButton.setDisable(true);
+
+
+
+        HoTenTextField.setPromptText("Vũ Văn A");
+        NgaySinhDatePicker.setPromptText("mm/dd/yyyy");
+        QuocTichTextField.setPromptText("Việt Nam");
+        NgayDangKyDatePicker.setPromptText("mm/dd/yyyy");
+        NgayKetThucDatePicker.setPromptText("mm/dd/yyyy");
+        DiaChiThuongTruTextField.setPromptText("Thôn(Phố) - Xã(Phường) - Huyện(Quận) - Tỉnh(Thành Phố)");
+        DiaChiTamTruTamVangField.setPromptText("Thôn(Phố) - Xã(Phường) - Huyện(Quận) - Tỉnh(Thành Phố)");
+        SearchTextField.setPromptText("Id hoặc Loại hoặc Họ Tên");
+
     }
+
 
     //
 

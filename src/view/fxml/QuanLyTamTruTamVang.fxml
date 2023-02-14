@@ -48,7 +48,8 @@
                   <Label layoutX="55.0" layoutY="254.0" text="Lý Do" />
                   <TextField fx:id="LyDoTextField" alignment="TOP_LEFT" layoutX="111.0" layoutY="238.0" prefHeight="49.0" prefWidth="481.0" />
                   <Button fx:id="SaveButton" layoutX="715.0" layoutY="189.0" mnemonicParsing="false" onAction="#save" text="SAVE" />
-                  <Button fx:id="CancelButton" layoutX="822.0" layoutY="189.0" mnemonicParsing="false" onAction="#reset" text="RESET" />
+                  <Button fx:id="CancelButton" layoutX="798.0" layoutY="189.0" mnemonicParsing="false" onAction="#reset" text="RESET" />
+                  <Button fx:id="UpdateButton" layoutX="882.0" layoutY="189.0" mnemonicParsing="false" onAction="#UpdateDate" text="UPDATE" />
                </children>
             </AnchorPane>
             <TableView fx:id="dsKhaiBaoTamTruTamVang" prefHeight="365.0" prefWidth="1000.0">
