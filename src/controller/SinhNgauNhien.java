@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 import model.HoKhauStatic;
 import model.LichSuStatic;

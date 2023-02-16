@@ -166,7 +166,7 @@ public class DBUtils {
                 "\tN'"+nhanKhau.getNgheNghiep()+"',\n" +
                 "\tN'"+nhanKhau.getNoiLamViec()+"',\n" +
                 "\t'"+nhanKhau.getThoiGianDKThuongTru()+"',\n" +
-                "\t"+nhanKhau.getSoCCCD()+",\n" +
+                "\tN'"+nhanKhau.getSoCCCD()+"',\n" +
                 "\t'"+nhanKhau.getNgayCap()+"',\n" +
                 "\tN'"+nhanKhau.getNoiCap()+"',\n" +
                 "\tN'"+nhanKhau.getDiaChiThuongTru()+"'\n" +
@@ -214,7 +214,7 @@ public class DBUtils {
                 String ngheNghiep = resultSet.getString("NgheNghiep");
                 String noiLamViec = resultSet.getString("NoiLamViec");
                 Date TGDKTT = resultSet.getDate("TGDKTT");
-                int soCCCD = resultSet.getInt("SoCCCD");
+                String soCCCD = resultSet.getString("SoCCCD");
                 Date ngayCap = resultSet.getDate("NgayCap");
                 String noiCap = resultSet.getString("NoiCap");
                 String diaChiThuongTru = resultSet.getString("DiaChiThuongTru");
@@ -294,16 +294,16 @@ public class DBUtils {
     public static void XoaHoKhau (String idHoKhau) {
         String cauLenh1 = "DELETE FROM NhanKhau\n" +
                 "WHERE IdHoKhau = '"+ idHoKhau +"'";
-        String cauLenh2 = "DELETE FROM HoKhau\n" +
-                "WHERE IdHoKhau = '"+ idHoKhau +"'";
         String cauLenh3 = "DELETE FROM ChiTietKhoanThu\n" +
                 "WHERE IdHoKhau = '"+ idHoKhau +"'";
         String cauLenh4 = "DELETE FROM ChiTietDongGop\n" +
                 "WHERE IdHoKhau = '"+ idHoKhau +"'";
+        String cauLenh2 = "DELETE FROM HoKhau\n" +
+                "WHERE IdHoKhau = '"+ idHoKhau +"'";
         ThucThiCauLenhUpdate(cauLenh1);
-        ThucThiCauLenhUpdate(cauLenh2);
         ThucThiCauLenhUpdate(cauLenh3);
         ThucThiCauLenhUpdate(cauLenh4);
+        ThucThiCauLenhUpdate(cauLenh2);
     }
 
     public static void XoaNhanKhau (String idNhanKhau) {
@@ -328,7 +328,8 @@ public class DBUtils {
                 String idHoKhau = resultSet.getString("idHoKhau");
                 String noiDung = resultSet.getString("noiDung");
                 String ngayThang = resultSet.getString("ngayThang");
-                LichSu lichSu = new LichSu(idLichSu, noiDung, idHoKhau, ngayThang);
+                String thaoTac = resultSet.getString("thaoTac");
+                LichSu lichSu = new LichSu(idLichSu, noiDung, thaoTac, idHoKhau, ngayThang);
                 LichSuStatic.getDsLichSu().add(lichSu);
             }
         }
@@ -340,8 +341,10 @@ public class DBUtils {
                 "\t'"+lichSu.getIdLichSu()+"',\n" +
                 "\t'"+lichSu.getIdHoKhau()+"',\n" +
                 "\tN'"+lichSu.getNoiDungThayDoi()+"',\n" +
-                "\t'"+lichSu.getNgayThang()+"'\n" +
+                "\t'"+lichSu.getNgayThang()+"',\n" +
+                "\tN'"+lichSu.getThaoTac()+"'\n" +
                 ")";
         ThucThiCauLenhUpdate(cauLenh);
     }
+
 }

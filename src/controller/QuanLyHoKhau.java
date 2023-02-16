@@ -3,25 +3,21 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import model.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class QuanLyHoKhau implements Initializable {
@@ -52,7 +48,6 @@ public class QuanLyHoKhau implements Initializable {
     public AnchorPane CacButton;
     public AnchorPane KhungThongTin;
 
-    public Button XoaHo;
     public Button TachHoButton;
     public Button ThayDoiChuHo;
     public Button ThemHoKhauButton;
@@ -104,16 +99,18 @@ public class QuanLyHoKhau implements Initializable {
         for (NhanKhau e: NhanKhauStatic.getDsNhanKhau()) {
             System.out.println(e.getHoTen() + " " + e.getQuanHeChuHo());
         }
+        System.out.println("PHạm Thị Hồng Hạnh");
+        dsHoKhau.refresh();
     }
 
     public void tachHo (Event event) throws IOException {
         if (dsHoKhau.getSelectionModel().getSelectedItem() == null) {
-            ShowAlert.showAlertError("Chọn lại đê", "Chọn sai");
+            ShowAlert.showAlertError("Tách hộ thất bại", "Chưa chọn hộ khẩu cần tách");
             return;
         } else {
             HoKhau duocChon = dsHoKhau.getSelectionModel().getSelectedItem();
             if (duocChon.getSoLuongNhanKhau() <= 1) {
-                ShowAlert.showAlertError("Chọn lại đê", "Chọn hộ khẩu có một đứa thì tách kiểu gì");
+                ShowAlert.showAlertError("Tách hộ thất bại", "Không thể tách hộ với hộ khẩu có một nhân khẩu");
             } else {
                 FXMLLoader fxmlLoader  = new FXMLLoader(TachHo.class.getResource("/view/fxml/TachHo.fxml"));
                 Parent root = fxmlLoader.load();
@@ -121,8 +118,9 @@ public class QuanLyHoKhau implements Initializable {
                 TachHo tachHo = fxmlLoader.getController();
                 tachHo.setDsNhanKhau(duocChon.getIdHoKhau(), duocChon.getDiaChi(), duocChon);
                 TachHo.setPreScene(getCurScene());
-                tachHo.setHoKhauTableView(dsHoKhau);
                 DBUtils.changeScene(scene, event);
+                System.out.print("Phạm Thị Hồng Hạnh");
+                dsHoKhau.refresh();
             }
         }
     }
@@ -136,25 +134,12 @@ public class QuanLyHoKhau implements Initializable {
             controller.ThayDoiChuHo.setPreScene(getCurScene());
             ThayDoiChuHo thayDoiChuHo = fxmlLoader.getController();
             thayDoiChuHo.setHoKhauCanThayDoi(dsHoKhau.getSelectionModel().getSelectedItem());
-            thayDoiChuHo.setDsHoKhau(dsHoKhau);
             DBUtils.changeScene(scene, event);
+            dsHoKhau.refresh();
         } else {
             ShowAlert.showAlertError("Thất bại", "Chọn hộ khẩu cần thay đổi chủ hộ hoặc chọn hộ khẩu có nhiều hơn 1 nhân khẩu");
         }
     }
-
-    public void xoaHo (Event event) throws SQLException {
-        if (ShowAlert.showAlertYN("Chắc chưa", "Xóa là mất đấy")) {
-            HoKhau duocChon = dsHoKhau.getSelectionModel().getSelectedItem();
-            String idHoKhau = duocChon.getIdHoKhau();
-            DBUtils.XoaHoKhau(idHoKhau);
-            NhanKhauStatic.xoaNhanKhau(idHoKhau);
-            HoKhauStatic.getDsHoKhau().remove(duocChon);
-            dsHoKhau.refresh();
-            LichSuStatic.taoLichSu(duocChon.getIdHoKhau(), "Xóa Hộ", "Xóa hộ khẩu");
-        }
-    }
-
     public void XemChiTiet (Event event) throws IOException {
         if (dsHoKhau.getSelectionModel().getSelectedItem() != null) {
             HoKhau duocChon = dsHoKhau.getSelectionModel().getSelectedItem();
@@ -166,6 +151,7 @@ public class QuanLyHoKhau implements Initializable {
             QuanLyNhanKhau quanLyNhanKhau = XemChiTiet.getController();
             quanLyNhanKhau.hienThiThongTinHoKhau(duocChon);
             DBUtils.changeScene(scene, event);
+            dsHoKhau.refresh();
         }
     }
 

@@ -8,14 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import model.*;
-import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static java.lang.Integer.parseInt;
@@ -136,97 +132,118 @@ public class ThemNhanKhau implements Initializable {
         //Chưa thêm phần nhập căn cước công dân
         NhanKhau nhanKhau = new NhanKhau();
         if (idHoKhau.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setIdHoKhau(idHoKhau.getText());
         }
 
         if (biDanh.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setBiDanh(biDanh.getText());
         }
 
         if (hoTen.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setHoTen(hoTen.getText());
         }
-
+        //Ngày sinh
+        ngaySinh.getValue();
         if (ngaySinh.getValue() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
+            try {
+                valueOf(ngaySinh.getValue());
+            } catch (Exception e) {
+                ShowAlert.showAlertError("Lưu thất bại", e.toString());
+                return;
+            }
             nhanKhau.setNgaySinh(valueOf(ngaySinh.getValue()));
         }
 
         if (nguyenQuan.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setNguyenQuan(nguyenQuan.getText());
         }
         if (danToc.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setDanToc(danToc.getText());
         }
 
         if (ngheNghiep.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setNgheNghiep(ngheNghiep.getText());
         }
 
         if (noiLamViec.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setNoiLamViec(noiLamViec.getText());
         }
 
+        //TGDKTT
         if (TGDKTT.getValue() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
+            try {
+                valueOf(TGDKTT.getValue());
+            } catch (Exception e) {
+                ShowAlert.showAlertError("Lưu thất bại", e.toString());
+                return;
+            }
             nhanKhau.setThoiGianDKThuongTru(valueOf(TGDKTT.getValue()));
         }
 
+        //Ngày cấp
         if (ngayCap.getValue() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
+            try {
+                valueOf(ngayCap.getValue());
+            } catch (Exception e) {
+                ShowAlert.showAlertError("Lưu thất bại", e.toString());
+                return;
+            }
             nhanKhau.setNgayCap(valueOf(ngayCap.getValue()));
         }
 
         if (noiCap.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setNoiCap(noiCap.getText());
         }
 
         if (diaChiThuongTru.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setDiaChiThuongTru(diaChiThuongTru.getText());
         }
 
         if (quanHeChuHo.getText() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Nhập lại đê");
+            ShowAlert.showAlertError("Lưu thất bại", "Nhập lại");
             return;
         } else {
             nhanKhau.setQuanHeChuHo(quanHeChuHo.getText());
         }
 
         if (gioiTinh.getValue() == null) {
-            ShowAlert.showAlertError("Nhập sai", "Chọn giới tính");
+            ShowAlert.showAlertError("Lưu thất bại", "Chọn giới tính");
             return;
         } else {
             if (gioiTinh.getValue().compareTo("Nam") == 0) {
@@ -235,6 +252,25 @@ public class ThemNhanKhau implements Initializable {
                 if (gioiTinh.getValue().compareTo("Nữ") == 0) {
                     nhanKhau.setGioiTinh(false);
                 }
+            }
+        }
+
+        if (soCCCD.getText() == null) {
+            ShowAlert.showAlertError("Lưu thất bại", "Chưa điền số CCCD");
+            return;
+        } else {
+            String tmp = soCCCD.getText();
+            long kiemtra;
+            if (tmp.compareTo("Chưa được cấp") == 0) {
+                nhanKhau.setSoCCCD(tmp);
+            } else {
+                try {
+                    kiemtra = Long.parseLong(tmp);
+                } catch (Exception e) {
+                    ShowAlert.showAlertError("Lưu thất bại", "Nhập sai số CCCD " + e.toString());
+                    return;
+                }
+                nhanKhau.setSoCCCD(kiemtra+"");
             }
         }
         if (getMenu() == 3) {
@@ -253,15 +289,15 @@ public class ThemNhanKhau implements Initializable {
                     "NgheNghiep = N'"+nhanKhauCanSua.getNgheNghiep()+"',\n" +
                     "NoiLamViec = N'"+nhanKhauCanSua.getNoiLamViec()+"',\n" +
                     "DanToc = N'"+nhanKhauCanSua.getDanToc()+"',\n" +
-                    "SoCCCD = "+nhanKhauCanSua.getSoCCCD()+",\n" +
+                    "SoCCCD = N'"+nhanKhauCanSua.getSoCCCD()+"',\n" +
                     "NoiCap = N'"+nhanKhauCanSua.getNoiCap()+"',\n" +
                     "NgayCap ='"+nhanKhauCanSua.getNgayCap()+"',\n" +
                     "QuanHeVoiChuHo = N'"+nhanKhauCanSua.getQuanHeChuHo()+"',\n" +
                     "TGDKTT = '"+nhanKhauCanSua.getThoiGianDKThuongTru()+"'\n" +
                     "WHERE IdNhanKhau = '"+nhanKhauCanSua.getIdNhanKhau()+"'";
             DBUtils.ThucThiCauLenhUpdate(cauLenh);
-            String noiDung = "Sửa nhân khẩu với idNhanKhau: " + nhanKhauCanSua.getIdNhanKhau();
-            LichSuStatic.taoLichSu(nhanKhauCanSua.getIdHoKhau(), "Sửa", noiDung);
+            String noiDung = "Sửa nhân khẩu: " + nhanKhauCanSua.getHoTen() + " có ID: " + nhanKhauCanSua.getIdNhanKhau();
+            LichSuStatic.taoLichSu(nhanKhauCanSua.getIdHoKhau(), "Sửa Nhân Khẩu", noiDung);
         } else {
             nhanKhau.setIdNhanKhau(SinhNgauNhien.sinhIdNhanKhau(nhanKhau.getHoTen(), nhanKhau.getDiaChiThuongTru()));
             if (getMenu() == 4) {
@@ -269,7 +305,7 @@ public class ThemNhanKhau implements Initializable {
                 HoKhau hoKhau = HoKhauStatic.getDsHoKhau().filtered(node -> node.timTheoHoKhau(nhanKhau.getIdHoKhau())).get(0);
                 int soLuong = hoKhau.getSoLuongNhanKhau()+1;
                 hoKhau.setSoLuongNhanKhau(soLuong);
-                String noiDung = "Thêm nhân khẩu idNhanKhau: " + nhanKhau.getIdNhanKhau();
+                String noiDung = "Thêm nhân khẩu: " + nhanKhau.getHoTen() + " có ID: " + nhanKhau.getIdNhanKhau();
                 DBUtils.themNhanKhau(nhanKhau);
                 DBUtils.thayDoiSoLuongHoKhau(hoKhau.getIdHoKhau(), soLuong);
                 LichSuStatic.taoLichSu(nhanKhau.getIdHoKhau(), "Thêm Nhân Khẩu", noiDung);
@@ -284,8 +320,4 @@ public class ThemNhanKhau implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gioiTinh.setItems(list);
     }
-//    @Override
-//    public String  () {
-//        String str = "Thêm nhân khẩu mới "
-//    }
 }

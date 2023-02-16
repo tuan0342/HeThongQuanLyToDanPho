@@ -1,5 +1,9 @@
 package controller;
 
+import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,14 +11,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import model.HoKhauStatic;
-import model.NhanKhauStatic;
-import model.UsersDAO;
+import model.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 // Đây là lớp xử lý các sự kiện tại màn hình lựa chọn chức năng
@@ -102,20 +104,26 @@ public class SelectManagementController implements Initializable {
             throw new RuntimeException(e);
         }
 
+
+
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            NhanKhauStatic.setDsNhanKhau(FXCollections.observableArrayList());
             DBUtils.loadDsNhanKhau();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         try {
+            HoKhauStatic.setDsHoKhau(FXCollections.observableArrayList());
             DBUtils.loadDsHoKhau();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         try {
+            LichSuStatic.setDsLichSu(FXCollections.observableArrayList());
             DBUtils.loadDsLichSu();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -147,7 +155,7 @@ public class SelectManagementController implements Initializable {
         controller.QuanLyNhanKhau.setCurScene(this.QuanLyNhanKhau);
         controller.QuanLyNhanKhau.setPreScene(curScene);
         quanLyNhanKhau.dsNhanKhau.refresh();
-        quanLyNhanKhau.setThanhTimKiem();
+        quanLyNhanKhau.setDsNhanKhau(NhanKhauStatic.getDsNhanKhau());
         DBUtils.changeScene(QuanLyNhanKhau, event);
     }
 
@@ -169,6 +177,13 @@ public class SelectManagementController implements Initializable {
 
     }
 
+    public void chonXemThongKeButton (Event event) {
+        controller.XemThongKe.setCurScene(this.XemThongKe);
+        controller.XemThongKe.setPreScene(curScene);
+        DBUtils.changeScene(XemThongKe, event);
+
+    }
+
     public void Back (Event event) {
         DBUtils.changeScene(preScene, event);
     }
@@ -180,11 +195,4 @@ public class SelectManagementController implements Initializable {
         xemLichSu.setPreScene(this.curScene);
         DBUtils.changeScene(scene, event);
     }
-    public void chonXemThongKeButton (Event event) {
-        controller.XemThongKe.setCurScene(this.XemThongKe);
-        controller.XemThongKe.setPreScene(curScene);
-        DBUtils.changeScene(XemThongKe, event);
-
-    }
-
 }

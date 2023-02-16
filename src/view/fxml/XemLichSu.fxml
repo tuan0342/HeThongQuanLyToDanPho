@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,26 +10,28 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.XemLichSu">
-    <children>
-        <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Back">
-            <font>
-                <Font name="Arial Bold" size="17.0" />
-            </font>
-        </Button>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="21.0" prefHeight="18.0" prefWidth="606.0" text="Lịch sử chỉnh sửa hộ khẩu">
-            <font>
-                <Font name="System Bold" size="21.0" />
-            </font>
-        </Label>
-        <TableView fx:id="dsLichSu" layoutX="58.0" layoutY="152.0" prefHeight="415.0" prefWidth="884.0">
-            <columns>
-                <TableColumn fx:id="idLichSu" prefWidth="110.39999008178711" text="ID lịch sử" />
-                <TableColumn fx:id="idHoKhau" prefWidth="127.20002746582031" text="ID hộ khẩu" />
-                <TableColumn fx:id="noiDung" prefWidth="435.2000427246094" text="Nội dung thay đổi" />
-                <TableColumn fx:id="ngayThang" prefWidth="217.5999755859375" text="Ngày tháng" />
-            </columns>
-        </TableView>
-        <TextField fx:id="dienIdHoKhau" layoutX="58.0" layoutY="65.0" prefHeight="26.0" prefWidth="167.0" promptText="ID hộ khẩu" />
-        <Button fx:id="Tim" layoutX="246.0" layoutY="65.0" mnemonicParsing="false" onAction="#Tim" text="Tìm" />
-    </children>
+   <children>
+      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Back">
+         <font>
+            <Font name="Arial Bold" size="17.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="21.0" prefHeight="18.0" prefWidth="606.0" text="Lịch sử chỉnh sửa hộ khẩu">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
+      <TableView fx:id="dsLichSu" layoutX="58.0" layoutY="152.0" prefHeight="415.0" prefWidth="884.0">
+        <columns>
+          <TableColumn fx:id="idLichSu" prefWidth="81.5" text="ID lịch sử" />
+          <TableColumn fx:id="idHoKhau" prefWidth="97.0" text="ID hộ khẩu" />
+            <TableColumn fx:id="thaoTac" prefWidth="135.5" text="Thao tác" />
+            <TableColumn fx:id="noiDung" minWidth="7.5" prefWidth="427.5" text="Nội dung thay đổi" />
+            <TableColumn fx:id="ngayThang" prefWidth="141.5" text="Ngày tháng" />
+        </columns>
+      </TableView>
+      <TextField fx:id="dienIdHoKhau" layoutX="58.0" layoutY="65.0" prefHeight="26.0" prefWidth="167.0" promptText="ID hộ khẩu" />
+      <Button fx:id="Tim" layoutX="425.0" layoutY="63.0" mnemonicParsing="false" onAction="#Tim" text="Tìm" />
+      <ComboBox fx:id="thaoTacCanTim" layoutX="243.0" layoutY="64.0" prefWidth="150.0" />
+   </children>
 </AnchorPane>

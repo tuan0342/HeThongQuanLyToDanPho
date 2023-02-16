@@ -44,16 +44,6 @@ public class TachHo implements Initializable {
     public Label tenChuHoMoi;
     private NhanKhau duocChon = null;
     private HoKhau hoKhauCanTach;
-    private TableView<HoKhau> hoKhauTableView;
-
-    public TableView<HoKhau> getHoKhauTableView() {
-        return hoKhauTableView;
-    }
-
-    public void setHoKhauTableView(TableView<HoKhau> hoKhauTableView) {
-        this.hoKhauTableView = hoKhauTableView;
-    }
-
     public void setDsNhanKhau (String idHoKhau, String queQuan, HoKhau hoKhauCanTach) {
         dsNhanKhauCanTach = NhanKhauStatic.getDsNhanKhau().filtered(node -> node.timTheoHoKhauNhungNhanKhauKhongPhaiChuHo(idHoKhau));
         for (NhanKhau e: dsNhanKhauCanTach) {
@@ -70,6 +60,7 @@ public class TachHo implements Initializable {
         quanHeCu.setCellValueFactory(new PropertyValueFactory<NhanKhau, String>("quanHeChuHo"));
         dsNhanKhauCuaHoKhauNay.setItems(dsNhanKhauCanTach);
         idHoKhauMoi.setText(SinhNgauNhien.sinhIdHoKhau(queQuan));
+        idHoKhauMoi.setDisable(true);
         hoanThanh.setDisable(true);
     }
 
@@ -97,12 +88,12 @@ public class TachHo implements Initializable {
             tenChuHoMoi.setText(duocChon.getHoTen());
             hoanThanh.setDisable(false);
         } else {
-            ShowAlert.showAlertError("Chọn chủ hộ đê", "Rồi muốn làm gì thì làm");
+            ShowAlert.showAlertError("Lưu thất bại", "Chưa chọn chủ hộ cho nhân khẩu mới");
         }
     }
 
     public void HoanThanh (Event event) {
-        if (ShowAlert.showAlertYN("Chắc chưa", "Lưu rồi thì không sửa được đâu")) {
+        if (ShowAlert.showAlertYN("Xác nhận lưu", "Thao tác này không thể quay lại")) {
             String idHoKhau = idHoKhauMoi.getText();
             String idHoKhauCu = duocChon.getIdHoKhau();
             String tenChuHo = tenChuHoMoi.getText();
@@ -133,10 +124,9 @@ public class TachHo implements Initializable {
                     "SET SoLuongNhanKhau = "+soLuongNhanKhauMoi+"\n" +
                     "WHERE IdHoKhau = '"+this.hoKhauCanTach.getIdHoKhau()+"'";
             HoKhauStatic.themHoKhau(hoKhau);
-            this.hoKhauTableView.refresh();
             DBUtils.ThucThiCauLenhUpdate(str1);
             DBUtils.ThucThiCauLenhUpdate(str2);
-            String noiDung = "Tách hộ có ID hộ khẩu: " + hoKhauCanTach.getIdHoKhau();
+            String noiDung = "Tách hộ có ID: " + hoKhauCanTach.getIdHoKhau() + ". ID hộ khẩu mới: " + hoKhau.getIdHoKhau() + " chủ hộ là: " + hoKhau.getTenChuHo();
             LichSuStatic.taoLichSu(hoKhauCanTach.getIdHoKhau(), "Tách Hộ", noiDung);
             DBUtils.changeScene(getPreScene(), event);
         } else {

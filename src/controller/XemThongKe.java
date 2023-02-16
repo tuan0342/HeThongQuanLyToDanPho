@@ -298,6 +298,5 @@ public class XemThongKe implements Initializable {
         LuaChonBieuDo.getItems().addAll("THEO GIỚI TÍNH", "THEO NHÓM TUỔI", "THEO THỜI GIAN", "THEO TẠM TRÚ TẠM VẮNG");
         setBieuDoBanDau();
 
-
     }
 }

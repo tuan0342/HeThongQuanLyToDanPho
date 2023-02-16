@@ -5,6 +5,9 @@ import java.util.Date;
 public class LichSu {
     private String idLichSu;
     private String noiDungThayDoi;
+
+    private String thaoTac;
+
     private String idHoKhau;
     private String ngayThang;
 
@@ -40,11 +43,20 @@ public class LichSu {
         this.ngayThang = ngayThang;
     }
 
-    public LichSu(String idLichSu, String noiDungThayDoi, String idHoKhau, String ngayThang) {
+    public LichSu (String idLichSu, String noiDungThayDoi, String thaoTac, String idHoKhau, String ngayThang) {
         this.idLichSu = idLichSu;
         this.noiDungThayDoi = noiDungThayDoi;
+        this.thaoTac = thaoTac;
         this.idHoKhau = idHoKhau;
         this.ngayThang = ngayThang;
+    }
+
+    public String getThaoTac() {
+        return thaoTac;
+    }
+
+    public void setThaoTac(String thaoTac) {
+        this.thaoTac = thaoTac;
     }
 
     public boolean timTheoIdHoKhau (String idHoKhau) {
@@ -54,6 +66,18 @@ public class LichSu {
 
     public boolean timTheoIdLichSu (String idLichSu) {
         if (getIdLichSu().compareTo(idLichSu) == 0) return true;
+        return false;
+    }
+
+    public boolean timTheoThaoTac (String thaoTac) {
+        if (getThaoTac().compareTo(thaoTac) == 0) return true;
+        return false;
+    }
+
+    public boolean timTheoIdVaThaoTac (String id, String thaoTac) {
+        if (id==null && thaoTac!=null) return timTheoThaoTac(thaoTac);
+        if (thaoTac==null && id!=null) return timTheoIdHoKhau(id);
+        if (getThaoTac().compareTo(thaoTac)==0 && getIdHoKhau().compareTo(id)==0) return true;
         return false;
     }
 }

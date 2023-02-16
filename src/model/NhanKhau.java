@@ -17,7 +17,7 @@ public class NhanKhau {
     private String danToc;
     private String ngheNghiep;
     private String noiLamViec;
-    private int soCCCD;
+    private String soCCCD;
     private Date ngayCap;
     private String noiCap;
     private Date thoiGianDKThuongTru;
@@ -33,7 +33,7 @@ public class NhanKhau {
         setChuHo(0);
     }
 
-    public NhanKhau(String idNhanKhau, String idHoKhau, String hoTen, boolean gioiTinh, String biDanh, Date ngaySinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, int soCCCD, Date ngayCap, String noiCap, Date thoiGianDKThuongTru, String diaChiThuongTru, String quanHeChuHo, int chuHo) {
+    public NhanKhau(String idNhanKhau, String idHoKhau, String hoTen, boolean gioiTinh, String biDanh, Date ngaySinh, String nguyenQuan, String danToc, String ngheNghiep, String noiLamViec, String soCCCD, Date ngayCap, String noiCap, Date thoiGianDKThuongTru, String diaChiThuongTru, String quanHeChuHo, int chuHo) {
         this.idNhanKhau = idNhanKhau;
         this.idHoKhau = idHoKhau;
         this.hoTen = hoTen;
@@ -125,11 +125,11 @@ public class NhanKhau {
         this.noiLamViec = noiLamViec;
     }
 
-    public int getSoCCCD() {
+    public String getSoCCCD() {
         return soCCCD;
     }
 
-    public void setSoCCCD(int soCCCD) {
+    public void setSoCCCD(String soCCCD) {
         this.soCCCD = soCCCD;
     }
 
@@ -237,5 +237,27 @@ public class NhanKhau {
     public void canThiMoiGoi () {
         chonHayKhong = new CheckBox();
         thuCanDien = new TextField();
+    }
+
+    @Override
+    public String toString() {
+        return "NhanKhau{" +
+                "idNhanKhau=" + idNhanKhau +
+                ", idHoKhau=" + idHoKhau +
+                ", hoTen=" + hoTen +
+                ", gioiTinh=" + getGioiTinh()+
+                ", biDanh=" + biDanh +
+                ", ngaySinh=" + ngaySinh +
+                ", nguyenQuan=" + nguyenQuan +
+                ", danToc=" + danToc +
+                ", ngheNghiep=" + ngheNghiep +
+                ", noiLamViec=" + noiLamViec +
+                ", soCCCD=" + soCCCD +
+                ", ngayCap=" + ngayCap +
+                ", noiCap=" + noiCap +
+                ", thoiGianDKThuongTru=" + thoiGianDKThuongTru +
+                ", diaChiThuongTru=" + diaChiThuongTru +
+                ", quanHeChuHo=" + quanHeChuHo +
+                '}';
     }
 }

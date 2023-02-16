@@ -14,8 +14,6 @@ import model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ThemHoKhau implements Initializable {
@@ -120,6 +118,7 @@ public class ThemHoKhau implements Initializable {
         }
         dsNhanKhau.setItems(getDsNhanKhauCuaSceneNay());
     }
+
     public void setTaoChuHo (Event event) throws IOException, SQLException {
         if (diaChi.getText().compareTo("") == 0){
             ShowAlert.showAlertError("Lôi nhập thông tin", "Nhập lại đê");
@@ -164,12 +163,13 @@ public class ThemHoKhau implements Initializable {
             hoKhau.setSoLuongNhanKhau(soLuong);
             HoKhauStatic.themHoKhau(hoKhau);
             DBUtils.themHoKhau(hoKhau);
-            String noiDung1 = "Thêm hộ khẩu ID hộ khẩu: " + hoKhau.getIdHoKhau();
+            String noiDung1 = "Thêm hộ khẩu ID: " + hoKhau.getIdHoKhau() + " tên chủ hộ là: " +
+                    hoKhau.getTenChuHo() + " địa chỉ: " + hoKhau.getDiaChi();
             LichSuStatic.taoLichSu(hoKhau.getIdHoKhau(), "Thêm Hộ Khẩu", noiDung1);
             for (NhanKhau e: dsNhanKhauCuaSceneNay) {
                 NhanKhauStatic.themNhanKhau(e);
                 DBUtils.themNhanKhau(e);
-                String noiDung2 = "Thêm nhân khẩu idNhanKhau: " + e.getIdNhanKhau();
+                String noiDung2 = "Thêm nhân khẩu: " + e.getHoTen() + " có ID: " + e.getIdNhanKhau();
                 LichSuStatic.taoLichSu(e.getIdHoKhau(), "Thêm Nhân Khẩu", noiDung2);
             }
             back(event);

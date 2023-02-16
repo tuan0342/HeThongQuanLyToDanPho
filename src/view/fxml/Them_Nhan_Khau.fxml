@@ -78,7 +78,7 @@
       <Label layoutX="325.0" layoutY="129.0" text="DÂN TỘC" />
       <Label layoutX="325.0" layoutY="206.0" text="NGHỀ NGHIỆP" />
       <Label layoutX="325.0" layoutY="272.0" text="NƠI LÀM VIỆC" />
-      <Label layoutX="651.0" layoutY="63.0" text="SỐ CCCD" />
+      <Label layoutX="647.0" layoutY="54.0" prefHeight="42.0" prefWidth="85.0" text="SỐ CCCD* " />
       <DatePicker fx:id="ngayCap" layoutX="783.0" layoutY="129.0" />
       <DatePicker fx:id="ngaySinh" layoutX="113.0" layoutY="340.0" />
       <DatePicker fx:id="TGDKTT" layoutX="445.0" layoutY="340.0" />
@@ -86,5 +86,6 @@
       <Button fx:id="Save" layoutX="546.0" layoutY="511.0" mnemonicParsing="false" onAction="#save" text="SAVE" />
       <Label layoutX="14.0" layoutY="201.0" text="GIỚI TÍNH" />
       <ComboBox fx:id="gioiTinh" layoutX="115.0" layoutY="197.0" prefHeight="26.0" prefWidth="174.0" />
+      <Label layoutX="445.0" layoutY="411.0" prefHeight="18.0" prefWidth="332.0" text="*Nếu chưa được cấp CCCD, điền &quot;Chưa được cấp&quot;" textFill="RED" />
    </children>
 </AnchorPane>

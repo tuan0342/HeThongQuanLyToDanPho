@@ -1,7 +1,7 @@
 package model;
 
 import controller.DBUtils;
-import controller.SinhNgauNhien;
+import controller.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.time.LocalDateTime;
@@ -19,9 +19,9 @@ public class LichSuStatic {
     }
 
     public static void taoLichSu (String idHoKhau, String thaoTac, String noiDung) {
-        String idLichSu = SinhNgauNhien.sinhIdLichSu(thaoTac);
+        String idLichSu = model.SinhNgauNhien.sinhIdLichSu(thaoTac);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        LichSu lichSu = new LichSu(idLichSu, noiDung, idHoKhau, LocalDateTime.now().format(formatter));
+        LichSu lichSu = new LichSu(idLichSu, thaoTac, noiDung, idHoKhau, LocalDateTime.now().format(formatter));
         dsLichSu.add(lichSu);
         DBUtils.themLichSu(lichSu);
     }

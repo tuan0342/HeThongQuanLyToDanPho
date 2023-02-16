@@ -24,14 +24,10 @@ public class ThayDoiChuHo {
         ThayDoiChuHo.preScene = preScene;
     }
     private TableView<HoKhau> dsHoKhau;
-    public void setDsHoKhau (TableView<HoKhau> dsHoKhau) {
-        this.dsHoKhau = dsHoKhau;
-    }
     public void Back (Event event) { DBUtils.changeScene(getPreScene(), event);
         for (NhanKhau e: NhanKhauStatic.getDsNhanKhau()) {
             System.out.println(e.getHoTen() + " " + e.getQuanHeChuHo());
         }
-        dsHoKhau.refresh();
     }
     private String idHoKhau;
     public String getIdHoKhau() {
@@ -127,8 +123,9 @@ public class ThayDoiChuHo {
             }
             chuHoMoi.setChuHo(1);
             dsNhanKhau.refresh();
-            String noiDung = "Thay đổi chủ hộ thành nhân khẩu có ID: " + chuHoMoi.getIdNhanKhau();
+            String noiDung = "Thay đổi chủ hộ thành nhân khẩu: " + chuHoMoi.getHoTen() + " có ID " + chuHoMoi.getIdNhanKhau();
             LichSuStatic.taoLichSu(HoKhauCanThayDoi.getIdHoKhau(), "Thay Đổi Chủ Hộ", noiDung);
+            DBUtils.changeScene(getPreScene(), event);
         }
     }
 }

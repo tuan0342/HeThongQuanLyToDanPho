@@ -81,7 +81,7 @@
          </children>
       </AnchorPane>
       <TextField fx:id="DienIdNhanKhau" layoutX="40.0" layoutY="56.0" prefHeight="30.0" prefWidth="156.0" />
-      <Button fx:id="TimKiem" layoutX="221.0" layoutY="56.0" minWidth="27.0" mnemonicParsing="false" onAction="#Tim" prefHeight="30.0" prefWidth="94.0" text="Tìm kiếm">
+      <Button fx:id="TimKiem" layoutX="236.0" layoutY="56.0" minWidth="27.0" mnemonicParsing="false" onAction="#Tim" prefHeight="30.0" prefWidth="94.0" text="Tìm kiếm">
          <font>
             <Font name="Arial" size="14.0" />
          </font>
@@ -93,5 +93,10 @@
       </RadioButton>
       <RadioButton fx:id="TimTheoTenNhanKhau" layoutX="136.0" layoutY="101.0" mnemonicParsing="false" text="Tên nhân khẩu" toggleGroup="$TimKiem1" />
       <RadioButton fx:id="TimTheoID" layoutX="41.0" layoutY="101.0" mnemonicParsing="false" text="ID nhân khẩu" toggleGroup="$TimKiem1" />
+      <Button fx:id="Refresh" layoutX="367.0" layoutY="56.0" minWidth="27.0" mnemonicParsing="false" onAction="#refresh" prefHeight="30.0" prefWidth="94.0" text="Refresh ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

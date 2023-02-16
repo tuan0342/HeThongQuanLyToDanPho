@@ -16,8 +16,13 @@ public class HoKhauStatic  {
     private static ObservableList<HoKhau> dsHoKhau = FXCollections.observableArrayList();
     private static ThemHoKhau themHoKhau;
     private static ThemNhanKhau themNhanKhau;
+
     public static ObservableList<HoKhau> getDsHoKhau() {
         return dsHoKhau;
+    }
+
+    public static void setDsHoKhau(ObservableList<HoKhau> dsHoKhau) {
+        HoKhauStatic.dsHoKhau = dsHoKhau;
     }
 
     public static ThemHoKhau getThemHoKhau() {
