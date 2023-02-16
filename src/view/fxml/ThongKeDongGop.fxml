@@ -21,6 +21,9 @@
             <TableColumn fx:id="colSoTien" prefWidth="316.79998779296875" text="Tổng số tiền đã tiếp nhận" />
         </columns>
       </TableView>
-      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backT" prefHeight="26.0" prefWidth="50.0" text="Back" />
+      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backT" prefHeight="14.0" prefWidth="62.0" text="Trở lại">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Button>
    </children>
 </AnchorPane>

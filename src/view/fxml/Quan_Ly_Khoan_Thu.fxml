@@ -22,9 +22,9 @@
                <font>
                   <Font size="14.0" />
                </font></Button>
-                <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" prefHeight="30.0" prefWidth="55.0" text="BACK">
+                <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="70.0" text="Trở lại">
                <font>
-                  <Font name="Arial Bold" size="13.0" />
+                  <Font name="Arial" size="14.0" />
                </font></Button>
             <Button fx:id="ThemDSQLKT" layoutX="34.0" layoutY="112.0" mnemonicParsing="false" onAction="#themChiTietKhoanThu" prefHeight="31.0" prefWidth="282.0" text="Thêm danh sách các hộ cần đóng">
                <font>

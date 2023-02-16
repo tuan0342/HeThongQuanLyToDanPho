@@ -11,9 +11,9 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.XemLichSu">
    <children>
-      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Back">
+      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Trở lại">
          <font>
-            <Font name="Arial Bold" size="17.0" />
+            <Font name="Arial" size="14.0" />
          </font>
       </Button>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="197.0" layoutY="21.0" prefHeight="18.0" prefWidth="606.0" text="Lịch sử chỉnh sửa hộ khẩu">
@@ -31,7 +31,10 @@
         </columns>
       </TableView>
       <TextField fx:id="dienIdHoKhau" layoutX="58.0" layoutY="65.0" prefHeight="26.0" prefWidth="167.0" promptText="ID hộ khẩu" />
-      <Button fx:id="Tim" layoutX="425.0" layoutY="63.0" mnemonicParsing="false" onAction="#Tim" text="Tìm" />
+      <Button fx:id="Tim" layoutX="425.0" layoutY="63.0" mnemonicParsing="false" onAction="#Tim" prefHeight="26.0" prefWidth="80.0" text="Tìm kiếm">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Button>
       <ComboBox fx:id="thaoTacCanTim" layoutX="243.0" layoutY="64.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

@@ -23,6 +23,10 @@ public class ThongKeDongGopStatic {
                 String b = rs.getString(2);
                 String c = rs.getString(3);
 
+                if (c == null) {
+                    c = "0";
+                }
+
                 ThongKeDongGop chiTieu = new ThongKeDongGop(a, b, c);
                 list.add(chiTieu);
             }

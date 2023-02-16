@@ -13,7 +13,7 @@
    <children>
       <AnchorPane prefHeight="610.0" prefWidth="948.0">
          <children>
-            <Button fx:id="Back" layoutX="66.0" layoutY="228.0" mnemonicParsing="false" onAction="#back" text="Back" />
+            <Button fx:id="Back" layoutX="59.0" layoutY="228.0" mnemonicParsing="false" onAction="#back" text="Trở lại" />
             <Label layoutX="27.0" layoutY="22.0" text="Thêm danh sách các hộ vào">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -80,9 +80,9 @@
                </font>
             </Label>
             <Line endX="-339.0" endY="59.100006103515625" layoutX="301.0" layoutY="214.0" startX="634.9000244140625" startY="59.100006103515625" />
-            <Button fx:id="Add" layoutX="139.0" layoutY="228.0" mnemonicParsing="false" onAction="#add" text="Add" />
-            <Button fx:id="btnUpdate" disable="true" layoutX="412.0" layoutY="228.0" mnemonicParsing="false" onAction="#update" text="Update" />
-            <Button fx:id="btnCancel" disable="true" layoutX="297.0" layoutY="228.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+            <Button fx:id="Add" layoutX="139.0" layoutY="228.0" mnemonicParsing="false" onAction="#add" prefHeight="26.0" prefWidth="55.0" text="Thêm" />
+            <Button fx:id="btnUpdate" disable="true" layoutX="412.0" layoutY="228.0" mnemonicParsing="false" onAction="#update" text="Cập nhật" />
+            <Button fx:id="btnCancel" disable="true" layoutX="297.0" layoutY="228.0" mnemonicParsing="false" onAction="#cancel" text="Hủy bỏ" />
             <TableView fx:id="dsChiTietDG" layoutX="237.0" layoutY="300.0" prefHeight="282.0" prefWidth="682.0">
                <columns>
                   <TableColumn fx:id="colIdDG" prefWidth="106.4000244140625" text="Id đóng góp" />
@@ -102,9 +102,9 @@
                </font>
             </Label>
             <TextField fx:id="tfSearch" layoutX="33.0" layoutY="397.0" prefHeight="26.0" prefWidth="157.0" promptText="* (tất cả)" />
-            <Button fx:id="btnSearch" layoutX="73.0" layoutY="441.0" mnemonicParsing="false" onAction="#search" prefHeight="30.0" prefWidth="78.0" text="Search">
+            <Button fx:id="btnSearch" layoutX="59.0" layoutY="440.0" mnemonicParsing="false" onAction="#search" prefHeight="30.0" prefWidth="106.0" text="Tìm kiếm">
                <font>
-                  <Font size="16.0" />
+                  <Font name="Arial" size="14.0" />
                </font>
             </Button>
             <Label layoutX="27.0" layoutY="178.0" text="Số tiền">

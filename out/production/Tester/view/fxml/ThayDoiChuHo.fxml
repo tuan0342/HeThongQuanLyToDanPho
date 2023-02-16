@@ -10,16 +10,16 @@
 
 <AnchorPane fx:id="KhungLon" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThayDoiChuHo">
    <children>
-      <Button fx:id="Back" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="BACK">
+      <Button fx:id="Back" layoutX="17.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Trở lại">
          <font>
-            <Font name="Arial" size="12.0" />
+            <Font name="Arial" size="14.0" />
          </font></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="303.0" layoutY="35.0" prefHeight="28.0" prefWidth="189.0" text="Chọn chủ hộ" textAlignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="412.0" layoutY="27.0" prefHeight="28.0" prefWidth="189.0" text="Chọn chủ hộ" textAlignment="CENTER">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <TableView fx:id="dsNhanKhau" layoutX="41.0" layoutY="149.0" prefHeight="419.0" prefWidth="790.0">
+      <TableView fx:id="dsNhanKhau" layoutX="112.0" layoutY="152.0" prefHeight="419.0" prefWidth="790.0">
          <columns>
             <TableColumn fx:id="idNhanKhau" prefWidth="107.20001983642578" text="ID Nhân khẩu" />
             <TableColumn fx:id="hoTen" prefWidth="202.40000915527344" text="Họ và tên" />
@@ -28,11 +28,11 @@
             <TableColumn fx:id="quanHeVoiChuHoMoi" prefWidth="188.79998779296875" text="Quan hệ với chủ hộ mới" />
          </columns>
       </TableView>
-      <ComboBox fx:id="dsIdNhanKhau" layoutX="145.0" layoutY="88.0" prefWidth="150.0" />
-      <Label layoutX="41.0" layoutY="92.0" text="Chọn chủ hộ mới" />
-      <Button fx:id="Luu" layoutX="319.0" layoutY="88.0" mnemonicParsing="false" onAction="#Luu" text="Lưu" />
-      <Button fx:id="hoanTatSuaDoi" layoutX="384.0" layoutY="88.0" mnemonicParsing="false" onAction="#setHoanTatSuaDoi" prefHeight="26.0" prefWidth="124.0" text="Hoàn tất sửa đổi" />
-      <Label layoutX="41.0" layoutY="123.0" text="Tên chủ hộ mới" />
+      <ComboBox fx:id="dsIdNhanKhau" layoutX="220.0" layoutY="88.0" prefWidth="150.0" />
+      <Label layoutX="112.0" layoutY="92.0" text="Chọn chủ hộ mới" />
+      <Button fx:id="Luu" layoutX="420.0" layoutY="88.0" mnemonicParsing="false" onAction="#Luu" text="Lưu" />
+      <Button fx:id="hoanTatSuaDoi" layoutX="478.0" layoutY="87.0" mnemonicParsing="false" onAction="#setHoanTatSuaDoi" prefHeight="26.0" prefWidth="124.0" text="Hoàn tất sửa đổi" />
+      <Label layoutX="112.0" layoutY="123.0" text="Tên chủ hộ mới" />
       <Label fx:id="tenChuHoMoi" layoutX="145.0" layoutY="123.0" prefHeight="18.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

@@ -21,8 +21,8 @@ public class LichSuStatic {
     public static void taoLichSu (String idHoKhau, String thaoTac, String noiDung) {
         String idLichSu = model.SinhNgauNhien.sinhIdLichSu(thaoTac);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        LichSu lichSu = new LichSu(idLichSu, thaoTac, noiDung, idHoKhau, LocalDateTime.now().format(formatter));
+        LichSu lichSu = new LichSu(idLichSu, noiDung, thaoTac , idHoKhau, LocalDateTime.now().format(formatter));
         dsLichSu.add(lichSu);
         DBUtils.themLichSu(lichSu);
     }
-}
+} 

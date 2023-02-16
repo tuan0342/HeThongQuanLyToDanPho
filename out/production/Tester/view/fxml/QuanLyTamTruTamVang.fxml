@@ -11,15 +11,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyTamTruTamVang">
+<AnchorPane style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuanLyTamTruTamVang">
    <children>
       <VBox prefHeight="600.0" prefWidth="1000.0">
          <children>
             <AnchorPane prefHeight="353.0" prefWidth="1000.0">
                <children>
-                  <Button fx:id="Back" layoutX="30.0" layoutY="17.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
+                  <Button fx:id="Back" layoutX="21.0" layoutY="16.0" mnemonicParsing="false" onAction="#Back" prefHeight="18.0" prefWidth="67.0" text="Trở lại">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font></Button>
                   <TextField fx:id="SearchTextField" layoutX="681.0" layoutY="250.0" />
-                  <Button fx:id="SearchButton" layoutX="852.0" layoutY="250.0" mnemonicParsing="false" onAction="#search" text="SEARCH" />
+                  <Button fx:id="SearchButton" layoutX="852.0" layoutY="250.0" mnemonicParsing="false" onAction="#search" text="Tìm kiếm">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font></Button>
                   <Label layoutX="45.0" layoutY="117.0" text="Họ Tên" />
                   <TextField fx:id="HoTenTextField" layoutX="112.0" layoutY="113.0" prefHeight="25.0" prefWidth="174.0" />
                   <Label layoutX="43.0" layoutY="163.0" text="Ngày Sinh" />
@@ -47,9 +53,18 @@
                   <TextField fx:id="DiaChiTamTruTamVangField" layoutX="765.0" layoutY="113.0" prefHeight="25.0" prefWidth="189.0" />
                   <Label layoutX="55.0" layoutY="254.0" text="Lý Do" />
                   <TextField fx:id="LyDoTextField" alignment="TOP_LEFT" layoutX="111.0" layoutY="238.0" prefHeight="49.0" prefWidth="481.0" />
-                  <Button fx:id="SaveButton" layoutX="715.0" layoutY="189.0" mnemonicParsing="false" onAction="#save" text="SAVE" />
-                  <Button fx:id="CancelButton" layoutX="798.0" layoutY="189.0" mnemonicParsing="false" onAction="#reset" text="RESET" />
-                  <Button fx:id="UpdateButton" layoutX="882.0" layoutY="189.0" mnemonicParsing="false" onAction="#UpdateDate" text="UPDATE" />
+                  <Button fx:id="SaveButton" layoutX="715.0" layoutY="189.0" mnemonicParsing="false" onAction="#save" text="Lưu">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font></Button>
+                  <Button fx:id="CancelButton" layoutX="792.0" layoutY="189.0" mnemonicParsing="false" onAction="#reset" text="Đặt lại">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font></Button>
+                  <Button fx:id="UpdateButton" layoutX="882.0" layoutY="189.0" mnemonicParsing="false" onAction="#UpdateDate" text="Cập nhật">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
             <TableView fx:id="dsKhaiBaoTamTruTamVang" prefHeight="365.0" prefWidth="1000.0">

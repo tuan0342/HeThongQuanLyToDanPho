@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThemHoKhau">
    <children>
@@ -18,14 +19,17 @@
                   <TextField fx:id="diaChi" layoutX="175.0" layoutY="110.0" />
                   <Label layoutX="53.0" layoutY="60.0" prefHeight="18.0" prefWidth="112.0" text="ID hộ khẩu *" />
                   <Label layoutX="53.0" layoutY="113.0" prefHeight="18.0" prefWidth="112.0" text="Địa chỉ *" />
-                  <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
+                  <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Trở lại">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font></Button>
                   <Button fx:id="taoChuHo" layoutX="53.0" layoutY="157.0" mnemonicParsing="false" onAction="#setTaoChuHo" text="Tạo chủ hộ" />
-                  <TextField fx:id="dienChuHo" layoutX="175.0" layoutY="201.0" />
-                  <Label fx:id="chuHoLabel" layoutX="53.0" layoutY="204.0" prefHeight="18.0" prefWidth="112.0" text="Chủ hộ *" />
-                  <TextField fx:id="dienSoLuong" layoutX="175.0" layoutY="255.0" />
-                  <Label fx:id="soLuongLabel" layoutX="53.0" layoutY="258.0" prefHeight="18.0" prefWidth="112.0" text="Số lượng" />
-                  <Button fx:id="themNhanKhau" layoutX="53.0" layoutY="300.0" mnemonicParsing="false" onAction="#setThemNhanKhau" text="Thêm nhân khẩu" />
-                  <Button fx:id="Luu" layoutX="175.0" layoutY="300.0" mnemonicParsing="false" onAction="#Luu" prefHeight="26.0" prefWidth="49.0" text="Lưu" />
+                  <TextField fx:id="dienChuHo" layoutX="175.0" layoutY="243.0" />
+                  <Label fx:id="chuHoLabel" layoutX="53.0" layoutY="246.0" prefHeight="18.0" prefWidth="112.0" text="Chủ hộ *" />
+                  <TextField fx:id="dienSoLuong" layoutX="175.0" layoutY="296.0" />
+                  <Label fx:id="soLuongLabel" layoutX="53.0" layoutY="299.0" prefHeight="18.0" prefWidth="112.0" text="Số lượng" />
+                  <Button fx:id="themNhanKhau" layoutX="53.0" layoutY="340.0" mnemonicParsing="false" onAction="#setThemNhanKhau" text="Thêm nhân khẩu" />
+                  <Button fx:id="Luu" layoutX="175.0" layoutY="340.0" mnemonicParsing="false" onAction="#Luu" prefHeight="26.0" prefWidth="49.0" text="Lưu" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="600.0" prefWidth="500.0">
@@ -37,7 +41,10 @@
                         <TableColumn fx:id="quanHeVoiChuHo" prefWidth="126.39996337890625" text="Quan hệ với chủ hộ" />
                     </columns>
                   </TableView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="66.0" prefHeight="18.0" prefWidth="150.0" text="Danh sách nhân khẩu" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="44.0" prefHeight="20.0" prefWidth="218.0" text="Danh sách nhân khẩu">
+                     <font>
+                        <Font name="Arial" size="22.0" />
+                     </font></Label>
                </children>
             </AnchorPane>
          </children>

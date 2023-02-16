@@ -9,9 +9,9 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeKhoanThuController">
    <children>
-      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="BACK">
+      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Trở lại">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="Arial" size="14.0" />
          </font></Button>
       <TableView fx:id="dsThongKeKhoanThu" layoutX="73.0" layoutY="62.0" prefHeight="510.0" prefWidth="769.0">
         <columns>

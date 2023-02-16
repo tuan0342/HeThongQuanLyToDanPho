@@ -14,23 +14,19 @@
    <children>
       <AnchorPane fx:id="CacButton" prefHeight="600.0" prefWidth="351.0">
          <children>
-            <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="58.0" text="BACK">
-               <font>
-                  <Font name="Arial Bold" size="12.0" />
-               </font></Button>
-            <Button fx:id="TachHo" layoutX="74.0" layoutY="403.0" mnemonicParsing="false" onAction="#tachHo" prefHeight="31.0" prefWidth="204.0" text="Tách hộ">
+            <Button fx:id="Back" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="67.0" text="Trở lại">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></Button>
-            <Button fx:id="ThayDoiChuHo" layoutX="74.0" layoutY="480.0" mnemonicParsing="false" onAction="#thayDoiChuHo" prefHeight="31.0" prefWidth="204.0" text="Thay đổi chủ hộ">
+            <Button fx:id="TachHo" layoutX="74.0" layoutY="333.0" mnemonicParsing="false" onAction="#tachHo" prefHeight="31.0" prefWidth="204.0" text="Tách hộ">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
+            <Button fx:id="ThayDoiChuHo" layoutX="74.0" layoutY="410.0" mnemonicParsing="false" onAction="#thayDoiChuHo" prefHeight="31.0" prefWidth="204.0" text="Thay đổi chủ hộ">
                <font>
                   <Font name="Arial" size="14.0" />
                </font></Button>
             <TextField fx:id="FieldTim" layoutX="43.0" layoutY="58.0" prefHeight="30.0" prefWidth="156.0" />
-            <Button fx:id="XoaHo" layoutX="74.0" layoutY="326.0" mnemonicParsing="false" onAction="#xoaHo" prefHeight="31.0" prefWidth="204.0" text="Xóa hộ khẩu">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font></Button>
             <Button fx:id="TimKiem" layoutX="224.0" layoutY="58.0" minWidth="27.0" mnemonicParsing="false" onAction="#Tim" prefHeight="30.0" prefWidth="94.0" text="Tìm kiếm">
                <font>
                   <Font name="Arial" size="14.0" />

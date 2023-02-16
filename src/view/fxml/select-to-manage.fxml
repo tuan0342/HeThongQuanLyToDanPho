@@ -8,42 +8,82 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelectManagementController">
    <children>
-      <ImageView fitHeight="221.0" fitWidth="621.0" layoutX="191.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="221.0" fitWidth="621.0" layoutX="190.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../content/image/logo3.png" />
          </image>
       </ImageView>
-      <Button fx:id="QuanLyNhanKhauButton" layoutX="373.0" layoutY="380.0" mnemonicParsing="false" onAction="#chonQuanLyNhanKhauButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý nhân khẩu">
+      <Button fx:id="QuanLyNhanKhauButton" layoutX="197.0" layoutY="368.0" mnemonicParsing="false" onAction="#chonQuanLyNhanKhauButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý nhân khẩu">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Back">
+      <Button fx:id="DangXuat" layoutX="617.0" layoutY="500.0" mnemonicParsing="false" onAction="#Back" prefHeight="31.0" prefWidth="255.0" text="Đăng xuất">
          <font>
             <Font name="Arial Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="QuanLyKhoanThuButton" layoutX="373.0" layoutY="450.0" mnemonicParsing="false" onAction="#chonQuanLyKhoanThuButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý khoản thu">
+      <Button fx:id="QuanLyKhoanThuButton" layoutX="197.0" layoutY="437.0" mnemonicParsing="false" onAction="#chonQuanLyKhoanThuButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý khoản thu">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="QuanLyHoKhauButton" layoutX="373.0" layoutY="310.0" mnemonicParsing="false" onAction="#chonQuanLyHoKhauButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý hộ khẩu">
+      <Button fx:id="QuanLyHoKhauButton" layoutX="197.0" layoutY="305.0" mnemonicParsing="false" onAction="#chonQuanLyHoKhauButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý hộ khẩu">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="QuanLyKhoanDongGopButton" layoutX="373.0" layoutY="516.0" mnemonicParsing="false" onAction="#chonQuanLyKhoanDongGopButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý đóng góp">
+      <Button fx:id="QuanLyKhoanDongGopButton" layoutX="617.0" layoutY="437.0" mnemonicParsing="false" onAction="#chonQuanLyKhoanDongGopButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý đóng góp">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="QuanLyTamTruTamVangButton" layoutX="720.0" layoutY="310.0" mnemonicParsing="false" onAction="#chonQuanLyTamTruTamVangButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý tạm trú tạm vắng">
+      <Button fx:id="QuanLyTamTruTamVangButton" layoutX="617.0" layoutY="305.0" mnemonicParsing="false" onAction="#chonQuanLyTamTruTamVangButton" prefHeight="33.0" prefWidth="255.0" text="Quản lý tạm trú tạm vắng">
          <font>
             <Font name="Arial Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="XemThongKeButton" layoutX="720.0" layoutY="413.0" mnemonicParsing="false" onAction="#chonXemThongKeButton" prefHeight="26.0" prefWidth="255.0" text="Xem thống kê" />
-      <Button fx:id="XemLichSu" layoutX="720.0" layoutY="367.0" mnemonicParsing="false" onAction="#chonXemLichSu" prefHeight="26.0" prefWidth="255.0" text="Xem lịch sử" />
+      <Button fx:id="XemThongKeButton" layoutX="197.0" layoutY="500.0" mnemonicParsing="false" onAction="#chonXemThongKeButton" prefHeight="26.0" prefWidth="255.0" text="Xem thống kê" />
+      <Button fx:id="XemLichSu" layoutX="617.0" layoutY="368.0" mnemonicParsing="false" onAction="#chonXemLichSu" prefHeight="26.0" prefWidth="255.0" text="Xem lịch sử" />
+      <ImageView fitHeight="46.0" fitWidth="50.0" layoutX="132.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../content/image/house.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="132.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../content/image/people.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="132.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../content/image/khoanthu.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="132.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../content/image/thongke.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="548.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../content/image/tamtrutamvang.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="50.0" layoutX="544.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../content/image/lichsu-removebg.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="546.0" layoutY="437.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../content/image/donggop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="50.0" layoutX="546.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../content/image/logout.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

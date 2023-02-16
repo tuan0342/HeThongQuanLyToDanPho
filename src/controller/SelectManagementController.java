@@ -138,6 +138,9 @@ public class SelectManagementController implements Initializable {
         } else {
             QuanLyHoKhauButton.setDisable(true);
             QuanLyNhanKhauButton.setDisable(true);
+            XemLichSu.setDisable(true);
+            XemThongKeButton.setDisable(true);
+            QuanLyTamTruTamVangButton.setDisable(true);
         }
 
         setMenu();

@@ -8,12 +8,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #EDDBC7;" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TachHo">
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="104.0">
          <children>
-            <Button fx:id="Back" layoutX="14.0" layoutY="28.0" mnemonicParsing="false" onAction="#Back" text="BACK" />
+            <Button fx:id="Back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back" text="Trở lại">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="600.0" prefWidth="812.0">
@@ -29,12 +33,24 @@
               </columns>
             </TableView>
             <Label layoutX="24.0" layoutY="207.0" prefHeight="34.0" prefWidth="217.0" text="Chọn nhân khẩu cho hộ khẩu mới" />
-            <Label layoutX="24.0" layoutY="28.0" prefHeight="34.0" prefWidth="180.0" text="Điền ID hộ khẩu mới" />
+            <Label layoutX="24.0" layoutY="28.0" prefHeight="34.0" prefWidth="180.0" text="Điền ID hộ khẩu mới">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             <TextField fx:id="idHoKhauMoi" layoutX="24.0" layoutY="62.0" prefHeight="26.0" prefWidth="237.0" />
-            <Label layoutX="24.0" layoutY="102.0" prefHeight="34.0" prefWidth="180.0" text="Chọn chủ hộ mới" />
+            <Label layoutX="24.0" layoutY="102.0" prefHeight="34.0" prefWidth="180.0" text="Chọn chủ hộ mới">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
             <ChoiceBox fx:id="idChuHoMoi" layoutX="24.0" layoutY="136.0" prefWidth="150.0" />
-            <Button fx:id="luu" layoutX="24.0" layoutY="174.0" mnemonicParsing="false" onAction="#luu" text="Lưu" />
-            <Button fx:id="hoanThanh" layoutX="24.0" layoutY="560.0" mnemonicParsing="false" onAction="#HoanThanh" prefHeight="26.0" prefWidth="180.0" text="Hoàn thành" />
+            <Button fx:id="luu" layoutX="24.0" layoutY="174.0" mnemonicParsing="false" onAction="#luu" text="Lưu">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
+            <Button fx:id="hoanThanh" layoutX="24.0" layoutY="559.0" mnemonicParsing="false" onAction="#HoanThanh" prefHeight="26.0" prefWidth="114.0" text="Hoàn thành">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font></Button>
             <Label fx:id="tenChuHoMoi" layoutX="194.0" layoutY="131.0" prefHeight="34.0" prefWidth="180.0" />
          </children>
       </AnchorPane>

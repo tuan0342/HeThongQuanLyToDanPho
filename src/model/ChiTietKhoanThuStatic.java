@@ -29,7 +29,7 @@ public class ChiTietKhoanThuStatic {
     // Thêm dữ liệu mới vào bảng chi tiết khoản thu
     public static void insertChiTietKhoanThu(int idKhoanThu, String idHoKhau) throws SQLException, ClassNotFoundException {
         String sql = "insert into ChiTietKhoanThu values(\n" +
-                idKhoanThu + "," + idHoKhau + ", \n" +
+                idKhoanThu + ",'" + idHoKhau + "', \n" +
                 "(select SoTien from KhoanThu where IdKhoanThu =" + idKhoanThu + ") * (select SoLuongNhanKhau from HoKhau where IdHoKhau = '" + idHoKhau + "'),\n" +
                 "0)";
         try {

@@ -142,6 +142,9 @@ public class QuanLyKhoanDongGop implements Initializable {
         tenDG.clear();
         ngayBDDG.clear();
         ngayKTDG.clear();
+
+        setCellTable();  // set cột cho bảng
+        loadDataFromDB(); // load dữ liệu vào bảng
     }
 
     // chuyển sang màn hình thêm chi tiết đóng góp

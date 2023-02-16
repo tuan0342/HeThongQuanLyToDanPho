@@ -22,12 +22,12 @@
       <Label layoutX="192.0" layoutY="75.0" text="TÊN KHOẢN THU" />
       <Label layoutX="192.0" layoutY="116.0" text="NGÀY BẮT ĐẦU" />
       <Label layoutX="190.0" layoutY="154.0" text="NGÀY KẾT THÚC" />
-      <Button fx:id="Add" layoutX="400.0" layoutY="242.0" mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="48.0" text="Add">
+      <Button fx:id="Add" layoutX="382.0" layoutY="242.0" mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="63.0" text="Thêm">
          <font>
             <Font name="Arial" size="14.0" />
          </font></Button>
       <Label layoutX="192.0" layoutY="196.0" text="SỐ TIỀN MỘT NHÂN KHẨU" />
-      <Button fx:id="Back" layoutX="244.0" layoutY="242.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="50.0" text="Back">
+      <Button fx:id="Back" layoutX="244.0" layoutY="242.0" mnemonicParsing="false" onAction="#back" prefHeight="30.0" prefWidth="63.0" text="Trở lại">
          <font>
             <Font name="Arial" size="14.0" />
          </font></Button>

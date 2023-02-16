@@ -50,7 +50,8 @@
 }
 
 /* Màn hình lựa chọn chức năng */
-#QuanLyHoKhauButton, #QuanLyNhanKhauButton, #QuanLyKhoanThuButton, #QuanLyKhoanDongGopButton{
+#QuanLyHoKhauButton, #QuanLyNhanKhauButton, #QuanLyKhoanThuButton, #QuanLyKhoanDongGopButton, #QuanLyTamTruTamVangButton,
+#XemLichSu, #XemThongKeButton, #DangXuat{
         -fx-padding: 8 15 15 15;
         -fx-background-insets: 0,0 0 3 0, 0 0 4 0, 0 0 5 0;
         -fx-background-radius: 8;
@@ -63,7 +64,8 @@
         -fx-font-weight: bold;
         -fx-font-size: 1.2em;
 }
-#QuanLyHoKhauButton:hover, #QuanLyNhanKhauButton:hover, #QuanLyKhoanThuButton:hover, #QuanLyKhoanDongGopButton:hover{
+#QuanLyHoKhauButton:hover, #QuanLyNhanKhauButton:hover, #QuanLyKhoanThuButton:hover, #QuanLyKhoanDongGopButton:hover,
+#QuanLyTamTruTamVangButton:hover, #XemLichSu:hover, #XemThongKeButton:hover, #DangXuat:hover{
     -fx-background-color:
         linear-gradient(from 0% 93% to 0% 100%, #998200 0%, #665700 100%),
         #806c00,
@@ -71,10 +73,13 @@
         radial-gradient(center 50% 50%, radius 100%, #e6c300, #cca300);
     -fx-text-fill: white;
 }
-#QuanLyHoKhauButton:pressed, #QuanLyNhanKhauButton:pressed, #QuanLyKhoanThuButton:pressed, #QuanLyKhoanDongGopButton:pressed {
+#QuanLyHoKhauButton:pressed, #QuanLyNhanKhauButton:pressed, #QuanLyKhoanThuButton:pressed, #QuanLyKhoanDongGopButton:pressed, #QuanLyTamTruTamVangButton:pressed,
+#XemLichSu:pressed, #XemThongKeButton:pressed, #DangXuat:pressed {
     -fx-padding: 10 15 13 15;
     -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
 }
+
+
 #Back, #btnLoad, #ThemKTQLKT, #ThemDSQLKT, #ThongKeQLKT, #CapNhatKTQLKT, #Add {
     -fx-background-color:
             linear-gradient(#f2f2f2, #d6d6d6),
@@ -120,7 +125,9 @@
 }
 
 /* Quản lý hộ khẩu và nhân khẩu */
-#findBtn, #ThemHoKhauButton, #XoaHo, #TachHo, #ThayDoiChuHo, #taoChuHo, #themNhanKhau, #Luu, #Save {
+#findBtn, #ThemHoKhauButton, #XoaHo, #TachHo, #ThayDoiChuHo, #taoChuHo, #themNhanKhau, #Luu, #Save,
+ #TimKiem, #Refresh, #suaThongTin, #Xoa, #XemChiTiet, #SaveButton, #CancelButton, #UpdateButton, #SearchButton,
+ #luu, #hoanThanh, #LuaChonButton, #Tim{
     -fx-background-color:
             linear-gradient(#f2f2f2, #d6d6d6),
             linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),

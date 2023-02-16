@@ -198,5 +198,8 @@ public class QuanLyKhoanThu implements Initializable {
         tfNgayBD.clear();
         tfNgayKT.clear();
         tfTenKT.clear();
+
+        setCellTable();  // set cột cho bảng
+        loadDataFromDB(); // load dữ liệu vào bảng
     }
 }

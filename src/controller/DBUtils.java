@@ -340,9 +340,9 @@ public class DBUtils {
                 "VALUES (\n" +
                 "\t'"+lichSu.getIdLichSu()+"',\n" +
                 "\t'"+lichSu.getIdHoKhau()+"',\n" +
-                "\tN'"+lichSu.getNoiDungThayDoi()+"',\n" +
+                "\tN'"+lichSu.getThaoTac()+"',\n" +   // getNoiDungThayDoi()
                 "\t'"+lichSu.getNgayThang()+"',\n" +
-                "\tN'"+lichSu.getThaoTac()+"'\n" +
+                "\tN'"+lichSu.getNoiDungThayDoi()+"'\n" +  // getThaoTac()
                 ")";
         ThucThiCauLenhUpdate(cauLenh);
     }
