@@ -9,12 +9,8 @@ BTL môn Công nghệ phần mềm kì 2022.1 của nhóm "Hướng nội part t
 	+ Các thư viện, sdk: java 16, javafx 18
 	+ File JDBC giúp kết nối Intellij Idea với Sql server: mssql-jdbc-9.4.1.jre16
 
-
-## Lưu ý: do database chạy ở dưới local. vì vậy có thể file thực thi sẽ ko chạy được.
-
-
 # Các bước cài đặt:
-+ Bước 1: Giải nén file source code và cài đặt file cơ sở dữ liệu (sử dụng phần mềm sql server)
++ Bước 1: Clone source code và cài đặt file cơ sở dữ liệu (sử dụng phần mềm sql server)
 + Bước 2: Mở project bằng Intellij Idea
 + Bước 3: Setup môi trường: Vào mục file -> project structure. Tại project structure:
 	- Ở phần project: chọn SDK version 16
