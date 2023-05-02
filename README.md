@@ -23,3 +23,7 @@ pass đổi lại cho phù hợp với máy của bạn (user và pass là tài 
 khẩu của phần mềm sql server)
 + Bước 5: Vào package main -> mở file Main.java -> Chạy file này để 
 mở phần mềm
+
+# Ảnh demo
+![alt](https://github.com/tuan0342/HeThongQuanLyToDanPho/blob/master/src/content/image/Login.png)
+![alt](https://github.com/tuan0342/HeThongQuanLyToDanPho/blob/master/src/content/image/ChucNang.png)
